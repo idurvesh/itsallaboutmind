@@ -32,8 +32,11 @@ export default async (req) => {
     body: JSON.stringify({ email_address: email }),
   });
 
+  const v4Data = await v4Res.json();
+  console.log('v4 response:', v4Res.status, JSON.stringify(v4Data));
+
   if (v4Res.ok) {
-    return new Response(JSON.stringify({ success: true }), { status: 200 });
+    return new Response(JSON.stringify({ success: true, api: 'v4' }), { status: 200 });
   }
 
   // Fall back to v3 API
@@ -44,12 +47,13 @@ export default async (req) => {
   });
 
   const data = await v3Res.json();
+  console.log('v3 response:', v3Res.status, JSON.stringify(data));
 
   if (!v3Res.ok) {
-    return new Response(JSON.stringify({ error: data.message || 'Subscription failed', debug: { formId, v4Status: v4Res.status } }), { status: 400 });
+    return new Response(JSON.stringify({ error: data.message || 'Subscription failed' }), { status: 400 });
   }
 
-  return new Response(JSON.stringify({ success: true }), { status: 200 });
+  return new Response(JSON.stringify({ success: true, api: 'v3' }), { status: 200 });
 };
 
 export const config = { path: '/api/subscribe' };
