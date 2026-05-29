@@ -16,7 +16,6 @@ seoDescription: Manifestation is bringing your desires into reality through
 focusKeyword: what is manifestation
 ogImage: /images/what-is-manifestation-a-beginner-s-complete-guide.png
 ---
-![](/images/what-is-manifestation-a-beginner-s-complete-guide.png)
 
 Have you ever really wanted something - and then it just... happened?
 
