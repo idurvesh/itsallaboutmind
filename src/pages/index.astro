@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog');
+const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const featuredPost = sortedPosts[0];
+const recentPosts = sortedPosts.slice(1, 4);
+
+function readTime(body: string) {
+  const words = body.split(' ').length;
+  return `${Math.ceil(words / 200)} min read`;
+}
+---
+
+<BaseLayout title="Home">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-tag">Mind · Manifestation · Meditation</div>
+    <h1>Your mind is the most<br/><em>powerful tool</em> you own</h1>
+    <p>Explore the science and philosophy of consciousness, law of attraction, and intentional living.</p>
+    <div class="hero-divider"></div>
+  </section>
+
+  <!-- Featured Post -->
+  {featuredPost && (
+    <section class="section" style="padding-top:0;">
+      <a href={`/blog/${featuredPost.slug}`} class="featured-post" style="display:block;">
+        <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;">{featuredPost.data.category || 'Mindset'}</div>
+        <h2>{featuredPost.data.title}</h2>
+        <p>{featuredPost.data.description}</p>
+        <span class="btn">Read Article →</span>
+      </a>
+    </section>
+  )}
+
+  <!-- Recent Posts -->
+  {recentPosts.length > 0 && (
+    <section class="section" style="padding-top:0;">
+      <div class="section-header">
+        <h2 class="section-title">Recent Articles</h2>
+        <a href="/blog" class="section-link">View all →</a>
+      </div>
+      <div class="blog-grid">
+        {recentPosts.map(post => (
+          <a href={`/blog/${post.slug}`} class="blog-card">
+            <div class="blog-card-tag">{post.data.category || 'Mindset'}</div>
+            <h3>{post.data.title}</h3>
+            <p>{post.data.description}</p>
+            <div class="blog-card-meta">
+              <span>🗓 {post.data.pubDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- Quote -->
+  <section class="quote-section">
+    <blockquote>"The mind is everything. What you think, you become."</blockquote>
+    <cite>— Buddha</cite>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="section">
+    <div class="newsletter">
+      <h2>Weekly Mind Shifts</h2>
+      <p>One insight every week to help you think better, manifest faster, and live more consciously.</p>
+      <form class="newsletter-form" onsubmit="return false;">
+        <input type="email" placeholder="your@email.com" />
+        <button type="submit" class="btn">Join Free</button>
+      </form>
+    </div>
+  </section>
+
+</BaseLayout>

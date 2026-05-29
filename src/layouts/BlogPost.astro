@@ -1,0 +1,51 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  category?: string;
+  readTime?: string;
+}
+
+const { title, description, pubDate, category = 'Mindset', readTime = '5 min read' } = Astro.props;
+
+const formattedDate = pubDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<BaseLayout title={title} description={description}>
+  <article>
+    <div class="post-hero">
+      <a href="/blog" style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.875rem;color:var(--text-muted);margin-bottom:2rem;transition:var(--transition);" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-muted)'">
+        ← Back to Blog
+      </a>
+      <div class="post-tag">{category}</div>
+      <h1 class="post-title">{title}</h1>
+      <div class="post-meta">
+        <span>🗓 {formattedDate}</span>
+        <span>· {readTime}</span>
+      </div>
+    </div>
+
+    <div class="post-content">
+      <slot />
+    </div>
+
+    <!-- Related / CTA -->
+    <div style="max-width:var(--content-width);margin:0 auto;padding:0 2rem 5rem;">
+      <div class="newsletter" style="border-radius:var(--radius);padding:3rem;">
+        <h2 style="font-size:1.8rem;margin-bottom:0.75rem;">Enjoyed this?</h2>
+        <p>Get weekly insights on mindset, manifestation, and conscious living — straight to your inbox.</p>
+        <form class="newsletter-form" onsubmit="return false;">
+          <input type="email" placeholder="your@email.com" />
+          <button type="submit" class="btn">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
