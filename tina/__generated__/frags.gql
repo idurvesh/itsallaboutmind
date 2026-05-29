@@ -1,0 +1,16 @@
+fragment BlogParts on Blog {
+  __typename
+  title
+  description
+  pubDate
+  category
+  readTime
+  author
+  featured
+  body
+  seoTitle
+  seoDescription
+  focusKeyword
+  ogImage
+  canonicalUrl
+}
