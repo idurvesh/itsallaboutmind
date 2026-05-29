@@ -69,6 +69,46 @@
       z-index: 99998;
       box-shadow: 0 4px 16px rgba(0,0,0,0.3);
     }
+    #indexnow-btn {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      background: #1a6e3c;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 10px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      z-index: 99998;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+      display: none;
+    }
+    #indexnow-toast {
+      position: fixed;
+      bottom: 70px;
+      left: 24px;
+      background: #1a1a2e;
+      color: #eee;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-family: -apple-system, sans-serif;
+      font-size: 13px;
+      z-index: 99999;
+      display: none;
+      max-width: 280px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+    #indexnow-toast .result-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 3px 0;
+    }
+    #indexnow-toast .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    #indexnow-toast .dot.green { background: #69db7c; }
+    #indexnow-toast .dot.red { background: #ff6b6b; }
     #hemingway-panel .close-btn {
       position: absolute;
       top: 12px;
@@ -114,6 +154,8 @@
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 
   <button class="toggle-btn" id="toggle-btn" onclick="togglePanel()">✍ Readability</button>
+  <button id="indexnow-btn" onclick="submitToSearchEngines()">🚀 Submit to Search Engines</button>
+  <div id="indexnow-toast"></div>
 
   <div id="hemingway-panel">
     <button class="close-btn" onclick="togglePanel()">✕</button>
@@ -243,6 +285,62 @@
           <span>${c.label}</span>
         </div>
       `).join('');
+    }
+
+    // Show submit button when on a blog post entry page
+    setInterval(() => {
+      const btn = document.getElementById('indexnow-btn');
+      const isEntry = window.location.hash.includes('/collections/blog/entries/');
+      btn.style.display = isEntry ? 'block' : 'none';
+    }, 1000);
+
+    async function submitToSearchEngines() {
+      const hash = window.location.hash;
+      const match = hash.match(/entries\/(.+)$/);
+      if (!match) return;
+
+      const slug = match[1];
+      const url = `/blog/${slug}/`;
+      const btn = document.getElementById('indexnow-btn');
+      const toast = document.getElementById('indexnow-toast');
+
+      btn.textContent = '⏳ Submitting...';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch('/api/submit-url', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url }),
+        });
+        const data = await res.json();
+
+        const engineNames = {
+          'https://api.indexnow.org/indexnow': 'IndexNow',
+          'https://www.bing.com/indexnow': 'Bing',
+          'https://yandex.com/indexnow': 'Yandex',
+          'google-sitemap-ping': 'Google',
+        };
+
+        toast.innerHTML = `
+          <div style="font-weight:600;margin-bottom:8px;color:#fff;">Submitted: ${url}</div>
+          ${(data.results || []).map(r => `
+            <div class="result-row">
+              <div class="dot ${r.ok || r.status === 200 ? 'green' : 'red'}"></div>
+              <span>${engineNames[r.host] || r.host}</span>
+            </div>
+          `).join('')}
+        `;
+        toast.style.display = 'block';
+        setTimeout(() => { toast.style.display = 'none'; }, 6000);
+      } catch (e) {
+        toast.innerHTML = `<span style="color:#ff6b6b">❌ Submission failed</span>`;
+        toast.style.display = 'block';
+        setTimeout(() => { toast.style.display = 'none'; }, 4000);
+      }
+
+      btn.textContent = '🚀 Submit to Search Engines';
+      btn.disabled = false;
     }
 
     // Poll for content changes in the CMS editor
