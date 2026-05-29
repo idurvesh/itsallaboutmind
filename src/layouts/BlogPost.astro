@@ -119,11 +119,50 @@ const jsonLd = {
       <div class="newsletter" style="border-radius:var(--radius);padding:3rem;">
         <h2 style="font-size:1.8rem;margin-bottom:0.75rem;">Enjoyed this?</h2>
         <p>Get weekly insights on mindset, manifestation, and conscious living — straight to your inbox.</p>
-        <form class="newsletter-form" onsubmit="return false;">
-          <input type="email" placeholder="your@email.com" />
+        <form class="newsletter-form" id="newsletter-form-post">
+          <input type="text" name="firstName" placeholder="First name" style="flex:0.6;" />
+          <input type="email" name="email" placeholder="your@email.com" required />
           <button type="submit" class="btn">Subscribe</button>
         </form>
+        <p id="newsletter-msg-post" style="margin-top:1rem;font-size:0.9rem;display:none;"></p>
       </div>
     </div>
   </article>
 </BaseLayout>
+
+<script>
+  const form = document.getElementById('newsletter-form-post') as HTMLFormElement;
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = (form.querySelector('[name="email"]') as HTMLInputElement).value;
+      const firstName = (form.querySelector('[name="firstName"]') as HTMLInputElement)?.value || '';
+      const msg = document.getElementById('newsletter-msg-post')!;
+      const btn = form.querySelector('button')!;
+      btn.textContent = 'Subscribing...';
+      btn.setAttribute('disabled', 'true');
+      try {
+        const res = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, firstName }),
+        });
+        if (res.ok) {
+          msg.textContent = '🎉 You\'re in! Check your inbox to confirm.';
+          msg.style.color = 'var(--sage)';
+          form.reset();
+        } else {
+          const data = await res.json();
+          msg.textContent = data.error || 'Something went wrong. Try again.';
+          msg.style.color = '#e05';
+        }
+      } catch {
+        msg.textContent = 'Something went wrong. Try again.';
+        msg.style.color = '#e05';
+      }
+      msg.style.display = 'block';
+      btn.textContent = 'Subscribe';
+      btn.removeAttribute('disabled');
+    });
+  }
+</script>

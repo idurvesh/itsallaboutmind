@@ -6,11 +6,6 @@ const allPosts = await getCollection('blog');
 const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const featuredPost = sortedPosts[0];
 const recentPosts = sortedPosts.slice(1, 4);
-
-function readTime(body: string) {
-  const words = body.split(' ').length;
-  return `${Math.ceil(words / 200)} min read`;
-}
 ---
 
 <BaseLayout title="Home">
@@ -26,7 +21,7 @@ function readTime(body: string) {
   <!-- Featured Post -->
   {featuredPost && (
     <section class="section" style="padding-top:0;">
-      <a href={`/blog/${featuredPost.slug}`} class="featured-post" style="display:block;">
+      <a href={`/blog/${featuredPost.id}`} class="featured-post" style="display:block;">
         <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;">{featuredPost.data.category || 'Mindset'}</div>
         <h2>{featuredPost.data.title}</h2>
         <p>{featuredPost.data.description}</p>
@@ -44,7 +39,7 @@ function readTime(body: string) {
       </div>
       <div class="blog-grid">
         {recentPosts.map(post => (
-          <a href={`/blog/${post.slug}`} class="blog-card">
+          <a href={`/blog/${post.id}`} class="blog-card">
             <div class="blog-card-tag">{post.data.category || 'Mindset'}</div>
             <h3>{post.data.title}</h3>
             <p>{post.data.description}</p>
@@ -68,11 +63,53 @@ function readTime(body: string) {
     <div class="newsletter">
       <h2>Weekly Mind Shifts</h2>
       <p>One insight every week to help you think better, manifest faster, and live more consciously.</p>
-      <form class="newsletter-form" onsubmit="return false;">
-        <input type="email" placeholder="your@email.com" />
+      <form class="newsletter-form" id="newsletter-form-home">
+        <input type="text" name="firstName" placeholder="First name" style="flex:0.6;" />
+        <input type="email" name="email" placeholder="your@email.com" required />
         <button type="submit" class="btn">Join Free</button>
       </form>
+      <p id="newsletter-msg-home" style="margin-top:1rem;font-size:0.9rem;display:none;"></p>
     </div>
   </section>
 
 </BaseLayout>
+
+<script>
+  async function handleNewsletter(formId: string, msgId: string) {
+    const form = document.getElementById(formId) as HTMLFormElement;
+    if (!form) return;
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = (form.querySelector('[name="email"]') as HTMLInputElement).value;
+      const firstName = (form.querySelector('[name="firstName"]') as HTMLInputElement)?.value || '';
+      const msg = document.getElementById(msgId)!;
+      const btn = form.querySelector('button')!;
+      btn.textContent = 'Joining...';
+      btn.setAttribute('disabled', 'true');
+      try {
+        const res = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, firstName }),
+        });
+        if (res.ok) {
+          msg.textContent = '🎉 You\'re in! Check your inbox to confirm.';
+          msg.style.color = 'var(--sage)';
+          form.reset();
+        } else {
+          const data = await res.json();
+          msg.textContent = data.error || 'Something went wrong. Try again.';
+          msg.style.color = '#e05';
+        }
+      } catch {
+        msg.textContent = 'Something went wrong. Try again.';
+        msg.style.color = '#e05';
+      }
+      msg.style.display = 'block';
+      btn.textContent = 'Join Free';
+      btn.removeAttribute('disabled');
+    });
+  }
+
+  handleNewsletter('newsletter-form-home', 'newsletter-msg-home');
+</script>
