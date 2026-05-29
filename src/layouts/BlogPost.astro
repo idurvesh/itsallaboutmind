@@ -7,18 +7,96 @@ interface Props {
   pubDate: Date;
   category?: string;
   readTime?: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  focusKeyword?: string;
+  ogImage?: string;
+  canonicalUrl?: string;
+  author?: string;
 }
 
-const { title, description, pubDate, category = 'Mindset', readTime = '5 min read' } = Astro.props;
+const {
+  title,
+  description,
+  pubDate,
+  category = 'Mindset',
+  readTime = '5 min read',
+  seoTitle,
+  seoDescription,
+  focusKeyword,
+  ogImage,
+  canonicalUrl,
+  author = "It's All About Mind",
+} = Astro.props;
 
 const formattedDate = pubDate.toLocaleDateString('en-US', {
   year: 'numeric',
   month: 'long',
   day: 'numeric'
 });
+
+const isoDate = pubDate.toISOString();
+const resolvedTitle = seoTitle || title;
+const resolvedDescription = seoDescription || description;
+const resolvedCanonical = canonicalUrl || Astro.url.href;
+const siteUrl = 'https://itsallaboutmind.com';
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": resolvedTitle,
+  "description": resolvedDescription,
+  "author": {
+    "@type": "Person",
+    "name": author,
+    "url": siteUrl
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "It's All About Mind",
+    "url": siteUrl,
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${siteUrl}/favicon.svg`
+    }
+  },
+  "datePublished": isoDate,
+  "dateModified": isoDate,
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": resolvedCanonical
+  },
+  "keywords": focusKeyword,
+  "articleSection": category,
+  ...(ogImage ? { "image": ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}` } : {}),
+};
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout
+  title={resolvedTitle}
+  description={resolvedDescription}
+  image={ogImage}
+  canonicalUrl={resolvedCanonical}
+>
+  <Fragment slot="head">
+    <!-- Canonical -->
+    <link rel="canonical" href={resolvedCanonical} />
+
+    <!-- Robots — allow full snippets for AI/LLM crawlers -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+    {focusKeyword && <meta name="keywords" content={focusKeyword} />}
+    <meta name="author" content={author} />
+
+    <!-- Open Graph -->
+    <meta property="article:published_time" content={isoDate} />
+    <meta property="article:section" content={category} />
+    {focusKeyword && <meta property="article:tag" content={focusKeyword} />}
+
+    <!-- JSON-LD Article Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
   <article>
     <div class="post-hero">
       <a href="/blog" style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.875rem;color:var(--text-muted);margin-bottom:2rem;transition:var(--transition);" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-muted)'">
@@ -29,6 +107,7 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
       <div class="post-meta">
         <span>🗓 {formattedDate}</span>
         <span>· {readTime}</span>
+        <span>· {author}</span>
       </div>
     </div>
 
@@ -36,7 +115,6 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
       <slot />
     </div>
 
-    <!-- Related / CTA -->
     <div style="max-width:var(--content-width);margin:0 auto;padding:0 2rem 5rem;">
       <div class="newsletter" style="border-radius:var(--radius);padding:3rem;">
         <h2 style="font-size:1.8rem;margin-bottom:0.75rem;">Enjoyed this?</h2>

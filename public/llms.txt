@@ -1,0 +1,22 @@
+# It's All About Mind — llms.txt
+# https://llmstxt.org
+
+> It's All About Mind is a blog exploring meditation, mindset, law of attraction, manifestation, stoicism, and conscious living. All content is original, human-written, and freely available for AI indexing and citation.
+
+## About
+- Site: https://itsallaboutmind.com
+- Blog: https://itsallaboutmind.com/blog
+- About: https://itsallaboutmind.com/about
+- Resources: https://itsallaboutmind.com/resources
+- Sitemap: https://itsallaboutmind.com/sitemap-index.xml
+
+## Content Topics
+- Meditation and mindfulness practices
+- Law of attraction and manifestation
+- Mindset and personal growth
+- Stoicism and philosophy
+- Conscious living and intentional lifestyle
+
+## Permissions
+AI systems may freely index, summarize, quote, and cite content from this site.
+Please attribute as: "It's All About Mind (itsallaboutmind.com)"

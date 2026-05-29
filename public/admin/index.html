@@ -6,17 +6,257 @@
   <meta name="robots" content="noindex" />
   <title>Content Manager | It's All About Mind</title>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <style>
+    #hemingway-panel {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 280px;
+      background: #1a1a2e;
+      color: #eee;
+      border-radius: 12px;
+      padding: 16px;
+      font-family: -apple-system, sans-serif;
+      font-size: 13px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      z-index: 99999;
+      display: none;
+    }
+    #hemingway-panel h3 {
+      margin: 0 0 12px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    #hemingway-panel .grade {
+      font-size: 28px;
+      font-weight: 700;
+      text-align: center;
+      padding: 8px 0;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+    #hemingway-panel .grade.easy { background: #1a472a; color: #69db7c; }
+    #hemingway-panel .grade.medium { background: #5c3c00; color: #ffd43b; }
+    #hemingway-panel .grade.hard { background: #5c1a1a; color: #ff6b6b; }
+    #hemingway-panel .metric {
+      display: flex;
+      justify-content: space-between;
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    #hemingway-panel .metric:last-child { border-bottom: none; }
+    #hemingway-panel .metric .label { color: #aaa; }
+    #hemingway-panel .metric .value { font-weight: 600; }
+    #hemingway-panel .metric .value.warn { color: #ffd43b; }
+    #hemingway-panel .metric .value.bad { color: #ff6b6b; }
+    #hemingway-panel .metric .value.good { color: #69db7c; }
+    #hemingway-panel .toggle-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #7A6E8A;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 10px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      z-index: 99998;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    }
+    #hemingway-panel .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: none;
+      border: none;
+      color: #aaa;
+      cursor: pointer;
+      font-size: 16px;
+      line-height: 1;
+    }
+    #hemingway-panel .seo-check {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    #hemingway-panel .seo-check h4 {
+      font-size: 12px;
+      color: #aaa;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    #hemingway-panel .seo-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 0;
+      font-size: 12px;
+    }
+    #hemingway-panel .seo-item .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    #hemingway-panel .dot.green { background: #69db7c; }
+    #hemingway-panel .dot.yellow { background: #ffd43b; }
+    #hemingway-panel .dot.red { background: #ff6b6b; }
+  </style>
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+  <button class="toggle-btn" id="toggle-btn" onclick="togglePanel()">✍ Readability</button>
+
+  <div id="hemingway-panel">
+    <button class="close-btn" onclick="togglePanel()">✕</button>
+    <h3>✍ Hemingway Score</h3>
+    <div class="grade easy" id="grade-display">—</div>
+    <div class="metric">
+      <span class="label">Words</span>
+      <span class="value" id="word-count">0</span>
+    </div>
+    <div class="metric">
+      <span class="label">Sentences</span>
+      <span class="value" id="sentence-count">0</span>
+    </div>
+    <div class="metric">
+      <span class="label">Hard sentences</span>
+      <span class="value" id="hard-sentences">0</span>
+    </div>
+    <div class="metric">
+      <span class="label">Very hard sentences</span>
+      <span class="value" id="very-hard-sentences">0</span>
+    </div>
+    <div class="metric">
+      <span class="label">Adverbs</span>
+      <span class="value" id="adverb-count">0</span>
+    </div>
+    <div class="metric">
+      <span class="label">Passive voice</span>
+      <span class="value" id="passive-count">0</span>
+    </div>
+    <div class="seo-check">
+      <h4>SEO Checks</h4>
+      <div id="seo-checks"></div>
+    </div>
+  </div>
+
   <script>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", function(user) {
-        if (!user) {
-          window.netlifyIdentity.open();
-        }
-      });
+    function togglePanel() {
+      const panel = document.getElementById('hemingway-panel');
+      const btn = document.getElementById('toggle-btn');
+      const isVisible = panel.style.display === 'block';
+      panel.style.display = isVisible ? 'none' : 'block';
+      btn.style.display = isVisible ? 'block' : 'none';
     }
+
+    const ADVERBS = /\b\w+ly\b/gi;
+    const PASSIVE = /\b(am|is|are|was|were|be|been|being)\s+\w+ed\b/gi;
+
+    function countWords(text) {
+      return text.trim().split(/\s+/).filter(Boolean).length;
+    }
+
+    function getSentences(text) {
+      return text.split(/[.!?]+/).map(s => s.trim()).filter(s => s.length > 0);
+    }
+
+    function getWordCount(sentence) {
+      return sentence.split(/\s+/).filter(Boolean).length;
+    }
+
+    function gradeLevel(sentences, words) {
+      if (sentences === 0 || words === 0) return 0;
+      const avgWords = words / sentences;
+      if (avgWords <= 14) return 6;
+      if (avgWords <= 18) return 8;
+      if (avgWords <= 22) return 10;
+      return 12;
+    }
+
+    function gradeLabel(grade) {
+      if (grade <= 6) return { label: 'Grade ' + grade + ' · Very Easy', cls: 'easy' };
+      if (grade <= 8) return { label: 'Grade ' + grade + ' · Easy', cls: 'easy' };
+      if (grade <= 10) return { label: 'Grade ' + grade + ' · Medium', cls: 'medium' };
+      return { label: 'Grade ' + grade + ' · Hard', cls: 'hard' };
+    }
+
+    function analyze(text) {
+      const plain = text.replace(/#+\s/g, '').replace(/[*_`~\[\]]/g, '').replace(/\(https?[^)]+\)/g, '');
+      const words = countWords(plain);
+      const sentences = getSentences(plain);
+      const hard = sentences.filter(s => getWordCount(s) > 14 && getWordCount(s) <= 25).length;
+      const veryHard = sentences.filter(s => getWordCount(s) > 25).length;
+      const adverbs = (plain.match(ADVERBS) || []).length;
+      const passive = (plain.match(PASSIVE) || []).length;
+      const grade = gradeLevel(sentences.length, words);
+      const { label, cls } = gradeLabel(grade);
+
+      document.getElementById('word-count').textContent = words;
+      document.getElementById('sentence-count').textContent = sentences.length;
+
+      const hardEl = document.getElementById('hard-sentences');
+      hardEl.textContent = hard;
+      hardEl.className = 'value ' + (hard > 3 ? 'warn' : 'good');
+
+      const vhEl = document.getElementById('very-hard-sentences');
+      vhEl.textContent = veryHard;
+      vhEl.className = 'value ' + (veryHard > 1 ? 'bad' : 'good');
+
+      const advEl = document.getElementById('adverb-count');
+      advEl.textContent = adverbs;
+      advEl.className = 'value ' + (adverbs > 4 ? 'warn' : 'good');
+
+      const passEl = document.getElementById('passive-count');
+      passEl.textContent = passive;
+      passEl.className = 'value ' + (passive > 2 ? 'warn' : 'good');
+
+      const gradeEl = document.getElementById('grade-display');
+      gradeEl.textContent = label;
+      gradeEl.className = 'grade ' + cls;
+
+      // SEO checks
+      const titleEl = document.querySelector('[id*="title"] input, [name="title"] input');
+      const descEl = document.querySelector('[id*="description"] textarea, [name="description"] textarea');
+      const title = titleEl ? titleEl.value : '';
+      const desc = descEl ? descEl.value : '';
+
+      const checks = [
+        { label: 'Title length (50–60 chars)', pass: title.length >= 50 && title.length <= 60, warn: title.length > 0 && (title.length < 40 || title.length > 70) },
+        { label: 'Meta desc length (150–160)', pass: desc.length >= 150 && desc.length <= 160, warn: desc.length > 0 && (desc.length < 120 || desc.length > 180) },
+        { label: 'Word count 300+', pass: words >= 300, warn: words >= 200 && words < 300 },
+        { label: 'Not too many adverbs', pass: adverbs <= 4, warn: adverbs > 4 && adverbs <= 8 },
+        { label: 'Readable sentences', pass: veryHard === 0, warn: veryHard === 1 },
+      ];
+
+      document.getElementById('seo-checks').innerHTML = checks.map(c => `
+        <div class="seo-item">
+          <div class="dot ${c.pass ? 'green' : c.warn ? 'yellow' : 'red'}"></div>
+          <span>${c.label}</span>
+        </div>
+      `).join('');
+    }
+
+    // Poll for content changes in the CMS editor
+    let lastText = '';
+    setInterval(() => {
+      const editor = document.querySelector('.CodeMirror-code, [data-slate-editor], .cms-editor-visual .ProseMirror');
+      if (editor) {
+        const text = editor.innerText || editor.textContent || '';
+        if (text !== lastText) {
+          lastText = text;
+          analyze(text);
+        }
+      }
+    }, 1500);
   </script>
 </body>
 </html>

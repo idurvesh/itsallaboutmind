@@ -20,6 +20,12 @@ const { Content } = await render(post);
   pubDate={post.data.pubDate}
   category={post.data.category}
   readTime={post.data.readTime}
+  seoTitle={post.data.seoTitle}
+  seoDescription={post.data.seoDescription}
+  focusKeyword={post.data.focusKeyword}
+  ogImage={post.data.ogImage}
+  canonicalUrl={post.data.canonicalUrl}
+  author={post.data.author}
 >
   <Content />
 </BlogPost>

@@ -5,10 +5,31 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
+  canonicalUrl?: string;
 }
 
-const { title, description = "Explore the power of your mind — meditation, law of attraction, mindset, and conscious living.", image } = Astro.props;
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const {
+  title,
+  description = "Explore the power of your mind — meditation, law of attraction, mindset, and conscious living.",
+  image,
+  canonicalUrl,
+} = Astro.props;
+
+const canonical = canonicalUrl || new URL(Astro.url.pathname, Astro.site).href;
+const siteUrl = 'https://itsallaboutmind.com';
+
+const jsonLdSite = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "It's All About Mind",
+  "url": siteUrl,
+  "description": description,
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": `${siteUrl}/blog?q={search_term_string}`,
+    "query-input": "required name=search_term_string"
+  }
+};
 ---
 
 <!DOCTYPE html>
@@ -22,20 +43,28 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
   <title>{title} | It's All About Mind</title>
   <meta name="description" content={description} />
-  <link rel="canonical" href={canonicalURL} />
+  <link rel="canonical" href={canonical} />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:url" content={canonical} />
   <meta property="og:title" content={`${title} | It's All About Mind`} />
   <meta property="og:description" content={description} />
-  {image && <meta property="og:image" content={image} />}
+  <meta property="og:site_name" content="It's All About Mind" />
+  {image && <meta property="og:image" content={image.startsWith('http') ? image : `${siteUrl}${image}`} />}
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={`${title} | It's All About Mind`} />
   <meta name="twitter:description" content={description} />
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  {image && <meta name="twitter:image" content={image.startsWith('http') ? image : `${siteUrl}${image}`} />}
+
+  <!-- WebSite JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLdSite)} />
+
+  <!-- Page-level head slot (for BlogPost to inject Article schema etc.) -->
+  <slot name="head" />
 </head>
 <body>
 
@@ -80,7 +109,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       });
     }
 
-    // Redirect identity tokens to /admin so CMS can handle them
     const hash = window.location.hash;
     if (hash && (hash.includes('invite_token') || hash.includes('recovery_token') || hash.includes('confirmation_token'))) {
       window.location.href = '/admin/' + hash;

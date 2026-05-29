@@ -10,6 +10,12 @@ const blog = defineCollection({
     category: z.string().optional().default('Mindset'),
     readTime: z.string().optional().default('5 min read'),
     featured: z.boolean().optional().default(false),
+    seoTitle: z.string().optional(),
+    seoDescription: z.string().optional(),
+    focusKeyword: z.string().optional(),
+    ogImage: z.string().optional(),
+    canonicalUrl: z.string().optional(),
+    author: z.string().optional().default('It\'s All About Mind'),
   }),
 });
 

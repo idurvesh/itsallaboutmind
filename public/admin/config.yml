@@ -12,8 +12,8 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Title", name: "title", widget: "string", hint: "The main headline of your post" }
+      - { label: "Description", name: "description", widget: "text", hint: "A short summary shown on the blog listing page" }
       - { label: "Publish Date", name: "pubDate", widget: "datetime" }
       - label: "Category"
         name: "category"
@@ -27,5 +27,18 @@ collections:
           - "Manifestation"
         default: "Mindset"
       - { label: "Read Time", name: "readTime", widget: "string", default: "5 min read" }
+      - { label: "Author", name: "author", widget: "string", default: "It's All About Mind" }
       - { label: "Featured", name: "featured", widget: "boolean", default: false }
       - { label: "Body", name: "body", widget: "markdown" }
+
+      - label: "SEO"
+        name: "seo"
+        widget: "object"
+        collapsed: true
+        hint: "Leave blank to use the title and description above"
+        fields:
+          - { label: "SEO Title", name: "seoTitle", widget: "string", required: false, hint: "Ideal length: 50–60 characters. Leave blank to use post title." }
+          - { label: "Meta Description", name: "seoDescription", widget: "text", required: false, hint: "Ideal length: 150–160 characters. Leave blank to use post description." }
+          - { label: "Focus Keyword", name: "focusKeyword", widget: "string", required: false, hint: "The main keyword this post should rank for" }
+          - { label: "OG / Social Image", name: "ogImage", widget: "image", required: false, hint: "Image shown when shared on social media (1200x630px recommended)" }
+          - { label: "Canonical URL", name: "canonicalUrl", widget: "string", required: false, hint: "Only set if this content is republished from another URL" }
