@@ -10,6 +10,7 @@ const blog = defineCollection({
     category: z.string().optional().default('Mindset'),
     readTime: z.string().optional().default('5 min read'),
     featured: z.boolean().optional().default(false),
+    coverImage: z.string().optional(),
     seoTitle: z.string().optional(),
     seoDescription: z.string().optional(),
     focusKeyword: z.string().optional(),

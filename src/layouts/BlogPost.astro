@@ -7,6 +7,7 @@ interface Props {
   pubDate: Date;
   category?: string;
   readTime?: string;
+  coverImage?: string;
   seoTitle?: string;
   seoDescription?: string;
   focusKeyword?: string;
@@ -21,6 +22,7 @@ const {
   pubDate,
   category = 'Mindset',
   readTime = '5 min read',
+  coverImage,
   seoTitle,
   seoDescription,
   focusKeyword,
@@ -104,6 +106,9 @@ const jsonLd = {
       </a>
       <div class="post-tag">{category}</div>
       <h1 class="post-title">{title}</h1>
+      {coverImage && (
+        <img src={coverImage} alt={title} style="width:100%;border-radius:var(--radius);margin:1.5rem 0;object-fit:cover;max-height:420px;" />
+      )}
       <div class="post-meta">
         <span>🗓 {formattedDate}</span>
         <span>· {readTime}</span>

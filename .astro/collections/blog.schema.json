@@ -24,6 +24,9 @@
       "default": false,
       "type": "boolean"
     },
+    "coverImage": {
+      "type": "string"
+    },
     "seoTitle": {
       "type": "string"
     },
