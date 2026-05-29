@@ -33,7 +33,7 @@ const categories = ['All', ...new Set(allPosts.map(p => p.data.category || 'Mind
 
     <div class="blog-grid" id="posts-grid">
       {sortedPosts.map(post => (
-        <a href={`/blog/${post.slug}`} class="blog-card" data-category={post.data.category || 'Mindset'}>
+        <a href={`/blog/${post.id}`} class="blog-card" data-category={post.data.category || 'Mindset'}>
           <div class="blog-card-tag">{post.data.category || 'Mindset'}</div>
           <h3>{post.data.title}</h3>
           <p>{post.data.description}</p>
