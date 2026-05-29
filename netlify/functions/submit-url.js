@@ -19,22 +19,25 @@ export default async (req) => {
     return new Response(JSON.stringify({ error: 'Invalid JSON' }), { status: 400 });
   }
 
-  const { url } = body;
-  if (!url) {
-    return new Response(JSON.stringify({ error: 'Missing url' }), { status: 400 });
+  const { url, urls } = body;
+
+  // Support single url or array of urls
+  let urlList = urls || (url ? [url] : []);
+  if (!urlList.length) {
+    return new Response(JSON.stringify({ error: 'Missing url or urls' }), { status: 400 });
   }
 
-  const fullUrl = url.startsWith('http') ? url : `${SITE_URL}${url}`;
+  // Ensure full URLs
+  urlList = urlList.map(u => u.startsWith('http') ? u : `${SITE_URL}${u}`);
 
   const payload = {
     host: 'itsallaboutmind.com',
     key: INDEXNOW_KEY,
     keyLocation: `${SITE_URL}/${INDEXNOW_KEY}.txt`,
-    urlList: [fullUrl],
+    urlList,
   };
 
   const results = await Promise.allSettled([
-    // IndexNow (covers Bing, Yandex, Seznam, Naver, etc.)
     ...INDEXNOW_HOSTS.map(host =>
       fetch(host, {
         method: 'POST',
@@ -42,19 +45,16 @@ export default async (req) => {
         body: JSON.stringify(payload),
       }).then(r => ({ host, status: r.status, ok: r.ok }))
     ),
-    // Google sitemap ping
     fetch(`https://www.google.com/ping?sitemap=${encodeURIComponent(`${SITE_URL}/sitemap-index.xml`)}`)
       .then(r => ({ host: 'google-sitemap-ping', status: r.status, ok: r.ok })),
   ]);
 
   const summary = results.map((r, i) => {
     if (r.status === 'fulfilled') return r.value;
-    return { host: INDEXNOW_HOSTS[i] || 'unknown', error: r.reason?.message };
+    return { host: INDEXNOW_HOSTS[i] || 'unknown', error: r.reason?.message, ok: false };
   });
 
-  const allOk = summary.every(s => s.ok || s.status === 200);
-
-  return new Response(JSON.stringify({ success: allOk, url: fullUrl, results: summary }), {
+  return new Response(JSON.stringify({ success: true, urls: urlList, results: summary }), {
     status: 200,
     headers: { 'Content-Type': 'application/json' },
   });

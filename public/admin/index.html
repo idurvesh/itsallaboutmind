@@ -154,7 +154,8 @@
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 
   <button class="toggle-btn" id="toggle-btn" onclick="togglePanel()">✍ Readability</button>
-  <button id="indexnow-btn" onclick="submitToSearchEngines()">🚀 Submit to Search Engines</button>
+  <button id="indexnow-btn" onclick="submitToSearchEngines()">🚀 Submit This Page</button>
+  <button id="indexnow-all-btn" onclick="submitAllPages()" style="position:fixed;bottom:66px;left:24px;background:#2d4a6e;color:white;border:none;border-radius:50px;padding:10px 18px;font-size:13px;font-weight:600;cursor:pointer;z-index:99998;box-shadow:0 4px 16px rgba(0,0,0,0.3);">🗺 Submit All Pages</button>
   <div id="indexnow-toast"></div>
 
   <div id="hemingway-panel">
@@ -293,6 +294,57 @@
       const isEntry = window.location.hash.includes('/collections/blog/entries/');
       btn.style.display = isEntry ? 'block' : 'none';
     }, 1000);
+
+    async function submitAllPages() {
+      const btn = document.getElementById('indexnow-all-btn');
+      const toast = document.getElementById('indexnow-toast');
+
+      btn.textContent = '⏳ Submitting...';
+      btn.disabled = true;
+
+      const allUrls = [
+        'https://itsallaboutmind.com/',
+        'https://itsallaboutmind.com/blog/',
+        'https://itsallaboutmind.com/about/',
+        'https://itsallaboutmind.com/resources/',
+        'https://itsallaboutmind.com/quiz/mindset-type/',
+      ];
+
+      try {
+        const res = await fetch('/api/submit-url', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ urls: allUrls }),
+        });
+        const data = await res.json();
+
+        const engineNames = {
+          'https://api.indexnow.org/indexnow': 'IndexNow',
+          'https://www.bing.com/indexnow': 'Bing',
+          'https://yandex.com/indexnow': 'Yandex',
+          'google-sitemap-ping': 'Google',
+        };
+
+        toast.innerHTML = `
+          <div style="font-weight:600;margin-bottom:8px;color:#fff;">Submitted ${allUrls.length} pages</div>
+          ${(data.results || []).map(r => `
+            <div class="result-row">
+              <div class="dot ${r.ok || r.status === 200 ? 'green' : 'red'}"></div>
+              <span>${engineNames[r.host] || r.host}</span>
+            </div>
+          `).join('')}
+        `;
+        toast.style.display = 'block';
+        setTimeout(() => { toast.style.display = 'none'; }, 6000);
+      } catch (e) {
+        toast.innerHTML = `<span style="color:#ff6b6b">❌ Submission failed</span>`;
+        toast.style.display = 'block';
+        setTimeout(() => { toast.style.display = 'none'; }, 4000);
+      }
+
+      btn.textContent = '🗺 Submit All Pages';
+      btn.disabled = false;
+    }
 
     async function submitToSearchEngines() {
       const hash = window.location.hash;
