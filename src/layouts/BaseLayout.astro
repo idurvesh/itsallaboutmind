@@ -79,6 +79,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         }
       });
     }
+
+    // Open identity modal if invite/recovery token is in the URL
+    const hash = window.location.hash;
+    if (hash && (hash.includes('invite_token') || hash.includes('recovery_token') || hash.includes('confirmation_token'))) {
+      (window as any).netlifyIdentity && (window as any).netlifyIdentity.open();
+    }
   </script>
 
 </body>
