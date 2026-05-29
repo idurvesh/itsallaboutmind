@@ -10,50 +10,57 @@ export default async (req) => {
     return new Response(JSON.stringify({ error: 'Invalid JSON' }), { status: 400 });
   }
 
-  const { email } = body;
+  const { email, firstName, quizResult, formType } = body;
   if (!email) {
     return new Response(JSON.stringify({ error: 'Email is required' }), { status: 400 });
   }
 
   const apiKey = process.env.CONVERTKIT_API_KEY;
-  const formId = process.env.CONVERTKIT_FORM_ID;
+  const formId = formType === 'quiz'
+    ? process.env.CONVERTKIT_QUIZ_FORM_ID
+    : process.env.CONVERTKIT_FORM_ID;
 
   if (!apiKey || !formId) {
     return new Response(JSON.stringify({ error: 'Server misconfiguration' }), { status: 500 });
   }
 
-  // Try v4 API first (new Kit API)
-  const v4Res = await fetch(`https://api.kit.com/v4/forms/${formId}/subscribers`, {
+  const payload = {
+    email_address: email,
+    ...(firstName ? { first_name: firstName } : {}),
+    ...(quizResult ? { fields: { mindset_type: quizResult } } : {}),
+  };
+
+  const res = await fetch(`https://api.kit.com/v4/forms/${formId}/subscribers`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       'X-Kit-Api-Key': apiKey,
     },
-    body: JSON.stringify({ email_address: email }),
+    body: JSON.stringify(payload),
   });
 
-  const v4Data = await v4Res.json();
-  console.log('v4 response:', v4Res.status, JSON.stringify(v4Data));
-
-  if (v4Res.ok) {
-    return new Response(JSON.stringify({ success: true, api: 'v4' }), { status: 200 });
+  if (res.ok) {
+    return new Response(JSON.stringify({ success: true }), { status: 200 });
   }
 
-  // Fall back to v3 API
+  // Fallback to v3
   const v3Res = await fetch(`https://api.convertkit.com/v3/forms/${formId}/subscribe`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ api_key: apiKey, email }),
+    body: JSON.stringify({
+      api_key: apiKey,
+      email,
+      first_name: firstName || '',
+      fields: quizResult ? { mindset_type: quizResult } : {},
+    }),
   });
 
   const data = await v3Res.json();
-  console.log('v3 response:', v3Res.status, JSON.stringify(data));
-
   if (!v3Res.ok) {
     return new Response(JSON.stringify({ error: data.message || 'Subscription failed' }), { status: 400 });
   }
 
-  return new Response(JSON.stringify({ success: true, api: 'v3' }), { status: 200 });
+  return new Response(JSON.stringify({ success: true }), { status: 200 });
 };
 
 export const config = { path: '/api/subscribe' };

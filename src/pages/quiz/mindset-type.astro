@@ -1,0 +1,338 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="What's Your Mindset Type?"
+  description="Take this 7-question quiz to discover your unique mindset type — Growth, Abundance, or Stoic — and get a personalised action plan."
+>
+  <section style="max-width:680px;margin:0 auto;padding:3rem 2rem 5rem;">
+
+    <!-- Header -->
+    <div id="quiz-header" style="text-align:center;margin-bottom:3rem;">
+      <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;">Free Quiz</div>
+      <h1 style="font-family:var(--font-serif);font-size:2.8rem;line-height:1.2;margin-bottom:1rem;">What's Your<br/><em>Mindset Type?</em></h1>
+      <p style="color:var(--text-muted);font-size:1.1rem;margin-bottom:2rem;">7 questions · 2 minutes · Discover how your mind works</p>
+      <button id="start-btn" class="btn" style="font-size:1rem;padding:0.9rem 2.5rem;">Start the Quiz →</button>
+    </div>
+
+    <!-- Quiz -->
+    <div id="quiz-container" style="display:none;">
+      <div id="progress-bar-wrap" style="background:var(--border);border-radius:100px;height:6px;margin-bottom:2.5rem;">
+        <div id="progress-bar" style="background:var(--accent);height:6px;border-radius:100px;width:0%;transition:width 0.4s ease;"></div>
+      </div>
+      <div id="question-wrap"></div>
+    </div>
+
+    <!-- Email Capture -->
+    <div id="email-capture" style="display:none;text-align:center;">
+      <div style="font-size:2.5rem;margin-bottom:1rem;">🎯</div>
+      <h2 style="font-family:var(--font-serif);font-size:2rem;margin-bottom:0.75rem;">Your result is ready!</h2>
+      <p style="color:var(--text-muted);margin-bottom:2rem;">Enter your name and email to reveal your Mindset Type and get a personalised action plan.</p>
+      <form id="capture-form" style="display:flex;flex-direction:column;gap:1rem;max-width:400px;margin:0 auto;">
+        <input type="text" id="capture-name" placeholder="Your first name" required style="padding:0.85rem 1.2rem;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:1rem;font-family:var(--font-sans);background:var(--surface);color:var(--text);outline:none;" />
+        <input type="email" id="capture-email" placeholder="your@email.com" required style="padding:0.85rem 1.2rem;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:1rem;font-family:var(--font-sans);background:var(--surface);color:var(--text);outline:none;" />
+        <button type="submit" class="btn" style="font-size:1rem;padding:0.9rem;">Reveal My Mindset Type →</button>
+        <p style="font-size:0.8rem;color:var(--text-light);">No spam. Unsubscribe anytime.</p>
+      </form>
+      <p id="capture-error" style="color:#e05;margin-top:1rem;display:none;"></p>
+    </div>
+
+    <!-- Result -->
+    <div id="result-container" style="display:none;text-align:center;">
+      <div id="result-emoji" style="font-size:4rem;margin-bottom:1rem;"></div>
+      <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Your Mindset Type</div>
+      <h2 id="result-title" style="font-family:var(--font-serif);font-size:2.5rem;margin-bottom:1rem;"></h2>
+      <p id="result-name-line" style="color:var(--text-muted);font-size:1rem;margin-bottom:1.5rem;"></p>
+      <div id="result-desc" style="background:var(--bg-alt);border-radius:var(--radius);padding:2rem;text-align:left;margin-bottom:2rem;line-height:1.8;color:var(--text);"></div>
+      <div id="result-strengths" style="margin-bottom:2rem;text-align:left;"></div>
+      <div id="result-action" style="background:var(--accent-light);border-radius:var(--radius);padding:2rem;text-align:left;margin-bottom:2rem;"></div>
+      <div id="result-posts" style="margin-bottom:2rem;text-align:left;"></div>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <button onclick="shareResult()" class="btn" style="background:var(--sage);border-color:var(--sage);">Share My Result</button>
+        <button onclick="retakeQuiz()" class="btn" style="background:transparent;color:var(--accent);border:1.5px solid var(--accent);">Retake Quiz</button>
+      </div>
+    </div>
+
+  </section>
+</BaseLayout>
+
+<script>
+  const questions = [
+    {
+      q: "When you face a setback or failure, your first instinct is to...",
+      options: [
+        { text: "Analyse what went wrong and plan to do better next time", type: "growth" },
+        { text: "Trust that the universe has a better plan for you", type: "abundance" },
+        { text: "Accept it calmly — some things are outside your control", type: "stoic" },
+        { text: "Feel frustrated, but push through anyway", type: "growth" },
+      ]
+    },
+    {
+      q: "Your morning routine most resembles...",
+      options: [
+        { text: "Journaling goals and reviewing what I want to achieve", type: "growth" },
+        { text: "Visualisation, gratitude, and setting intentions", type: "abundance" },
+        { text: "Quiet reflection, reading, or meditation", type: "stoic" },
+        { text: "I don't have a fixed routine — I go with the flow", type: "abundance" },
+      ]
+    },
+    {
+      q: "When you think about money and wealth, you believe...",
+      options: [
+        { text: "You earn what you work hard for — effort equals outcome", type: "growth" },
+        { text: "Abundance is available to everyone — mindset creates reality", type: "abundance" },
+        { text: "Wealth is useful but shouldn't control your happiness", type: "stoic" },
+        { text: "Money is just energy — it flows where attention goes", type: "abundance" },
+      ]
+    },
+    {
+      q: "A friend criticises something you created. You feel...",
+      options: [
+        { text: "Motivated — feedback helps me improve", type: "growth" },
+        { text: "A bit hurt, but I remind myself of my worth", type: "abundance" },
+        { text: "Curious — is their criticism valid or not?", type: "stoic" },
+        { text: "Indifferent — I know what I can and can't control", type: "stoic" },
+      ]
+    },
+    {
+      q: "Which quote resonates most with you?",
+      options: [
+        { text: '"The only way to do great work is to love what you do." — Jobs', type: "growth" },
+        { text: '"Ask for what you want and be prepared to get it." — Maya Angelou', type: "abundance" },
+        { text: '"You have power over your mind, not outside events." — Marcus Aurelius', type: "stoic" },
+        { text: '"Everything you want is on the other side of fear." — Jack Canfield', type: "growth" },
+      ]
+    },
+    {
+      q: "How do you typically set goals?",
+      options: [
+        { text: "SMART goals with milestones and deadlines", type: "growth" },
+        { text: "I visualise the end result and feel it as already done", type: "abundance" },
+        { text: "I focus on daily habits and actions, not distant outcomes", type: "stoic" },
+        { text: "I set intentions and stay open to how they manifest", type: "abundance" },
+      ]
+    },
+    {
+      q: "When life feels chaotic, you find peace by...",
+      options: [
+        { text: "Making a plan and taking action — control what I can", type: "growth" },
+        { text: "Raising my vibration — gratitude, affirmations, movement", type: "abundance" },
+        { text: "Going inward — stillness, breath, and acceptance", type: "stoic" },
+        { text: "Reminding myself this too shall pass", type: "abundance" },
+      ]
+    },
+  ];
+
+  const results: Record<string, any> = {
+    growth: {
+      emoji: "🌱",
+      title: "The Growth Mindset",
+      desc: "You believe that ability and intelligence are developed through dedication and hard work. You see challenges as opportunities, embrace feedback, and are driven by progress over perfection. You're the type of person who turns setbacks into stepping stones.",
+      strengths: ["Resilient under pressure", "Constantly learning and improving", "Goal-oriented and action-driven", "Turns failure into fuel"],
+      action: {
+        title: "Your Action Plan",
+        text: "Focus on building one keystone habit this month. Track your progress daily — even small wins compound. Read: 'Mindset' by Carol Dweck."
+      },
+      posts: [
+        { title: "Morning Meditation Routine for High Performers", slug: "morning-meditation-routine" },
+        { title: "The Power of the Present Moment", slug: "power-of-present-moment" },
+      ]
+    },
+    abundance: {
+      emoji: "✨",
+      title: "The Abundance Thinker",
+      desc: "You operate from a place of possibility and trust. You believe the universe is fundamentally on your side, and that your thoughts and energy shape your reality. You're intuitive, optimistic, and deeply connected to the idea that life is meant to be enjoyed — not just endured.",
+      strengths: ["Naturally optimistic and magnetic", "Strong manifestation practice", "Emotionally intelligent", "Attracts opportunities through energy"],
+      action: {
+        title: "Your Action Plan",
+        text: "Start a daily gratitude practice — write 3 specific things you're grateful for each morning. Then write one thing you're calling in. Feel it as real."
+      },
+      posts: [
+        { title: "Law of Attraction for Beginners", slug: "law-of-attraction-beginners" },
+        { title: "The Power of the Present Moment", slug: "power-of-present-moment" },
+      ]
+    },
+    stoic: {
+      emoji: "🏛️",
+      title: "The Stoic Mind",
+      desc: "You have a rare clarity about what matters. You don't waste energy on things outside your control — instead, you focus deeply on your responses, your values, and your inner state. You're the calm in the storm, the person others turn to when things fall apart.",
+      strengths: ["Unshakeable under pressure", "Clear values and boundaries", "Deep thinker and observer", "Emotionally regulated and grounded"],
+      action: {
+        title: "Your Action Plan",
+        text: "Begin a Stoic journaling practice. Each morning ask: 'What is in my control today?' Each evening ask: 'Did I act according to my values?' Read: Meditations by Marcus Aurelius."
+      },
+      posts: [
+        { title: "Morning Meditation Routine", slug: "morning-meditation-routine" },
+        { title: "The Power of the Present Moment", slug: "power-of-present-moment" },
+      ]
+    }
+  };
+
+  let current = 0;
+  let scores: Record<string, number> = { growth: 0, abundance: 0, stoic: 0 };
+  let userName = '';
+
+  const startBtn = document.getElementById('start-btn')!;
+  const quizHeader = document.getElementById('quiz-header')!;
+  const quizContainer = document.getElementById('quiz-container')!;
+  const emailCapture = document.getElementById('email-capture')!;
+  const resultContainer = document.getElementById('result-container')!;
+  const progressBar = document.getElementById('progress-bar')!;
+  const questionWrap = document.getElementById('question-wrap')!;
+
+  startBtn.addEventListener('click', () => {
+    quizHeader.style.display = 'none';
+    quizContainer.style.display = 'block';
+    showQuestion(0);
+  });
+
+  function showQuestion(index: number) {
+    const q = questions[index];
+    progressBar.style.width = `${((index) / questions.length) * 100}%`;
+
+    // Shuffle options
+    const shuffled = [...q.options].sort(() => Math.random() - 0.5);
+
+    questionWrap.innerHTML = `
+      <div style="margin-bottom:2rem;">
+        <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem;">Question ${index + 1} of ${questions.length}</div>
+        <h2 style="font-family:var(--font-serif);font-size:1.6rem;line-height:1.4;margin-bottom:1.5rem;">${q.q}</h2>
+        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+          ${shuffled.map((opt, i) => `
+            <button
+              class="quiz-option"
+              data-type="${opt.type}"
+              style="text-align:left;padding:1rem 1.25rem;border:1.5px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);font-family:var(--font-sans);font-size:0.95rem;color:var(--text);cursor:pointer;transition:all 0.2s;line-height:1.5;"
+              onmouseover="this.style.borderColor='var(--accent)';this.style.background='var(--accent-light)'"
+              onmouseout="if(!this.classList.contains('selected')){this.style.borderColor='var(--border)';this.style.background='var(--surface)'}"
+            >${opt.text}</button>
+          `).join('')}
+        </div>
+      </div>
+    `;
+
+    document.querySelectorAll('.quiz-option').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const target = e.currentTarget as HTMLButtonElement;
+        const type = target.dataset.type!;
+
+        // Highlight selected
+        document.querySelectorAll('.quiz-option').forEach(b => {
+          (b as HTMLElement).style.borderColor = 'var(--border)';
+          (b as HTMLElement).style.background = 'var(--surface)';
+          (b as HTMLElement).classList.remove('selected');
+        });
+        target.style.borderColor = 'var(--accent)';
+        target.style.background = 'var(--accent-light)';
+        target.classList.add('selected');
+
+        scores[type]++;
+
+        setTimeout(() => {
+          current++;
+          if (current < questions.length) {
+            showQuestion(current);
+          } else {
+            progressBar.style.width = '100%';
+            setTimeout(() => {
+              quizContainer.style.display = 'none';
+              emailCapture.style.display = 'block';
+            }, 300);
+          }
+        }, 400);
+      });
+    });
+  }
+
+  // Email capture form
+  const captureForm = document.getElementById('capture-form') as HTMLFormElement;
+  captureForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = (document.getElementById('capture-name') as HTMLInputElement).value.trim();
+    const email = (document.getElementById('capture-email') as HTMLInputElement).value.trim();
+    const errEl = document.getElementById('capture-error')!;
+    const btn = captureForm.querySelector('button')!;
+
+    userName = name;
+    btn.textContent = 'Loading your result...';
+    btn.setAttribute('disabled', 'true');
+
+    // Get top mindset type
+    const topType = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
+
+    try {
+      await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, firstName: name, quizResult: topType, formType: 'quiz' }),
+      });
+    } catch {}
+
+    emailCapture.style.display = 'none';
+    showResult(topType, name);
+  });
+
+  function showResult(type: string, name: string) {
+    const r = results[type];
+    resultContainer.style.display = 'block';
+
+    document.getElementById('result-emoji')!.textContent = r.emoji;
+    document.getElementById('result-title')!.textContent = r.title;
+    document.getElementById('result-name-line')!.textContent = name ? `${name}, here's what your answers reveal about you:` : 'Here\'s what your answers reveal about you:';
+    document.getElementById('result-desc')!.textContent = r.desc;
+
+    document.getElementById('result-strengths')!.innerHTML = `
+      <h3 style="font-family:var(--font-serif);font-size:1.3rem;margin-bottom:1rem;">Your Strengths</h3>
+      <div style="display:flex;flex-direction:column;gap:0.5rem;">
+        ${r.strengths.map((s: string) => `
+          <div style="display:flex;align-items:center;gap:0.75rem;">
+            <span style="color:var(--accent);font-size:1.1rem;">✓</span>
+            <span>${s}</span>
+          </div>
+        `).join('')}
+      </div>
+    `;
+
+    document.getElementById('result-action')!.innerHTML = `
+      <h3 style="font-family:var(--font-serif);font-size:1.3rem;margin-bottom:0.75rem;color:var(--accent);">🎯 ${r.action.title}</h3>
+      <p style="line-height:1.8;">${r.action.text}</p>
+    `;
+
+    document.getElementById('result-posts')!.innerHTML = `
+      <h3 style="font-family:var(--font-serif);font-size:1.3rem;margin-bottom:1rem;">Recommended Reading</h3>
+      <div style="display:flex;flex-direction:column;gap:0.75rem;">
+        ${r.posts.map((p: any) => `
+          <a href="/blog/${p.slug}" style="display:flex;align-items:center;gap:0.75rem;padding:1rem;border:1.5px solid var(--border);border-radius:var(--radius-sm);text-decoration:none;color:var(--text);transition:all 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+            <span style="color:var(--accent);">→</span>
+            <span>${p.title}</span>
+          </a>
+        `).join('')}
+      </div>
+    `;
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function shareResult() {
+    const topType = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
+    const r = results[topType];
+    const text = `I just took the Mindset Type Quiz and I'm "${r.title}" ${r.emoji}\n\nDiscover yours → https://itsallaboutmind.com/quiz/mindset-type`;
+    if (navigator.share) {
+      navigator.share({ text });
+    } else {
+      navigator.clipboard.writeText(text).then(() => alert('Result copied to clipboard!'));
+    }
+  }
+
+  function retakeQuiz() {
+    current = 0;
+    scores = { growth: 0, abundance: 0, stoic: 0 };
+    userName = '';
+    resultContainer.style.display = 'none';
+    quizHeader.style.display = 'block';
+  }
+
+  (window as any).shareResult = shareResult;
+  (window as any).retakeQuiz = retakeQuiz;
+</script>
