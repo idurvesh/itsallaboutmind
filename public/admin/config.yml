@@ -31,15 +31,8 @@ collections:
       - { label: "Author", name: "author", widget: "string", default: "It's All About Mind" }
       - { label: "Featured", name: "featured", widget: "boolean", default: false }
       - { label: "Body", name: "body", widget: "markdown" }
-
-      - label: "SEO"
-        name: "seo"
-        widget: "object"
-        collapsed: true
-        hint: "Leave blank to use the title and description above"
-        fields:
-          - { label: "SEO Title", name: "seoTitle", widget: "string", required: false, hint: "Ideal length: 50–60 characters. Leave blank to use post title." }
-          - { label: "Meta Description", name: "seoDescription", widget: "text", required: false, hint: "Ideal length: 150–160 characters. Leave blank to use post description." }
-          - { label: "Focus Keyword", name: "focusKeyword", widget: "string", required: false, hint: "The main keyword this post should rank for" }
-          - { label: "OG / Social Image", name: "ogImage", widget: "image", required: false, hint: "Image shown when shared on social media (1200x630px recommended)" }
-          - { label: "Canonical URL", name: "canonicalUrl", widget: "string", required: false, hint: "Only set if this content is republished from another URL" }
+      - { label: "SEO Title", name: "seoTitle", widget: "string", required: false, hint: "50–60 chars. Leave blank to use post title." }
+      - { label: "Meta Description", name: "seoDescription", widget: "text", required: false, hint: "150–160 chars. Leave blank to use post description." }
+      - { label: "Focus Keyword", name: "focusKeyword", widget: "string", required: false, hint: "The main keyword this post should rank for." }
+      - { label: "OG / Social Image", name: "ogImage", widget: "image", required: false, hint: "Shown when shared on social media (1200x630px)." }
+      - { label: "Canonical URL", name: "canonicalUrl", widget: "string", required: false, hint: "Only set if republished from another URL." }
