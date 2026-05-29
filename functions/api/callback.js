@@ -29,6 +29,20 @@ export async function onRequestGet({ request, env }) {
   const token = tokenData.access_token;
   const provider = 'github';
 
+  // Verify the user is allowed
+  const userRes = await fetch('https://api.github.com/user', {
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'User-Agent': 'itsallaboutmind-cms',
+    },
+  });
+  const userData = await userRes.json();
+
+  const ALLOWED_USERS = ['idurvesh'];
+  if (!ALLOWED_USERS.includes(userData.login)) {
+    return new Response('Access denied.', { status: 403 });
+  }
+
   // Return HTML that posts token back to the CMS opener window
   const html = `<!DOCTYPE html>
 <html>
