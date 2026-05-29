@@ -1,15 +1,21 @@
 ---
-title: "What Is Manifestation? A Beginner's Complete Guide"
-description: "Manifestation is the practice of bringing your desires into reality through focused thought, belief, and aligned action. This complete beginner's guide explains exactly how it works and how to start."
+title: What Is Manifestation? A Beginner's Complete Guide
+description: Manifestation is the practice of bringing your desires into reality
+  through focused thought, belief, and aligned action. This complete beginner's
+  guide explains exactly how it works and how to start.
 pubDate: 2026-05-29
-category: "Manifestation"
-readTime: "10 min read"
-author: "It's All About Mind"
+category: Manifestation
+readTime: 10 min read
+author: It's All About Mind
 featured: true
-seoTitle: "What Is Manifestation? A Beginner's Complete Guide (2026)"
-seoDescription: "Manifestation is bringing your desires into reality through thought, belief, and action. Learn exactly how manifestation works, the science behind it, and how to start today."
-focusKeyword: "what is manifestation"
+seoTitle: What Is Manifestation? A Beginner's Complete Guide (2026)
+seoDescription: Manifestation is bringing your desires into reality through
+  thought, belief, and action. Learn exactly how manifestation works, the
+  science behind it, and how to start today.
+focusKeyword: what is manifestation
+ogImage: /images/what-is-manifestation-a-beginner-s-complete-guide.png
 ---
+![what is manifestation](/images/what-is-manifestation-a-beginner-s-complete-guide.png)
 
 Have you ever really wanted something - and then it just... happened?
 
@@ -113,9 +119,9 @@ You cannot plant a seed and walk away. You have to water it.
 
 In manifestation, watering means:
 
-- **Thinking** thoughts that support your goal (not "this will never happen" but "this is coming")
-- **Feeling** the excitement of already having what you want
-- **Acting** like someone who believes they will receive it
+* **Thinking** thoughts that support your goal (not "this will never happen" but "this is coming")
+* **Feeling** the excitement of already having what you want
+* **Acting** like someone who believes they will receive it
 
 Here is a fun example. Imagine a 10-year-old who wants a bicycle for his birthday. Does he mope around saying "I'll probably never get it"? No. He talks about it. He looks up colours online. He tells his friends. He is already living in the feeling of having it. That energy changes everything.
 
@@ -141,11 +147,11 @@ Three months later, she was offered a position at a different company. A role th
 
 Pretty much anything. Here are some real examples people have manifested:
 
-- **A specific job** - a woman scripted her ideal role every morning for 90 days. She was headhunted for it out of nowhere.
-- **A relationship** - a man wrote down 20 qualities he wanted in a partner. He met someone six months later who matched 18 of them. They got married.
-- **Money** - a student visualised paying off her student loan. She won a scholarship she had almost not applied for.
-- **Health** - a man used daily meditation and visualisation alongside medical treatment. His recovery was faster than his doctors expected.
-- **A home** - a family cut out pictures of their dream house and stuck them on a board. They moved into a house almost identical to it within two years.
+* **A specific job** - a woman scripted her ideal role every morning for 90 days. She was headhunted for it out of nowhere.
+* **A relationship** - a man wrote down 20 qualities he wanted in a partner. He met someone six months later who matched 18 of them. They got married.
+* **Money** - a student visualised paying off her student loan. She won a scholarship she had almost not applied for.
+* **Health** - a man used daily meditation and visualisation alongside medical treatment. His recovery was faster than his doctors expected.
+* **A home** - a family cut out pictures of their dream house and stuck them on a board. They moved into a house almost identical to it within two years.
 
 None of these are magic. They are all examples of clear intention, aligned action, and trust - working together.
 
@@ -223,6 +229,7 @@ Knowing your style means you stop trying techniques that do not fit you - and st
 You do not need any special tools. You just need to start.
 
 **Today:**
+
 1. Write down one thing you want to manifest. Be specific.
 2. Write why you want it - how will it feel to have it?
 3. Write one action you can take today toward it.
@@ -233,6 +240,6 @@ Small steps. Consistent belief. Real action.
 
 That is how manifestation works.
 
----
+- - -
 
 **Curious how you naturally manifest?** [Take the free quiz and find out in 2 minutes →](/quiz/manifestation-style)
