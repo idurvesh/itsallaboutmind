@@ -1,6 +1,9 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: idurvesh/itsallaboutmind
   branch: main
+  base_url: https://itsallaboutmind.com
+  auth_endpoint: /api/auth
 
 media_folder: "public/images"
 public_folder: "/images"
