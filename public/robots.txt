@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
 
-# AI/LLM crawlers — allow full access
 User-agent: GPTBot
 Allow: /
 
