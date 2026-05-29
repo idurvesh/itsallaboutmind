@@ -1,0 +1,433 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="What's Your Manifestation Style?"
+  description="Take this 7-question quiz to discover how you naturally manifest - are you a Visualizer, Action Taker, Energy Shifter, or Surrender Master?"
+>
+  <section style="max-width:680px;margin:0 auto;padding:3rem 2rem 5rem;">
+
+    <!-- Header -->
+    <div id="quiz-header" style="text-align:center;margin-bottom:3rem;">
+      <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;">Free Quiz</div>
+      <h1 style="font-family:var(--font-serif);font-size:2.8rem;line-height:1.2;margin-bottom:1rem;">What's Your<br/><em>Manifestation Style?</em></h1>
+      <p style="color:var(--text-muted);font-size:1.1rem;margin-bottom:2rem;">7 questions · 2 minutes · Discover how you naturally attract what you want</p>
+      <button id="start-btn" class="btn" style="font-size:1rem;padding:0.9rem 2.5rem;">Discover My Style →</button>
+    </div>
+
+    <!-- Quiz -->
+    <div id="quiz-container" style="display:none;">
+      <div id="progress-bar-wrap" style="background:var(--border);border-radius:100px;height:6px;margin-bottom:2.5rem;">
+        <div id="progress-bar" style="background:var(--accent);height:6px;border-radius:100px;width:0%;transition:width 0.4s ease;"></div>
+      </div>
+      <div id="question-wrap"></div>
+    </div>
+
+    <!-- Email Capture -->
+    <div id="email-capture" style="display:none;text-align:center;">
+      <div style="font-size:2.5rem;margin-bottom:1rem;">✨</div>
+      <h2 style="font-family:var(--font-serif);font-size:2rem;margin-bottom:0.75rem;">Your result is ready!</h2>
+      <p style="color:var(--text-muted);margin-bottom:2rem;">Enter your name and email to reveal your Manifestation Style and get your personalised practice guide.</p>
+      <form id="capture-form" style="display:flex;flex-direction:column;gap:1rem;max-width:400px;margin:0 auto;">
+        <input type="text" id="capture-name" placeholder="Your first name" required style="padding:0.85rem 1.2rem;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:1rem;font-family:var(--font-sans);background:var(--surface);color:var(--text);outline:none;" />
+        <input type="email" id="capture-email" placeholder="your@email.com" required style="padding:0.85rem 1.2rem;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:1rem;font-family:var(--font-sans);background:var(--surface);color:var(--text);outline:none;" />
+        <button type="submit" class="btn" style="font-size:1rem;padding:0.9rem;">Reveal My Manifestation Style →</button>
+        <p style="font-size:0.8rem;color:var(--text-light);">No spam. Unsubscribe anytime.</p>
+      </form>
+      <p id="capture-error" style="color:#e05;margin-top:1rem;display:none;"></p>
+    </div>
+
+    <!-- Result -->
+    <div id="result-container" style="display:none;text-align:center;">
+      <div id="result-emoji" style="font-size:4rem;margin-bottom:1rem;"></div>
+      <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Your Manifestation Style</div>
+      <h2 id="result-title" style="font-family:var(--font-serif);font-size:2.5rem;margin-bottom:1rem;"></h2>
+      <p id="result-name-line" style="color:var(--text-muted);font-size:1rem;margin-bottom:1.5rem;"></p>
+      <div id="result-desc" style="background:var(--bg-alt);border-radius:var(--radius);padding:2rem;text-align:left;margin-bottom:2rem;line-height:1.8;color:var(--text);"></div>
+      <div id="result-strengths" style="margin-bottom:2rem;text-align:left;"></div>
+      <div id="result-block" style="background:#fff8f0;border-radius:var(--radius);padding:2rem;text-align:left;margin-bottom:2rem;border:1.5px solid #ffe4c4;"></div>
+      <div id="result-action" style="background:var(--accent-light);border-radius:var(--radius);padding:2rem;text-align:left;margin-bottom:2rem;"></div>
+      <div id="result-posts" style="margin-bottom:2rem;text-align:left;"></div>
+
+      <!-- Share -->
+      <div style="margin-bottom:2rem;">
+        <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1rem;">Share your result</p>
+        <div style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;">
+          <button onclick="shareOn('twitter')" style="display:flex;align-items:center;gap:0.5rem;padding:0.65rem 1.2rem;border-radius:50px;border:1.5px solid #e1e8ed;background:#000;color:#fff;font-size:0.85rem;font-weight:600;cursor:pointer;font-family:var(--font-sans);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.258 5.639 5.907-5.639zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            X / Twitter
+          </button>
+          <button onclick="shareOn('facebook')" style="display:flex;align-items:center;gap:0.5rem;padding:0.65rem 1.2rem;border-radius:50px;border:1.5px solid #1877f2;background:#1877f2;color:#fff;font-size:0.85rem;font-weight:600;cursor:pointer;font-family:var(--font-sans);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </button>
+          <button onclick="shareOn('whatsapp')" style="display:flex;align-items:center;gap:0.5rem;padding:0.65rem 1.2rem;border-radius:50px;border:1.5px solid #25d366;background:#25d366;color:#fff;font-size:0.85rem;font-weight:600;cursor:pointer;font-family:var(--font-sans);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
+          </button>
+          <button onclick="shareOn('linkedin')" style="display:flex;align-items:center;gap:0.5rem;padding:0.65rem 1.2rem;border-radius:50px;border:1.5px solid #0077b5;background:#0077b5;color:#fff;font-size:0.85rem;font-weight:600;cursor:pointer;font-family:var(--font-sans);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </button>
+          <button onclick="shareOn('copy')" id="copy-btn" style="display:flex;align-items:center;gap:0.5rem;padding:0.65rem 1.2rem;border-radius:50px;border:1.5px solid var(--border);background:var(--surface);color:var(--text);font-size:0.85rem;font-weight:600;cursor:pointer;font-family:var(--font-sans);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            Copy Link
+          </button>
+        </div>
+      </div>
+      <button onclick="retakeQuiz()" class="btn" style="background:transparent;color:var(--accent);border:1.5px solid var(--accent);">Retake Quiz</button>
+    </div>
+
+  </section>
+</BaseLayout>
+
+<script>
+  const questions = [
+    {
+      q: "When you set an intention for something you want, your natural first step is to...",
+      options: [
+        { text: "Close your eyes and vividly picture it already in your life", type: "visualizer" },
+        { text: "Write down the steps you need to take and start moving", type: "action" },
+        { text: "Tune into how it would FEEL to already have it", type: "energy" },
+        { text: "Set the intention, release it, and trust the timing", type: "surrender" },
+      ]
+    },
+    {
+      q: "When your manifestation is taking longer than expected, you...",
+      options: [
+        { text: "Revisit your vision board and strengthen the mental image", type: "visualizer" },
+        { text: "Look for new aligned actions you haven't tried yet", type: "action" },
+        { text: "Check if your energy or mood has been blocking it", type: "energy" },
+        { text: "Remind yourself the universe has better timing than you", type: "surrender" },
+      ]
+    },
+    {
+      q: "Which of these manifestation tools resonates most with you?",
+      options: [
+        { text: "Vision boards and visualisation exercises", type: "visualizer" },
+        { text: "Goal setting, journaling, and inspired action plans", type: "action" },
+        { text: "Affirmations, meditation, and raising your vibration", type: "energy" },
+        { text: "Scripting, letting go rituals, and detachment practices", type: "surrender" },
+      ]
+    },
+    {
+      q: "You believe manifestation works best when...",
+      options: [
+        { text: "You can see and feel your desire as clearly as possible", type: "visualizer" },
+        { text: "Your actions are aligned with what you say you want", type: "action" },
+        { text: "Your emotional frequency matches the frequency of your desire", type: "energy" },
+        { text: "You truly let go of the outcome and trust the process", type: "surrender" },
+      ]
+    },
+    {
+      q: "What is your biggest block when manifesting?",
+      options: [
+        { text: "Struggle to hold the vision clearly for long enough", type: "visualizer" },
+        { text: "Fear of taking the wrong action or moving too slow", type: "action" },
+        { text: "Low energy days or emotional dips that shift my vibration", type: "energy" },
+        { text: "Difficulty letting go - I keep checking if it is coming", type: "surrender" },
+      ]
+    },
+    {
+      q: "Which quote feels most true to you?",
+      options: [
+        { text: '"See it, believe it, achieve it - the mind creates reality"', type: "visualizer" },
+        { text: '"The universe rewards action. Move and doors open"', type: "action" },
+        { text: '"You do not attract what you want, you attract what you are"', type: "energy" },
+        { text: '"Let go and let the universe handle the how"', type: "surrender" },
+      ]
+    },
+    {
+      q: "After setting a big intention, how do you typically feel?",
+      options: [
+        { text: "Excited - I immediately start imagining every detail", type: "visualizer" },
+        { text: "Ready - I want to take the first step straight away", type: "action" },
+        { text: "Expansive - I sit with the feeling of it being real", type: "energy" },
+        { text: "Peaceful - I feel like it is already handled", type: "surrender" },
+      ]
+    },
+  ];
+
+  const results: Record<string, any> = {
+    visualizer: {
+      emoji: "🎯",
+      title: "The Visualizer",
+      desc: "You manifest through the power of mental imagery. Your mind is a cinema - when you can see something clearly and vividly, you begin to draw it into physical reality. You are at your most magnetic when your mental picture is sharp, detailed, and emotionally charged. The clearer the vision, the faster the manifestation.",
+      strengths: [
+        "Naturally strong creative imagination",
+        "Able to hold a vision with intensity",
+        "Vision boards and scripting work powerfully for you",
+        "Great at manifesting specific outcomes",
+      ],
+      block: {
+        title: "Your Hidden Block",
+        text: "Visualizers sometimes get stuck in the imagining phase and forget to take aligned action. The vision is the map - but you still need to drive. Make sure your mental clarity is matched with real-world movement.",
+      },
+      action: {
+        title: "Your Practice",
+        text: "Spend 5-10 minutes each morning in a detailed visualisation. Feel every sense - what you see, hear, smell, and feel in the moment of having your desire. Then ask: what one action can I take today that is aligned with this vision?",
+      },
+      posts: [
+        { title: "Law of Attraction for Beginners", slug: "law-of-attraction-beginners" },
+        { title: "The Power of the Present Moment", slug: "power-of-present-moment" },
+      ]
+    },
+    action: {
+      emoji: "⚡",
+      title: "The Action Taker",
+      desc: "You manifest by moving. While others wait for signs, you take inspired steps and trust that the universe meets you in motion. You understand that manifestation is co-creation - you bring the effort, intention, and discipline, and the universe amplifies your results. Your superpower is that you do not just believe in your dreams - you show up for them.",
+      strengths: [
+        "Manifestation through momentum and discipline",
+        "High follow-through on intentions",
+        "Naturally combines spirituality with strategy",
+        "Builds evidence fast through consistent action",
+      ],
+      block: {
+        title: "Your Hidden Block",
+        text: "Action Takers can sometimes force outcomes rather than flow with them. If you find yourself exhausted or frustrated, it may be a sign to pause, surrender, and allow. Not every door needs to be knocked down - some open on their own when the time is right.",
+      },
+      action: {
+        title: "Your Practice",
+        text: "Each morning, identify one inspired action - not a forced hustle, but a step that feels exciting and aligned. Pair it with a brief moment of stillness where you feel the outcome already done. Then move with trust, not urgency.",
+      },
+      posts: [
+        { title: "Morning Meditation Routine", slug: "morning-meditation-routine" },
+        { title: "Law of Attraction for Beginners", slug: "law-of-attraction-beginners" },
+      ]
+    },
+    energy: {
+      emoji: "🌊",
+      title: "The Energy Shifter",
+      desc: "You understand that everything is vibration - and you manifest by becoming the energetic match for what you desire. Your emotional state is your most powerful tool. When your inner world is aligned, your outer world rearranges itself to match. You are highly intuitive, emotionally intelligent, and deeply attuned to the invisible forces that shape reality.",
+      strengths: [
+        "Highly intuitive and energetically sensitive",
+        "Emotional intelligence as a manifestation tool",
+        "Affirmations, breathwork, and movement work powerfully",
+        "Quick to shift states and raise your frequency",
+      ],
+      block: {
+        title: "Your Hidden Block",
+        text: "Energy Shifters can become overly focused on maintaining a perfect vibration - and feel like any negative emotion is a manifestation failure. It is not. You are human. The key is not to never feel low, but to return to alignment quickly. Resistance to low moods creates more resistance.",
+      },
+      action: {
+        title: "Your Practice",
+        text: "Start each day with a 5-minute practice to shift your state - dance, breathwork, cold water, or gratitude. Ask yourself: what is one thing I am genuinely grateful for right now? Let that feeling expand. Then carry that frequency into your day.",
+      },
+      posts: [
+        { title: "Morning Meditation Routine", slug: "morning-meditation-routine" },
+        { title: "The Power of the Present Moment", slug: "power-of-present-moment" },
+      ]
+    },
+    surrender: {
+      emoji: "🕊️",
+      title: "The Surrender Master",
+      desc: "You manifest through trust, detachment, and deep faith. You understand that the universe has a plan far greater than your own - and that grasping too tightly is the fastest way to push your desires away. Your ability to release outcomes is rare and powerful. When you truly let go, you create space for things to arrive in ways more beautiful than you imagined.",
+      strengths: [
+        "Deep trust in the universe and divine timing",
+        "Naturally detached from outcomes",
+        "Rare ability to hold desires lightly",
+        "Often experiences synchronicities and unexpected blessings",
+      ],
+      block: {
+        title: "Your Hidden Block",
+        text: "Surrender Masters sometimes use letting go as a way to avoid action or responsibility. True surrender is not passive - it is active trust. Set clear intentions, take inspired steps, then release the how. Surrender without clarity can become spiritual bypassing.",
+      },
+      action: {
+        title: "Your Practice",
+        text: "Write your desire clearly and with feeling. Then write: I release this to the universe. I trust the timing. I am open to receiving this or something better. Place it somewhere safe and genuinely let it go. Check in weekly - not to see if it arrived, but to take any inspired action that presents itself.",
+      },
+      posts: [
+        { title: "The Power of the Present Moment", slug: "power-of-present-moment" },
+        { title: "Law of Attraction for Beginners", slug: "law-of-attraction-beginners" },
+      ]
+    },
+  };
+
+  let current = 0;
+  let scores: Record<string, number> = { visualizer: 0, action: 0, energy: 0, surrender: 0 };
+  let userName = '';
+
+  const startBtn = document.getElementById('start-btn')!;
+  const quizHeader = document.getElementById('quiz-header')!;
+  const quizContainer = document.getElementById('quiz-container')!;
+  const emailCapture = document.getElementById('email-capture')!;
+  const resultContainer = document.getElementById('result-container')!;
+  const progressBar = document.getElementById('progress-bar')!;
+  const questionWrap = document.getElementById('question-wrap')!;
+
+  startBtn.addEventListener('click', () => {
+    quizHeader.style.display = 'none';
+    quizContainer.style.display = 'block';
+    showQuestion(0);
+  });
+
+  function showQuestion(index: number) {
+    const q = questions[index];
+    progressBar.style.width = `${(index / questions.length) * 100}%`;
+    const shuffled = [...q.options].sort(() => Math.random() - 0.5);
+
+    questionWrap.innerHTML = `
+      <div style="margin-bottom:2rem;">
+        <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem;">Question ${index + 1} of ${questions.length}</div>
+        <h2 style="font-family:var(--font-serif);font-size:1.6rem;line-height:1.4;margin-bottom:1.5rem;">${q.q}</h2>
+        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+          ${shuffled.map(opt => `
+            <button class="quiz-option" data-type="${opt.type}"
+              style="text-align:left;padding:1rem 1.25rem;border:1.5px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);font-family:var(--font-sans);font-size:0.95rem;color:var(--text);cursor:pointer;transition:all 0.2s;line-height:1.5;"
+              onmouseover="this.style.borderColor='var(--accent)';this.style.background='var(--accent-light)'"
+              onmouseout="if(!this.classList.contains('selected')){this.style.borderColor='var(--border)';this.style.background='var(--surface)'}"
+            >${opt.text}</button>
+          `).join('')}
+        </div>
+      </div>
+    `;
+
+    document.querySelectorAll('.quiz-option').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const target = e.currentTarget as HTMLButtonElement;
+        const type = target.dataset.type!;
+
+        document.querySelectorAll('.quiz-option').forEach(b => {
+          (b as HTMLElement).style.borderColor = 'var(--border)';
+          (b as HTMLElement).style.background = 'var(--surface)';
+          (b as HTMLElement).classList.remove('selected');
+        });
+        target.style.borderColor = 'var(--accent)';
+        target.style.background = 'var(--accent-light)';
+        target.classList.add('selected');
+        scores[type]++;
+
+        setTimeout(() => {
+          current++;
+          if (current < questions.length) {
+            showQuestion(current);
+          } else {
+            progressBar.style.width = '100%';
+            setTimeout(() => {
+              quizContainer.style.display = 'none';
+              emailCapture.style.display = 'block';
+            }, 300);
+          }
+        }, 400);
+      });
+    });
+  }
+
+  const captureForm = document.getElementById('capture-form') as HTMLFormElement;
+  captureForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = (document.getElementById('capture-name') as HTMLInputElement).value.trim();
+    const email = (document.getElementById('capture-email') as HTMLInputElement).value.trim();
+    const btn = captureForm.querySelector('button')!;
+
+    userName = name;
+    btn.textContent = 'Loading your result...';
+    btn.setAttribute('disabled', 'true');
+
+    const topType = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
+
+    try {
+      await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, firstName: name, quizResult: topType, formType: 'quiz' }),
+      });
+    } catch {}
+
+    emailCapture.style.display = 'none';
+    showResult(topType, name);
+  });
+
+  function showResult(type: string, name: string) {
+    const r = results[type];
+    resultContainer.style.display = 'block';
+
+    document.getElementById('result-emoji')!.textContent = r.emoji;
+    document.getElementById('result-title')!.textContent = r.title;
+    document.getElementById('result-name-line')!.textContent = name
+      ? `${name}, here is how you naturally manifest:`
+      : 'Here is how you naturally manifest:';
+    document.getElementById('result-desc')!.textContent = r.desc;
+
+    document.getElementById('result-strengths')!.innerHTML = `
+      <h3 style="font-family:var(--font-serif);font-size:1.3rem;margin-bottom:1rem;">Your Strengths</h3>
+      <div style="display:flex;flex-direction:column;gap:0.5rem;">
+        ${r.strengths.map((s: string) => `
+          <div style="display:flex;align-items:center;gap:0.75rem;">
+            <span style="color:var(--accent);font-size:1.1rem;">✓</span>
+            <span>${s}</span>
+          </div>
+        `).join('')}
+      </div>
+    `;
+
+    document.getElementById('result-block')!.innerHTML = `
+      <h3 style="font-family:var(--font-serif);font-size:1.3rem;margin-bottom:0.75rem;color:#c07a2f;">⚠ ${r.block.title}</h3>
+      <p style="line-height:1.8;">${r.block.text}</p>
+    `;
+
+    document.getElementById('result-action')!.innerHTML = `
+      <h3 style="font-family:var(--font-serif);font-size:1.3rem;margin-bottom:0.75rem;color:var(--accent);">🎯 ${r.action.title}</h3>
+      <p style="line-height:1.8;">${r.action.text}</p>
+    `;
+
+    document.getElementById('result-posts')!.innerHTML = `
+      <h3 style="font-family:var(--font-serif);font-size:1.3rem;margin-bottom:1rem;">Recommended Reading</h3>
+      <div style="display:flex;flex-direction:column;gap:0.75rem;">
+        ${r.posts.map((p: any) => `
+          <a href="/blog/${p.slug}" style="display:flex;align-items:center;gap:0.75rem;padding:1rem;border:1.5px solid var(--border);border-radius:var(--radius-sm);text-decoration:none;color:var(--text);transition:all 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+            <span style="color:var(--accent);">→</span>
+            <span>${p.title}</span>
+          </a>
+        `).join('')}
+      </div>
+    `;
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function getShareText() {
+    const topType = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
+    const r = results[topType];
+    return {
+      text: `I just discovered my Manifestation Style - I am "${r.title}" ${r.emoji} - What is yours?`,
+      url: 'https://itsallaboutmind.com/quiz/manifestation-style',
+    };
+  }
+
+  function shareOn(platform: string) {
+    const { text, url } = getShareText();
+    const encoded = encodeURIComponent(text);
+    const encodedUrl = encodeURIComponent(url);
+
+    const links: Record<string, string> = {
+      twitter: `https://twitter.com/intent/tweet?text=${encoded}&url=${encodedUrl}`,
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encoded}`,
+      whatsapp: `https://wa.me/?text=${encoded}%20${encodedUrl}`,
+      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+    };
+
+    if (platform === 'copy') {
+      navigator.clipboard.writeText(`${text} ${url}`).then(() => {
+        const btn = document.getElementById('copy-btn')!;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copy Link`, 2000);
+      });
+      return;
+    }
+
+    window.open(links[platform], '_blank', 'width=600,height=400');
+  }
+
+  function retakeQuiz() {
+    current = 0;
+    scores = { visualizer: 0, action: 0, energy: 0, surrender: 0 };
+    userName = '';
+    resultContainer.style.display = 'none';
+    quizHeader.style.display = 'block';
+  }
+
+  (window as any).shareOn = shareOn;
+  (window as any).retakeQuiz = retakeQuiz;
+</script>

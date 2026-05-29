@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Free Mind Quizzes"
+  description="Discover your mindset type, manifestation style, and more with our free quizzes on meditation, law of attraction, stoicism, and conscious living."
+>
+  <section style="max-width:780px;margin:0 auto;padding:3rem 2rem 5rem;">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;">Free Quizzes</div>
+      <h1 style="font-family:var(--font-serif);font-size:2.8rem;line-height:1.2;margin-bottom:1rem;">Know Your Mind</h1>
+      <p style="color:var(--text-muted);font-size:1.1rem;">2-minute quizzes to help you understand how your mind works and how to work with it.</p>
+    </div>
+
+    <div style="display:grid;gap:1.5rem;">
+
+      <a href="/quiz/mindset-type" style="display:block;padding:2rem;border:1.5px solid var(--border);border-radius:var(--radius);text-decoration:none;color:var(--text);transition:all 0.25s;background:var(--surface);" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-hover)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none';this.style.boxShadow='none'">
+        <div style="display:flex;align-items:center;gap:1.5rem;">
+          <div style="font-size:3rem;">🌱</div>
+          <div>
+            <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem;">Mindset</div>
+            <h2 style="font-family:var(--font-serif);font-size:1.6rem;margin-bottom:0.5rem;">What's Your Mindset Type?</h2>
+            <p style="color:var(--text-muted);font-size:0.95rem;margin-bottom:0.75rem;">Discover if you're a Growth, Abundance, or Stoic thinker - and get your personalised action plan.</p>
+            <span style="font-size:0.85rem;color:var(--text-light);">7 questions · 2 minutes</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="/quiz/manifestation-style" style="display:block;padding:2rem;border:1.5px solid var(--border);border-radius:var(--radius);text-decoration:none;color:var(--text);transition:all 0.25s;background:var(--surface);" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-hover)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none';this.style.boxShadow='none'">
+        <div style="display:flex;align-items:center;gap:1.5rem;">
+          <div style="font-size:3rem;">✨</div>
+          <div>
+            <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem;">Manifestation</div>
+            <h2 style="font-family:var(--font-serif);font-size:1.6rem;margin-bottom:0.5rem;">What's Your Manifestation Style?</h2>
+            <p style="color:var(--text-muted);font-size:0.95rem;margin-bottom:0.75rem;">Are you a Visualizer, Action Taker, Energy Shifter, or Surrender Master? Find out how you naturally attract.</p>
+            <span style="font-size:0.85rem;color:var(--text-light);">7 questions · 2 minutes</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+</BaseLayout>
