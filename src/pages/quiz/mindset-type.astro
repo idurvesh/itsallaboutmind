@@ -191,6 +191,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     }
   };
 
+  const STORAGE_KEY = 'mindset-quiz-state';
+
   let current = 0;
   let scores: Record<string, number> = { growth: 0, abundance: 0, stoic: 0 };
   let userName = '';
@@ -202,6 +204,21 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   const resultContainer = document.getElementById('result-container')!;
   const progressBar = document.getElementById('progress-bar')!;
   const questionWrap = document.getElementById('question-wrap')!;
+
+  // Restore saved quiz progress
+  const savedState = localStorage.getItem(STORAGE_KEY);
+  if (savedState) {
+    try {
+      const state = JSON.parse(savedState);
+      if (state.current > 0 && state.current < questions.length) {
+        scores = state.scores;
+        current = state.current;
+        quizHeader.style.display = 'none';
+        quizContainer.style.display = 'block';
+        showQuestion(current);
+      }
+    } catch { /* ignore corrupt state */ }
+  }
 
   startBtn.addEventListener('click', () => {
     quizHeader.style.display = 'none';
@@ -250,6 +267,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         target.classList.add('selected');
 
         scores[type]++;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ scores, current: current + 1 }));
 
         setTimeout(() => {
           current++;
@@ -289,8 +307,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, firstName: name, quizResult: topType, formType: 'quiz' }),
       });
-    } catch {}
+    } catch {
+      errEl.textContent = 'Something went wrong. Your result is still ready below.';
+      errEl.style.display = 'block';
+    }
 
+    localStorage.removeItem(STORAGE_KEY);
     emailCapture.style.display = 'none';
     showResult(topType, name);
   });
@@ -370,6 +392,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   }
 
   function retakeQuiz() {
+    localStorage.removeItem(STORAGE_KEY);
     current = 0;
     scores = { growth: 0, abundance: 0, stoic: 0 };
     userName = '';
