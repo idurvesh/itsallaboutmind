@@ -45,7 +45,7 @@ const siteUrl = 'https://itsallaboutmind.com';
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Article",
+  "@type": "BlogPosting",
   "headline": resolvedTitle,
   "description": resolvedDescription,
   "author": {
@@ -70,7 +70,22 @@ const jsonLd = {
   },
   "keywords": focusKeyword,
   "articleSection": category,
-  ...(ogImage ? { "image": ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}` } : {}),
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [".post-title", ".post-content p:first-of-type"]
+  },
+  "about": {
+    "@type": "Thing",
+    "name": category
+  },
+  ...(ogImage ? {
+    "image": {
+      "@type": "ImageObject",
+      "url": ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`,
+      "width": 1200,
+      "height": 630
+    }
+  } : {}),
 };
 ---
 

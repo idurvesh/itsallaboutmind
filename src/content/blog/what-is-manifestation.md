@@ -27,8 +27,6 @@ Maybe. But maybe not.
 
 This is what manifestation is about. And in this guide, I am going to explain it in the simplest way possible - with real stories, simple science, and zero confusing words.
 
-Let's go.
-
 ## What Is Manifestation? (Simple Version)
 
 Manifestation means turning what you think about into what you live.
@@ -147,11 +145,11 @@ Three months later, she was offered a position at a different company. A role th
 
 Pretty much anything. Here are some real examples people have manifested:
 
-* **A specific job** - a woman scripted her ideal role every morning for 90 days. She was headhunted for it out of nowhere.
-* **A relationship** - a man wrote down 20 qualities he wanted in a partner. He met someone six months later who matched 18 of them. They got married.
-* **Money** - a student visualised paying off her student loan. She won a scholarship she had almost not applied for.
-* **Health** - a man used daily meditation and visualisation alongside medical treatment. His recovery was faster than his doctors expected.
-* **A home** - a family cut out pictures of their dream house and stuck them on a board. They moved into a house almost identical to it within two years.
+* A woman scripted her ideal role every morning for 90 days. She was headhunted for it out of nowhere.
+* A man wrote down 20 qualities he wanted in a partner. He met someone six months later who matched 18 of them. They got married.
+* A student visualised paying off her student loan. She won a scholarship she had almost not applied for.
+* A man used daily meditation and visualisation alongside medical treatment. His recovery was faster than his doctors expected.
+* A family cut out pictures of their dream house and stuck them on a board. They moved into a house almost identical to it within two years.
 
 None of these are magic. They are all examples of clear intention, aligned action, and trust - working together.
 
