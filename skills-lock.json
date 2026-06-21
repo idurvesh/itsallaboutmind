@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "keywords": {
+      "source": "scalebrick/founder-marketing-skills",
+      "sourceType": "github",
+      "skillPath": "skills/keywords/SKILL.md",
+      "computedHash": "69da45b8c9f212c01ebb8c57b47681e18ef25ad186a4be2ad09e30caa2d9cbf9"
+    }
+  }
+}

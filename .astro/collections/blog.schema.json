@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "pubDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "category": {
+      "default": "Mindset",
+      "type": "string"
+    },
+    "readTime": {
+      "default": "5 min read",
+      "type": "string"
+    },
+    "featured": {
+      "default": false,
+      "type": "boolean"
+    },
+    "coverImage": {
+      "type": "string"
+    },
+    "seoTitle": {
+      "type": "string"
+    },
+    "seoDescription": {
+      "type": "string"
+    },
+    "focusKeyword": {
+      "type": "string"
+    },
+    "ogImage": {
+      "type": "string"
+    },
+    "canonicalUrl": {
+      "type": "string"
+    },
+    "author": {
+      "default": "It's All About Mind",
+      "type": "string"
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "description",
+    "pubDate"
+  ]
+}
