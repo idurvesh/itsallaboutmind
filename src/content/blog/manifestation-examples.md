@@ -6,6 +6,7 @@ category: "Manifestation"
 readTime: "12 min read"
 author: "It's All About Mind"
 featured: false
+coverImage: /images/manifestation-examples.png
 seoTitle: "Manifestation Examples That Actually Happened (Real Stories 2026)"
 seoDescription: "Real manifestation stories from ordinary people - jobs, money, love, health, and more. Some funny, some emotional, all true. Read and decide for yourself."
 focusKeyword: "manifestation examples"
