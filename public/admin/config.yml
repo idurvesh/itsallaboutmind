@@ -34,6 +34,7 @@ collections:
       - { label: "Author", name: "author", widget: "string", default: "It's All About Mind" }
       - { label: "Featured", name: "featured", widget: "boolean", default: false }
       - { label: "Cover Image", name: "coverImage", widget: "image", required: false, hint: "Hero image shown at the top of the post" }
+      - { label: "Cover Image Alt Text", name: "coverImageAlt", widget: "string", required: false, hint: "Descriptive alt text including your focus keyword (SEO + accessibility + AI answer engines)" }
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "SEO Title", name: "seoTitle", widget: "string", required: false, hint: "50–60 chars. Leave blank to use post title." }
       - { label: "Meta Description", name: "seoDescription", widget: "text", required: false, hint: "150–160 chars. Leave blank to use post description." }

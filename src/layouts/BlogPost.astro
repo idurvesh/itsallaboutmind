@@ -8,6 +8,7 @@ interface Props {
   category?: string;
   readTime?: string;
   coverImage?: string;
+  coverImageAlt?: string;
   seoTitle?: string;
   seoDescription?: string;
   focusKeyword?: string;
@@ -23,6 +24,7 @@ const {
   category = 'Mindset',
   readTime = '5 min read',
   coverImage,
+  coverImageAlt,
   seoTitle,
   seoDescription,
   focusKeyword,
@@ -78,12 +80,13 @@ const jsonLd = {
     "@type": "Thing",
     "name": category
   },
-  ...(ogImage ? {
+  ...((ogImage || coverImage) ? {
     "image": {
       "@type": "ImageObject",
-      "url": ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`,
-      "width": 1200,
-      "height": 630
+      "url": (ogImage || coverImage)!.startsWith('http') ? (ogImage || coverImage) : `${siteUrl}${ogImage || coverImage}`,
+      "width": ogImage ? 1200 : 1024,
+      "height": ogImage ? 630 : 576,
+      "caption": coverImageAlt || resolvedTitle
     }
   } : {}),
 };
@@ -122,7 +125,7 @@ const jsonLd = {
       <div class="post-tag">{category}</div>
       <h1 class="post-title">{title}</h1>
       {coverImage && (
-        <img src={coverImage} alt={title} style="width:100%;border-radius:var(--radius);margin:1.5rem 0;object-fit:cover;max-height:420px;" />
+        <img src={coverImage} alt={coverImageAlt || title} style="width:100%;border-radius:var(--radius);margin:1.5rem 0;object-fit:cover;max-height:420px;" />
       )}
       <div class="post-meta">
         <span>🗓 {formattedDate}</span>

@@ -27,6 +27,9 @@
     "coverImage": {
       "type": "string"
     },
+    "coverImageAlt": {
+      "type": "string"
+    },
     "seoTitle": {
       "type": "string"
     },
