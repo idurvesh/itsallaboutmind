@@ -64,8 +64,8 @@ Update the **Status** column as each day is completed (Done / Skipped / Reschedu
 | 1 | Done | Blog | What Is Manifestation? | what is manifestation | Manifestation | what-is-manifestation.md |
 | 2 | Done | Blog | Manifestation Examples That Actually Happened | manifestation examples | Manifestation | manifestation-examples.md |
 | 3 | Done | Blog | How to Manifest - Step by Step for Beginners | manifest how to | Manifestation | how-to-manifest-step-by-step.md |
-| 4 | Pending | Blog | How to Manifest Money Fast (5 Blocks You Don't Know You Have) | manifest money | Manifestation | |
-| 5 | Pending | Blog | How to Manifest Love - A Step-by-Step Guide | manifest love | Manifestation | |
+| 4 | Done | Blog | How to Manifest Money Fast (5 Blocks You Don't Know You Have) | manifest money | Manifestation | how-to-manifest-money-fast.md |
+| 5 | Done | Blog | How to Manifest Love - A Step-by-Step Guide | manifest love | Manifestation | how-to-manifest-love.md |
 | 6 | Pending | Blog | Signs Your Manifestation Is Coming True | signs manifestation coming | Manifestation | |
 | 7 | Pending | Blog | Vision Board Ideas That Actually Work (50 Examples) | vision board ideas | Manifestation | |
 | 8 | Pending | Blog | The 369 Manifestation Method Explained Simply | scripting manifestation | Manifestation | |
