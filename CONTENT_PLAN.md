@@ -1,4 +1,4 @@
-# It's All About Mind — Content & Keyword Tracking
+# It's All About Mind - Content & Keyword Tracking
 
 Source: Google Keyword Planner export (May 2025 - Apr 2026, India locale) + manual long-tail extension.
 
@@ -91,6 +91,30 @@ Update the **Status** column as each day is completed (Done / Skipped / Reschedu
 | 28 | Pending | Blog | What's Your Mindset Type? (refresh + repromote quiz) | mindset type | Mindset | |
 | 29 | Pending | Blog | Conscious Living - What It Actually Means Day to Day | conscious living | Conscious Living | |
 | 30 | Pending | Blog | How to Know Your Manifestation Style (quiz recap roundup) | manifestation style | Manifestation | |
+
+### Extension: new posts (Days 31-45)
+
+New high-opportunity clusters: sleep and subconscious manifestation methods, affirmations and gratitude, and meditation-for-a-problem topics (sleep, anxiety, breathing). All new volumes are "to verify" in Google Keyword Planner (India locale) before writing. Keep existing numbers unchanged.
+
+| Day | Status | Type | Title | Target Keyword | Silo | File |
+|---|---|---|---|---|---|---|
+| 31 | Pending | Blog | How to Manifest While You Sleep (Sleep Affirmations) | manifest while sleeping | Manifestation | |
+| 32 | Pending | Blog | The 55x5 (555) Manifestation Method Explained | 555 manifestation method | Manifestation | |
+| 33 | Pending | Blog | The Pillow Method: Manifest Overnight | pillow method manifestation | Manifestation | |
+| 34 | Pending | Blog | The Whisper Method Explained Simply | whisper method | Manifestation | |
+| 35 | Pending | Blog | How to Manifest a Specific Person (Honest Guide) | how to manifest a specific person | Manifestation | |
+| 36 | Pending | Blog | How to Manifest Your Dream Job | manifest a job | Manifestation | |
+| 37 | Pending | Blog | Daily Affirmations That Actually Work | positive affirmations | Mindset | |
+| 38 | Pending | Blog | Morning Affirmations to Start Your Day Right | morning affirmations | Mindset | |
+| 39 | Pending | Blog | Gratitude Journaling for Beginners (with Prompts) | gratitude journal | Mindset | |
+| 40 | Pending | Blog | How to Reprogram Your Subconscious Mind | reprogram subconscious mind | Mindset | |
+| 41 | Pending | Blog | The 4-7-8 Breathing Technique for Sleep and Calm | 4-7-8 breathing | Meditation | |
+| 42 | Pending | Blog | Meditation for Anxiety - A Simple Beginner Practice | meditation for anxiety | Meditation | |
+| 43 | Pending | Blog | Meditation for Sleep - Fall Asleep Faster Tonight | meditation for sleep | Meditation | |
+| 44 | Pending | Blog | Body Scan Meditation Explained (Step by Step) | body scan meditation | Meditation | |
+| 45 | Pending | Blog | Loving-Kindness (Metta) Meditation for Beginners | loving kindness meditation | Meditation | |
+
+> Dated posting schedule (one post per day from 2026-07-18 through 2026-08-26) lives in `Projects/_HQ/schedules/itsallaboutmind-schedule.md`, along with the monetization recommendation.
 
 ---
 
