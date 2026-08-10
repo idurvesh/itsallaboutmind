@@ -66,6 +66,52 @@ Length: 1,500 to 2,500 words. Short paragraphs. Real, concrete scenes.
 - **Every heading starts with a capital letter** (sentence case).
 - Run the `human-writing` skill as a final pass over the finished post.
 
+## Hero image: MANDATORY, no exceptions
+
+**Every post ships with a hero image. A post without one does not get published.**
+This is a standing founder rule as of 2026-08-10.
+
+Generate it with the shared helper, which is the only supported path. Do not call
+TopView or FAL directly, and do not invent a model name:
+
+```
+bash /Users/durveshnaik/Documents/Claude/Projects/_HQ/playbooks/gen-blog-image.sh \
+  --engine fal \
+  --slug <slug> \
+  --out-dir public/images/blog \
+  --width 1200 --height 630 \
+  --prompt "<your image prompt>"
+```
+
+It writes `<slug>.jpg` at exactly 1200x630 plus a matching `.webp`, and leaves a
+`<slug>-src.*` original beside them. Commit the jpg and webp. The `-src` file is
+scratch; gitignore it or leave it uncommitted.
+
+**Before writing the prompt, look at an existing post in this repo** and match its
+hero/OG convention exactly: the same directory, the same filename pattern, and the
+same frontmatter or `<head>` field name. Do not invent a new path. If existing
+posts have no hero image at all, use the path above and say so in your report.
+
+Writing the image prompt:
+- Describe a scene or an abstract composition, on-brand for this site.
+- **Never ask for text, words, numbers, logos, or UI in the image.** Diffusion
+  models garble lettering and a hero with mangled words is worse than a plain one.
+  The helper already suppresses this, do not fight it.
+- Leave visual breathing room; these get cropped and overlaid.
+- No real people's faces, no recognisable brand marks.
+
+Handling failure:
+- Exit 0 means you have a verified image. Reference it and continue.
+- **Exit 2 means credentials are broken.** Report it loudly in the ops log and in
+  your summary. Do not publish a post with a missing image reference.
+- Exit 1 means generation failed after retries. Retry once with a simpler, more
+  abstract prompt. If it fails again, do NOT publish: leave the post written and
+  committed on a draft branch, log why, and exit. Publishing nothing is fine.
+  Publishing a post with a broken image is not.
+- Note in the ops log which engine actually produced the image. `fal` is the
+  preferred engine for this site, but TopView is account-side broken as of
+  2026-08-10 and silently falls back to FAL, so record what really ran.
+
 ## Wire it in
 
 1. Save to `src/content/blog/<slug>.md`.
