@@ -39,6 +39,8 @@ PUBLISH_MODE="main"     # main | draft
 BUILD_CMD="npm run build"           # empty string = no build step
 DEPLOY_CMD=""         # empty string = deploy via git push, or none
 DRAFT_PREFIX="content-draft/"
+# Not every repo calls it "main". appyone-next's default branch is master.
+MAIN_BRANCH="main"
 
 CLAUDE_BIN="/Users/durveshnaik/.local/bin/claude"
 HQ_DIR="/Users/durveshnaik/Documents/Claude/Projects/_HQ"
@@ -62,10 +64,18 @@ cd "$PROJECT_DIR" || exit 1
     exit 1
   fi
 
-  # Start from current main so we never build on a stale tree or fight a push.
-  git checkout main >/dev/null 2>&1
-  if ! git pull --rebase --autostash origin main; then
-    echo "FATAL: git pull failed, refusing to run on a dirty or diverged tree"
+  # Start from the current default branch so we never build on a stale tree or
+  # fight a push.
+  if ! git checkout "$MAIN_BRANCH" >/dev/null 2>&1; then
+    echo "FATAL: cannot check out '$MAIN_BRANCH'. Is MAIN_BRANCH correct for this repo?"
+    git branch -a | head -10
+    exit 1
+  fi
+  if ! git pull --rebase --autostash origin "$MAIN_BRANCH"; then
+    echo "FATAL: git pull failed, refusing to run on a dirty or diverged tree."
+    echo "If the error mentions a 'bad object' or 'ref with broken name', the repo"
+    echo "has a corrupted ref (iCloud duplicates a file inside .git as 'name 2')."
+    echo "Delete the offending ref file, then re-run. Do not force-push past this."
     exit 1
   fi
 
@@ -80,10 +90,10 @@ cd "$PROJECT_DIR" || exit 1
   # stays correct as the config changes.
   if [ "$PUBLISH_MODE" = "draft" ]; then
     DEPLOY_LINE="**FORBIDDEN.** This site is draft-branch-only. Never commit to
-  \`main\`, never push \`main\`, never deploy. Push only your \`$DRAFT_PREFIX\` branch.
+  \`$MAIN_BRANCH\`, never push \`$MAIN_BRANCH\`, never deploy. Push only your \`$DRAFT_PREFIX\` branch.
   A human merges."
   else
-    DEPLOY_LINE="${DEPLOY_CMD:-none, deployment happens automatically on git push to main}"
+    DEPLOY_LINE="${DEPLOY_CMD:-none, deployment happens automatically on git push to $MAIN_BRANCH}"
   fi
 
   PROMPT="$PROMPT
@@ -93,6 +103,8 @@ cd "$PROJECT_DIR" || exit 1
 - Today is $STAMP.
 - Publish mode: **$PUBLISH_MODE**.
 - Build command: ${BUILD_CMD:-none, this is a static site with no build step}
+- Default branch for this repo: **$MAIN_BRANCH** (use this everywhere you would
+  otherwise assume the default branch is named differently)
 - Deploy: $DEPLOY_LINE
 - Draft branch prefix: $DRAFT_PREFIX"
 
@@ -107,7 +119,7 @@ This is a supervised test of the write path, not a real publish.
 - Ignore the rule that the slot must be dated today or earlier. Take the oldest
   uncovered slot regardless of date, so there is something to write.
 - Commit to \`${DRAFT_PREFIX}test-${STAMP}-<slug>\` and push ONLY that branch.
-- Do NOT commit to main. Do NOT push main. Do NOT deploy. Do NOT ping IndexNow.
+- Do NOT commit to \`$MAIN_BRANCH\`. Do NOT push it. Do NOT deploy. Do NOT ping IndexNow.
 - Still do everything else for real: verify every fact, write the full post,
   wire it into the blog index and llms.txt, and run the build if there is one
   and confirm it passes. Proving those steps work is the entire point.
@@ -126,11 +138,11 @@ This is a supervised test of the write path, not a real publish.
   # fires on every run is one nobody reads.
   branch="$(git rev-parse --abbrev-ref HEAD)"
   echo "branch after run: $branch"
-  if [ "$branch" != "main" ]; then
-    if git checkout main >/dev/null 2>&1; then
-      echo "returned to main (left branch $branch in place for review)"
+  if [ "$branch" != "$MAIN_BRANCH" ]; then
+    if git checkout "$MAIN_BRANCH" >/dev/null 2>&1; then
+      echo "returned to $MAIN_BRANCH (left branch $branch in place for review)"
     else
-      echo "WARNING: could not return to main from $branch, tree may be dirty"
+      echo "WARNING: could not return to $MAIN_BRANCH from $branch, tree may be dirty"
     fi
   fi
 
