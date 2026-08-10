@@ -109,8 +109,9 @@ Handling failure:
   committed on a draft branch, log why, and exit. Publishing nothing is fine.
   Publishing a post with a broken image is not.
 - Note in the ops log which engine actually produced the image. `fal` is the
-  preferred engine for this site, but TopView is account-side broken as of
-  2026-08-10 and silently falls back to FAL, so record what really ran.
+  preferred engine for this site. TopView was fixed on 2026-08-10 (the key and
+  UID must be a matching pair) and is working, but the helper still falls back to
+  FAL if it fails, so record what really ran rather than assuming.
 
 ## Wire it in
 
