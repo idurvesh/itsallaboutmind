@@ -6,6 +6,7 @@ interface Props {
   description?: string;
   image?: string;
   canonicalUrl?: string;
+  ogType?: string;
 }
 
 const {
@@ -13,6 +14,7 @@ const {
   description = "Explore the power of your mind - meditation, law of attraction, mindset, and conscious living.",
   image,
   canonicalUrl,
+  ogType = 'website',
 } = Astro.props;
 
 const canonical = canonicalUrl || new URL(Astro.url.pathname, Astro.site).href;
@@ -54,7 +56,7 @@ const jsonLdSite = {
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
   <!-- Open Graph -->
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content={ogType} />
   <meta property="og:url" content={canonical} />
   <meta property="og:title" content={`${title} | It's All About Mind`} />
   <meta property="og:description" content={description} />
