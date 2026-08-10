@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.itsallaboutmind.contentloop</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/durveshnaik/Documents/Claude/Projects/itsallaboutmind/scripts/run-content-loop.sh</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/durveshnaik/Documents/Claude/Projects/itsallaboutmind</string>
+
+  <!-- Checks daily; the site calendar caps publishing at 2-3 posts/week. -->
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key><integer>9</integer>
+    <key>Minute</key><integer>0</integer>
+  </dict>
+
+  <!-- launchd does not inherit the login shell PATH. node comes from nvm. -->
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/Users/durveshnaik/.local/bin:/Users/durveshnaik/.nvm/versions/node/v22.22.0/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    <key>HOME</key>
+    <string>/Users/durveshnaik</string>
+  </dict>
+
+  <!-- MUST be /tmp. A path under ~/Documents makes launchd fail to spawn
+       with exit 78 EX_CONFIG, silently, producing no output at all. -->
+  <key>StandardOutPath</key>
+  <string>/tmp/com.itsallaboutmind.contentloop.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/com.itsallaboutmind.contentloop.err.log</string>
+
+  <key>RunAtLoad</key>
+  <false/>
+</dict>
+</plist>
