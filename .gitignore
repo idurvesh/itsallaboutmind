@@ -6,3 +6,6 @@ node_modules/
 .DS_Store
 .claude/skills/
 videos/_template/
+
+# Blog hero image scratch originals (from gen-blog-image.sh)
+public/images/*-src.*

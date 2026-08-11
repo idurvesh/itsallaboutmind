@@ -95,8 +95,9 @@ const jsonLd = {
 <BaseLayout
   title={resolvedTitle}
   description={resolvedDescription}
-  image={ogImage}
+  image={ogImage || coverImage}
   canonicalUrl={resolvedCanonical}
+  ogType="article"
 >
   <Fragment slot="head">
     <!-- Canonical -->
