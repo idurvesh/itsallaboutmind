@@ -28,6 +28,17 @@ Rules:
    (110,000/mo) are the biggest unwritten rows. There is no pillar page for
    `manifestation means` (201,000/mo), which is the single largest gap.
 
+## Concurrency: do not check for other running instances
+
+The wrapper holds an exclusive per-site lock before you start, so you are the only
+run for this site. **Do not inspect the process list to look for sibling runs, and
+never defer because you saw one.**
+
+You WILL see `run-content-loop.sh` and a `claude` process that look like a
+concurrent job. Those are your own parent wrapper and your own process. On
+2026-08-11 the Appyone run mistook exactly those for a rival, deferred, and lost a
+publishing day for no reason.
+
 ## Write the post
 
 This is an Astro site. Posts live in `src/content/blog/<slug>.md`. Clone the

@@ -51,6 +51,30 @@ LOG="$LOG_DIR/$SITE_NAME-$STAMP.log"
 mkdir -p "$LOG_DIR"
 cd "$PROJECT_DIR" || exit 1
 
+# Real mutual exclusion, per site. Two runs in one working tree would fight over
+# git checkout and push. This is enforced HERE rather than left to the agent to
+# infer, because on 2026-08-11 the Appyone run inspected the process list, saw its
+# OWN wrapper and its own `claude -p` child, concluded a sibling was running, and
+# skipped the day for nothing. An agent cannot reliably tell its own process tree
+# from a rival's, so it should never have to try.
+# mkdir is atomic on POSIX, and macOS has no flock(1), so that is the lock.
+LOCKDIR="$LOG_DIR/$SITE_NAME.lock"
+if ! mkdir "$LOCKDIR" 2>/dev/null; then
+  holder="$(cat "$LOCKDIR/pid" 2>/dev/null)"
+  if [ -n "$holder" ] && kill -0 "$holder" 2>/dev/null; then
+    echo "$(date): another $SITE_NAME run (pid $holder) holds the lock, exiting" \
+      >> "$LOG_DIR/$SITE_NAME-$STAMP.log"
+    exit 0
+  fi
+  # Holder is gone: a previous run was killed before it could clean up. Reclaim.
+  echo "$(date): clearing stale lock from pid ${holder:-unknown}" \
+    >> "$LOG_DIR/$SITE_NAME-$STAMP.log"
+  rm -rf "$LOCKDIR"
+  mkdir "$LOCKDIR" 2>/dev/null || exit 0
+fi
+echo "$$" > "$LOCKDIR/pid"
+trap 'rm -rf "$LOCKDIR"' EXIT INT TERM
+
 {
   echo "===== $SITE_NAME content loop $(date) ====="
   if [ "$PUBLISH_MODE" = "draft" ]; then
