@@ -6,6 +6,28 @@ genuinely blocking, log it and exit cleanly rather than guessing.
 Your job this run: publish ONE post if the schedule owes one, or record that
 nothing is owed.
 
+## Resume a held post before writing a new one
+
+**First thing each run, check for a held draft branch.** When a previous run wrote
+a post but could not finish it (usually a failed hero image), it commits the post
+to a `content-draft/<slug>` or `blog-draft/<slug>` branch and exits. That post is
+NOT on the trunk, so a naive `ls` of the content directory will not see it, and you
+would rewrite it from scratch. Do not.
+
+    git branch -a --list "*content-draft/*" --list "*blog-draft/*"
+
+Ignore any branch whose name contains `test-`: those are test artifacts.
+
+If a non-test draft branch exists for a target that is still unpublished:
+1. Check it out and see what is missing, which is almost always just the image.
+2. Finish only the missing part.
+3. Run the build if this site has one, then merge the branch into the trunk and
+   push, exactly as a normal publish.
+4. Say in your report that you resumed a held post rather than writing a new one,
+   and count it against this run's one-post budget.
+
+Only write a brand-new post when there is no resumable held draft.
+
 ## Pick the slot
 
 The dated schedule is `_HQ/schedules/itsallaboutmind-schedule.md` (readable via
