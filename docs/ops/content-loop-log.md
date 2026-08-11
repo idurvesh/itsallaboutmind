@@ -31,4 +31,10 @@ per run, even when nothing is owed. The remote copy is the proof the job is aliv
   all 9 published posts, including the new one. The file previously had no per-post
   list.
 - Build: `npm run build` passed, 16 pages, new route generated.
-- Live URL status: (recorded after push/deploy below)
+- Live URL status: **200 OK**, verified serving the real post.
+  https://itsallaboutmind.com/blog/369-manifestation-method/ returns the correct
+  title and `og:type=article` with `og:image`/`twitter:image` set. Deploy landed
+  ~2 min after push (Cloudflare Pages git integration, no wrangler). Note for future
+  runs: unknown paths on this site return HTTP 200 serving the Home page, so verify
+  by matching the post title in the HTML, not by status code alone.
+- Result: **published**. Commit e32d264 on main.
