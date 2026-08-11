@@ -169,6 +169,33 @@ Handling failure:
 4. After the deploy settles, fetch the live post URL and confirm it returns 200
    before you consider the run done. If it does not, say so plainly.
 
+## Submit for indexing, after you have verified the page is live
+
+Once the post returns 200 (and not before), submit it:
+
+```
+bash /Users/durveshnaik/Documents/Claude/Projects/_HQ/playbooks/submit-indexing.sh \
+  "<the full live post URL>"
+```
+
+That single script handles both channels and reports each one:
+- **IndexNow** (Bing, Yandex, Seznam, Naver): instant, unlimited, the fastest signal
+  there is. Keys live in `_HQ/playbooks/indexnow-keys.json`.
+- **Google Indexing API**, through the local indexing-tool so the shared
+  200/day-per-Cloud-project quota stays accurate. It starts the tool's server if
+  it is not already running.
+
+Rules:
+- **Never submit a URL you have not confirmed returns 200.** Submitting a 404
+  teaches the engines the page is broken. Verify, then submit.
+- Submit the post URL. Do not submit listing pages; the sitemap and IndexNow's
+  host-level ping already cover those, and Google's quota is scarce.
+- **An indexing failure must never fail the run.** The post is already live and the
+  sitemap is the backstop. Log exactly what the script reported and carry on.
+- A `SKIPPED` line is information, not an error. It means that host has no key
+  deployed yet, or is not registered in the indexing tool. Record it so the gap is
+  visible rather than silently tolerated.
+
 ## Finish
 
 Append a dated entry to `docs/ops/content-loop-log.md` (create it if absent):
