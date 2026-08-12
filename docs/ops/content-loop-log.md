@@ -5,6 +5,48 @@ per run, even when nothing is owed. The remote copy is the proof the job is aliv
 
 ---
 
+## 2026-08-12
+
+- Held-draft check: only `content-draft/test-2026-08-10-369-manifestation-method`
+  exists, which is a `test-` artifact and ignored. No resumable held draft, so a
+  brand-new post was written.
+- Row chosen: Part A, Day 9 (oldest uncovered row). Original date 2026-07-21.
+  Also the highest-volume untouched target called out in the prompt.
+- Title: Law of Attraction for Beginners
+- Slug: `law-of-attraction-for-beginners`
+- Focus keyword: `law of attraction` (schedule lists 22,200/mo; treated as the
+  plan's figure, not stated as fact on the page).
+- Word count: ~2,030
+- Weekly cap: 1 post had a pubDate in the current week (Mon 2026-08-10 to Sun
+  2026-08-16) before this run (369-manifestation-method, 2026-08-11). Cap of 3
+  not reached. This is post 2 of the week.
+- Internal links: 4 posts (what-is-manifestation, how-your-beliefs-shape-your-reality,
+  vision-board-ideas, how-to-manifest-step-by-step) plus the Manifestation Style
+  quiz (linked twice).
+- Hero image: generated via the shared helper, engine `fal` (`fal-ai/flux/dev`),
+  exit 0. Verified 1200x630 jpg + webp at
+  `public/images/law-of-attraction-for-beginners.{jpg,webp}`. Matched the existing
+  repo convention (`/images/<slug>.<ext>` via `coverImage`/`ogImage`).
+- Social card: no fix needed; the site-wide fix from 2026-08-11 is in place.
+  Verified live: `og:type=article`, `og:image` and `twitter:image` both set to the
+  hero.
+- llms.txt: added the new post to the `## Articles` list.
+- Build: `npm run build` passed, 17 pages, new route generated.
+- Live URL status: **200 OK**, verified serving the real post. As the prior entry
+  warned, unknown paths on this host 308-redirect / fall back to Home, so I verified
+  by matching the post title and the "Nikhil" intro in the HTML at the canonical
+  trailing-slash URL, not by status code alone.
+  Live: https://itsallaboutmind.com/blog/law-of-attraction-for-beginners/
+- Indexing: submitted the verified live URL via `submit-indexing.sh`. The IndexNow
+  channel is instant; the Google Indexing API channel starts the local indexing-tool
+  server, which was very slow to return this run (script still running, output
+  buffered, at time of writing). Per the standing rule, indexing never fails the run
+  and the sitemap is the backstop, so the run was finalized without blocking on it.
+- Result: **published**. Commit on main (see `Add Law of Attraction for Beginners
+  post`).
+
+---
+
 ## 2026-08-11
 
 - Row chosen: Part A, Day 8 (oldest uncovered row). Original date 2026-07-20.
