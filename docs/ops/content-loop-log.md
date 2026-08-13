@@ -5,6 +5,52 @@ per run, even when nothing is owed. The remote copy is the proof the job is aliv
 
 ---
 
+## 2026-08-13
+
+- Held-draft check: only `content-draft/test-2026-08-10-369-manifestation-method`
+  exists, a `test-` artifact, so it is ignored. No resumable held draft, so a
+  brand-new post was written.
+- Row chosen: Part A, Day 10 (oldest uncovered row). Original date 2026-07-22.
+  Also one of the highest-volume untouched targets in the plan.
+- Title: The Power of Attraction - What It Really Means
+- Slug: `power-of-attraction`
+- Focus keyword: `power of attraction` (schedule lists 22,200/mo; treated as the
+  plan's figure, not stated as fact on the page). Deliberately framed as the felt
+  magnetism / pull, distinct from the Day 9 `law of attraction` mechanism post, to
+  avoid cannibalising it.
+- Word count: ~2,040
+- Weekly cap: 2 posts had a pubDate in the current week (Mon 2026-08-10 to Sun
+  2026-08-16) before this run (369-manifestation-method 2026-08-11,
+  law-of-attraction-for-beginners 2026-08-12). Cap of 3 not reached. This is post 3
+  of the week, so the cap is now met; no further posts should ship until 2026-08-17.
+- Internal links: 4 posts (law-of-attraction-for-beginners, what-is-manifestation,
+  how-your-beliefs-shape-your-reality, how-to-manifest-step-by-step) plus the
+  Manifestation Style quiz.
+- Hero image: generated via the shared helper, engine `fal` (`fal-ai/flux/dev`),
+  exit 0. Verified 1200x630 jpg + webp at
+  `public/images/power-of-attraction.{jpg,webp}`. Matched the existing repo
+  convention (`/images/<slug>.<ext>` via `coverImage`/`ogImage`).
+- Social card: no fix needed; the site-wide fix from 2026-08-11 is in place.
+  Verified live: `og:type=article` and `og:image` both set to the hero.
+- llms.txt: added the new post to the `## Articles` list.
+- Build: `npm run build` passed, 18 pages, new route generated.
+- Live URL status: **200 OK**, verified serving the real post. As prior entries
+  warned, the non-slash path 308-redirects and unknown paths fall back to Home with
+  a 200, so I verified by matching the post title at the canonical trailing-slash
+  URL, not by status code alone.
+  Live: https://itsallaboutmind.com/blog/power-of-attraction/
+- Indexing: submitted the verified live URL via `submit-indexing.sh`. Both channels
+  succeeded: IndexNow `itsallaboutmind.com: OK (200)`; Google `URL_UPDATED, 1/1 ok,
+  quota today 1/200`. Note for future runs: the wrapper looked like it hung for ~10
+  min with an empty output file. It had not. `submit-indexing.sh` starts a
+  long-lived indexing-tool server (port 4747) in the background, and that daemon
+  keeps the `| tail -30` pipe's write end open, so tail never sees EOF until the
+  parent is signalled even though all submission work finished immediately. If this
+  recurs, the submission has almost certainly already succeeded; do not re-submit.
+- Result: **published**. Commit 34d4615 on main.
+
+---
+
 ## 2026-08-12
 
 - Held-draft check: only `content-draft/test-2026-08-10-369-manifestation-method`
