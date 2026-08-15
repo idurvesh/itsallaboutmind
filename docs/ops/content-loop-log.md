@@ -5,6 +5,27 @@ per run, even when nothing is owed. The remote copy is the proof the job is aliv
 
 ---
 
+## 2026-08-15
+
+- Held-draft check: only `content-draft/test-2026-08-10-369-manifestation-method`
+  exists, a `test-` artifact, so it is ignored. No resumable held draft.
+- Weekly cap reached: 3 posts already carry a `pubDate` in the current calendar
+  week (Mon 2026-08-10 to Sun 2026-08-16):
+  `369-manifestation-method` (2026-08-11), `law-of-attraction-for-beginners`
+  (2026-08-12), and `power-of-attraction` (2026-08-13). The real cadence is 2 to 3
+  posts per week and the cap is 3, so no post was written this run. This is the
+  second consecutive cap-reached run (after 2026-08-14); the week rolls over Monday
+  2026-08-17.
+- Row chosen: none. The oldest uncovered row is Part A Day 11 (Best Books on
+  Manifesting), but the two highest-volume untouched targets to prioritise next
+  week are `meditation` (Day 13, 110,000/mo per the plan) and the missing
+  `manifestation means` pillar (201,000/mo).
+- Build: not run (nothing written).
+- Live URL status: n/a.
+- Result: **no post owed / weekly cap reached**. Loop is alive; exited cleanly.
+
+---
+
 ## 2026-08-14
 
 - Held-draft check: only `content-draft/test-2026-08-10-369-manifestation-method`
