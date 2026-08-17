@@ -5,6 +5,59 @@ per run, even when nothing is owed. The remote copy is the proof the job is aliv
 
 ---
 
+## 2026-08-17
+
+- Held-draft check: only `content-draft/test-2026-08-10-369-manifestation-method`
+  exists, a `test-` artifact, so it is ignored. No resumable held draft at start.
+- Weekly cap: week rolled over to ISO week 34 (Mon 2026-08-17 onward). Zero posts
+  carry a `pubDate` in this week, so the cap is clear and a post is owed. The three
+  posts that tripped the cap last week (08-11/08-12/08-13) fall in the prior week.
+- Row chosen: **Day 13 - What Is Meditation? A Beginner's Guide**
+  (`focusKeyword: meditation`, 110,000/mo per the plan). Skipped Day 11 (Best Books
+  on Manifesting, an affiliate roundup) because the site has no affiliate program
+  and an affiliate listicle violates the no-listicle voice rule; Day 12 is a social
+  promo, not a post. Meditation is the oldest uncovered content row that fits the
+  voice and is the single highest-volume untouched target, matching last run's
+  earmark.
+- Slug: `what-is-meditation`. Word count: ~2,045 (body). `pubDate: 2026-08-17`,
+  `category: Mindset`, links the `mindset-type` quiz per the schedule.
+- Internal links: 3 total - `how-your-beliefs-shape-your-reality`,
+  `how-to-manifest-step-by-step`, and the `/quiz/mindset-type` email-capture quiz.
+- Voice pass: ran `human-writing`. No em/en dashes, no banned AI vocabulary, opens
+  on a named person (Kabir) in a specific moment then turns, honest hedging, an
+  explicit "not a cure / see a professional for heavy conditions" section, no
+  outcome promises.
+- Hero image: **MANDATORY rule met, exit 0.** `fal` was attempted first per the
+  runbook default but FAL returned "User is locked. Exhausted balance" (rc=1), so
+  it produced no image. Fell back to **TopView (Seedream 5.0)** via the shared
+  helper, which succeeded: verified 1200x630 `public/images/what-is-meditation.jpg`
+  + `.webp`. So the engine that actually ran was TopView, not fal. **Flag for the
+  founder: the FAL account balance is exhausted (fal.ai billing) - top it up or the
+  loop will keep falling back to TopView.**
+- Social-card gap: already fixed in a prior run (`BaseLayout` `ogType` prop,
+  `BlogPost` passes `ogType="article"` and falls back to `coverImage` for OG/Twitter
+  image). Nothing to change; left as-is.
+- Build: **FAILED locally, environmental, not a content bug.** `npm run build`
+  errors with `errno -11` (EAGAIN, "resource temporarily unavailable") inside
+  Astro's Vite config loader (`getSourceSync` in the ESM loader), before any content
+  is read. Astro's own binary loads fine (`astro --version` = v6.4.2); the machine
+  is under sustained memory pressure (only ~71M RAM unused, ~2.9G in compressor,
+  load avg ~4.5). Retried ~10x incl. cleared vite/astro caches and
+  `UV_THREADPOOL_SIZE=1`, all failed identically. `astro check`/`sync` hit the same
+  loader, so no local validation path is available right now.
+- Publish decision: **HELD, did not publish to main.** Per the "never commit a
+  state that does not build / publishing nothing is fine, publishing broken is not"
+  rule, the finished post + hero + llms.txt entry were committed to draft branch
+  `content-draft/what-is-meditation` (commit 0bd9ec0) and pushed to origin, NOT
+  merged to main. A later run will find this held draft, rebuild once the machine
+  has memory, and publish per the standard flow (build -> merge to main -> verify
+  200 -> index). No indexing submitted this run because the page is not live.
+- Live URL status: n/a (not published).
+- Result: **post written and held on draft branch; publish blocked by a local
+  build/memory-pressure failure, not by content.** Loop is alive; exited cleanly.
+
+---
+
 ## 2026-08-16
 
 - Held-draft check: only `content-draft/test-2026-08-10-369-manifestation-method`
