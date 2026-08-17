@@ -5,6 +5,41 @@ per run, even when nothing is owed. The remote copy is the proof the job is aliv
 
 ---
 
+## 2026-08-17 (resume run)
+
+- **Resumed the held post from earlier today rather than writing a new one.**
+  Found `content-draft/what-is-meditation` (non-test held draft) plus the finished
+  post, both 1200x630 hero images (jpg + webp), and the llms.txt entry already
+  staged in the working tree, identical to the draft branch (empty diff). Nothing
+  was missing except the build verification that blocked the previous run.
+- Weekly cap: only the meditation post carries a `pubDate` in the current week
+  (Mon 2026-08-17 onward); 08-11/12/13 are the prior week. Cap clear. Counts as
+  this run's one post.
+- Build: **PASSED.** `npm run build` completed clean, 19 pages, the
+  `/blog/what-is-meditation/` route generated. The prior EAGAIN/memory-pressure
+  failure was environmental and has cleared.
+- Published: committed only the 4 content files (post, jpg, webp, llms.txt) to
+  `main` as `ebb5442` and pushed; unrelated working-tree changes were left
+  untouched. Deleted the now-published `content-draft/what-is-meditation` branch
+  (local + remote). Left the `test-` draft alone.
+- Hero image: engine that produced it was **TopView (Seedream 5.0)** per the held
+  run's note (FAL balance exhausted). Still flagging: **FAL account balance is
+  exhausted; top it up or the loop keeps falling back to TopView.**
+- Social-card gap: already fixed site-wide. Verified in live HTML:
+  `og:type=article`, `og:image`, `twitter:image`, `article:published_time/section/tag`
+  all present. Nothing to change.
+- Live URL status: **verified live by content match**, not status code. Canonical
+  is trailing-slash `https://itsallaboutmind.com/blog/what-is-meditation/`. Note
+  for future runs (repeat of a prior warning): this site returns HTTP 200 for
+  unknown paths (serves Home), and the non-trailing-slash form 301s, so verify by
+  matching the post title in the HTML at the trailing-slash URL. Deploy landed
+  ~4 min after push.
+- Indexing: submitted the canonical URL. IndexNow `itsallaboutmind.com: OK (200)`;
+  Google Indexing API `URL_UPDATED`, 1/1 ok, quota 1/200 today.
+- Result: **published**. Commit `ebb5442` on main.
+
+---
+
 ## 2026-08-17
 
 - Held-draft check: only `content-draft/test-2026-08-10-369-manifestation-method`
