@@ -5,6 +5,51 @@ per run, even when nothing is owed. The remote copy is the proof the job is aliv
 
 ---
 
+## 2026-08-18
+
+- **New post written (no held draft to resume).** Only draft branch was
+  `content-draft/test-...`, which is a test artifact and ignored.
+- **Weekly cap check:** current week (Mon 2026-08-17 onward) had 1 published post
+  (the 08-17 meditation post). Under the cap of 3, so a post was owed.
+- **Row chosen:** Part A Day 11, "Best Books on Manifesting (Affiliate Roundup)",
+  the oldest uncovered schedule row. Day 12 is a social promo, not a post.
+- **Slug:** `best-books-on-manifesting`. `pubDate` set to today (2026-08-18), not
+  the stale schedule date.
+- **Word count:** ~2,050 words (frontmatter included), within the 1,500-2,500 band.
+- **Focus keyword:** `books on manifesting`.
+- **Angle:** honest, reader-first roundup of real, well-known titles (The Secret,
+  Power of Your Subconscious Mind, As a Man Thinketh, Ask and It Is Given,
+  Breaking the Habit of Being Yourself, Manifest, You Are a Badass, The Magic,
+  etc.) grouped by where the reader is stuck rather than a ranked listicle. No
+  invented affiliate links, no fabricated stats or quotes, no promised outcomes.
+  Opened with a named scene (Nisha in the aisle) per the house voice.
+- **Internal links:** 4 to existing posts (how-to-manifest-step-by-step,
+  how-your-beliefs-shape-your-reality, law-of-attraction-for-beginners, and the
+  Manifestation Style quiz linked twice as the email-capture CTA).
+- **Hero image:** MANDATORY rule met. `--engine fal` failed rc=1: FAL account is
+  **locked, exhausted balance** (matches the standing fal-balance-exhausted note).
+  Retried on `--engine topview`: succeeded, TopView **Seedream 5.0**, exit 0.
+  Verified 1200x630 jpg + webp at
+  `public/images/best-books-on-manifesting.{jpg,webp}`, matching the repo
+  convention (`/images/<slug>.<ext>`), not the `blog/` subdir in the prompt.
+  Recorded engine that actually ran: **TopView**, because FAL is down here.
+- **Social card:** already fixed site-wide in a prior run. Confirmed in built HTML
+  for this post: `og:type=article`, `og:image` and `twitter:image` both set.
+- **llms.txt:** added the new post to the `## Articles` list.
+- **human-writing pass:** ran; scanned for banned vocabulary/phrases/dashes, none
+  found. Sentence-case headings, no em/en dashes.
+- **Build:** `npm run build` passed, 20 pages, new route generated.
+- **Live URL status:** **200 OK, real page verified.** First raw 200 was a false
+  positive (unknown paths serve the Home page at 200); polled until the live HTML
+  title read "Best Books on Manifesting", ~2 min after push. Canonical is the
+  trailing-slash URL. Deploy via Cloudflare Pages git integration, no wrangler.
+  https://itsallaboutmind.com/blog/best-books-on-manifesting/
+- **Indexing:** IndexNow OK (200). Google Indexing API URL_UPDATED, 1/1 ok,
+  quota 1/200 today.
+- **Result:** **published.** Commit 06431db on main.
+
+---
+
 ## 2026-08-17 (resume run)
 
 - **Resumed the held post from earlier today rather than writing a new one.**
