@@ -5,6 +5,63 @@ per run, even when nothing is owed. The remote copy is the proof the job is aliv
 
 ---
 
+## 2026-08-19
+
+- **New post written (no held draft to resume).** Only draft branch was
+  `content-draft/test-2026-08-10-369-manifestation-method`, a test artifact,
+  ignored per the rule.
+- **Weekly cap check:** current week (Mon 2026-08-17 to Sun 2026-08-23) had 2
+  published posts before this run (pubDate 08-17 and 08-18). Under the cap of 3,
+  so a post was owed. This run is post 3 of the week, which reaches but does not
+  exceed the cap.
+- **Row chosen:** Part A Day 14, "Mindfulness Meditation - Why Everyone Is
+  Searching for It", the oldest uncovered schedule row. Days 6-11 and 13 are
+  already live; Day 12 is a social promo, not a post, so it is skipped.
+- **Slug:** `mindfulness-meditation`. `pubDate` set to today (2026-08-19), not
+  the stale schedule date.
+- **Word count:** ~1,970 words, within the 1,500-2,500 band.
+- **Focus keyword:** `mindfulness meditation`.
+- **Angle:** honest, plain-language explainer distinguishing mindfulness from
+  meditation broadly, why the practice has spread (attention economy), how to
+  try it in five steps, and off-the-cushion practice. Opened with a named scene
+  (Meera in a bank queue, a spinning coin) per the house voice. No promised
+  outcomes; explicit hedge that it is a practice not a cure and not a substitute
+  for professional mental-health support. No invented stats or research.
+- **Internal links:** 3 posts (what-is-meditation, how-your-beliefs-shape-your-reality,
+  how-to-manifest-step-by-step) plus the Mindset Type quiz.
+- **Hero image:** generated via the shared helper, engine `topview`
+  (Seedream 5.0 at 2K), exit 0. Verified 1200x630 jpg + webp at
+  `public/images/mindfulness-meditation.{jpg,webp}`, matching the repo
+  convention (`/images/<slug>.<ext>` via `coverImage`/`ogImage`). Used TopView,
+  not FAL, per the project rule (TopView only; FAL balance exhausted).
+- **Build blocker hit and cleared:** `npm run build` failed twice with
+  `Unknown system error -11` (EAGAIN) while vite copied
+  `public/admin/index.html` into `dist/`. That file was a pre-existing
+  uncommitted modification whose working-tree copy was corrupt and physically
+  unreadable (`head` errored, no process held it); git had also errored reading
+  it at session start ("Resource deadlock avoided"). The committed HEAD blob was
+  intact, so I restored the file from HEAD (`git show HEAD:... > file`),
+  discarding only unreadable garbage, and the build then passed cleanly (21
+  pages). Note: `functions/api/submit-url.js` shows the same corruption but is
+  not in the astro build path, so it did not block this run. Flagging it as a
+  latent issue on the email-capture function for a maintenance pass.
+- **Social-card tags:** already fixed site-wide in a prior run; no change needed.
+  Verified in built and live HTML: `og:type=article`, `og:image`, and
+  `twitter:image` all present and pointing at the hero.
+- **llms.txt:** added the new post to the `## Articles` list.
+- **Build:** `npm run build` passed after the fix, 21 pages, new route generated.
+- **Live URL status:** **200 OK**, verified serving the real post at the
+  canonical trailing-slash URL
+  https://itsallaboutmind.com/blog/mindfulness-meditation/ (title and content
+  matched; og tags present). As noted before, the non-slash path 308-redirects
+  and unknown paths return 200 with the Home page, so I verified by following
+  the redirect and matching the post title, not by status code alone.
+- **Indexing:** IndexNow `itsallaboutmind.com: OK (200)`. Google Indexing API
+  `URL_UPDATED`, 1/1 ok, quota today 1/200. Both channels succeeded.
+- **Result:** **published**. Commit 8413381 on main.
+
+---
+
 ## 2026-08-18
 
 - **New post written (no held draft to resume).** Only draft branch was
