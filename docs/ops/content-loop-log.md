@@ -5,6 +5,23 @@ per run, even when nothing is owed. The remote copy is the proof the job is aliv
 
 ---
 
+## 2026-08-21
+
+- **Weekly cap reached. No post written.**
+- **Held draft check:** the only draft branch is
+  `content-draft/test-2026-08-10-369-manifestation-method`, a `test-` artifact,
+  ignored per the rule. No resumable held draft.
+- **Weekly cap check:** current calendar week (Mon 2026-08-17 to Sun 2026-08-23)
+  already has 3 published posts before this run: what-is-meditation (pubDate
+  08-17), best-books-on-manifesting (08-18), mindfulness-meditation (08-19). The
+  cap of 3 posts per week is reached, so no post is owed today. Exited without
+  writing per the cadence rule.
+- **Next uncovered row (for the next run under-cap):** Part A Day 15, "How to
+  Start Meditating (For People Who Can't Sit Still)", target keyword
+  `how to start meditating`, quiz `mindset-type`. Days 6-11, 13, 14 are live;
+  Day 12 is a social promo, not a post, so it is skipped.
+- **Build/deploy/index:** none, nothing published this run.
+
 ## 2026-08-19
 
 - **New post written (no held draft to resume).** Only draft branch was
