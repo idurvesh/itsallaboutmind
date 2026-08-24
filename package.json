@@ -7,13 +7,15 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "node --test src/lib/*.test.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^6.0.1",
     "@astrojs/sitemap": "^3.7.3",
     "@tinacms/cli": "^2.4.1",
     "astro": "^6.4.2",
+    "publish-kit": "github:idurvesh/publish-kit",
     "tinacms": "^3.8.3"
   }
 }
