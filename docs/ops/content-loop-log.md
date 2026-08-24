@@ -5,6 +5,65 @@ per run, even when nothing is owed. The remote copy is the proof the job is aliv
 
 ---
 
+## 2026-08-24
+
+- **Published "How to Start Meditating (For People Who Can't Sit Still)".**
+- **Held draft check:** only draft branch is
+  `content-draft/test-2026-08-10-369-manifestation-method`, a `test-` artifact,
+  ignored per the rule. No resumable held draft, so this is a brand-new post.
+- **Weekly cap check:** week rolled over to Mon 2026-08-24 to Sun 2026-08-30.
+  Zero posts published in this new week, so under cap. Wrote one.
+- **Row chosen:** Part A Day 15, the oldest uncovered blog row (Days 1-11, 13, 14
+  live; Day 12 is a social promo, skipped). Exactly the slot the 08-21/08-22/08-23
+  runs predicted for the first under-cap run of this week.
+- **Slug:** `how-to-start-meditating`. **Focus keyword:** `how to start meditating`.
+  **Word count:** ~2,200 body words. **Category:** Mindset. **pubDate:** 2026-08-24.
+- **Internal links:** 3 posts (what-is-meditation, how-your-beliefs-shape-your-reality,
+  how-to-manifest-step-by-step) plus the Mindset Type quiz (`/quiz/mindset-type`).
+- **Voice/compliance:** human-writing skill run as final pass; no banned vocabulary,
+  no em/en dashes, headings sentence-case, no invented research or outcome promises,
+  honest "practice not a cure" caveat included.
+- **Hero image:** generated via the shared helper, engine `fal` (`fal-ai/flux/dev`),
+  exit 0. Verified 1200x630 jpg + webp at
+  `public/images/how-to-start-meditating.{jpg,webp}`, matching the repo convention
+  (`/images/<slug>.<ext>` from `coverImage`/`ogImage`).
+- **Social cards:** already fixed site-wide in an earlier run; verified built HTML
+  and live page carry `og:type=article`, `og:image`, and `twitter:image`. No change
+  needed.
+- **ENVIRONMENT BLOCKER (resolved, needs founder attention):** the local build
+  toolchain was broken by iCloud. `~/Documents` is iCloud-synced and had evicted
+  **43,366 `node_modules` files to "dataless" placeholders** (disk 94% full); reads
+  returned `Unknown system error -11` (EAGAIN) and `astro build`/`astro --version`
+  failed silently. `brctl download` did not materialize them. Fixed by
+  `rm -rf node_modules && npm ci` (registry reachable, lockfile intact), which
+  rewrote node_modules as real local files. Build then passed. **This will recur**
+  while iCloud optimize-storage is on for this folder and the disk stays near-full;
+  recommend disabling iCloud "Optimize Mac Storage" for the Projects folder or
+  freeing disk. This is the same class as the memory note
+  `build-eagain-corrupt-files`, but at whole-`node_modules` scale.
+- **Git dataless workaround:** `.git` also had ~60 dataless loose objects, so
+  `git add public/llms.txt` (modified, needs its old blob) and `git push`
+  (delta search reads base objects) both failed with `mmap failed: Resource
+  deadlock avoided`. Worked around by staging llms.txt via
+  `git hash-object -w` + `git update-index --cacheinfo` (no old-blob read), and
+  pushing with `-c pack.window=0 -c pack.depth=0 --no-thin` (no delta base reads).
+  New untracked files (the post + images) staged normally.
+- **Build:** `npm run build` passed after the reinstall, 22 pages, new route
+  generated. Committed only the 4 content files (post, jpg, webp, llms.txt);
+  unrelated pre-existing working-tree edits left untouched. Commit b1965aa on main.
+- **Live URL status:** **200 OK** at the canonical trailing-slash URL
+  https://itsallaboutmind.com/blog/how-to-start-meditating/ , verified serving the
+  real post (title + opening line matched). Note: the non-slash URL 308-redirects
+  to the trailing-slash canonical, and unknown paths return 200 serving Home, so
+  verification matched the title, not the status code alone.
+- **Indexing:** IndexNow OK (200). Google Indexing API **SKIPPED** (could not start
+  the local indexing-tool server); logged as information per the rule, did not fail
+  the run. Sitemap remains the backstop.
+- **Next uncovered row (next under-cap run, this week allows up to 3):** Part A
+  Day 16, "Morning Meditation Routine", keyword `mind meditation`, quiz
+  `mindset-type`.
+- **Result: published.** Commit b1965aa on main.
+
 ## 2026-08-23
 
 - **Weekly cap reached. No post written.**
