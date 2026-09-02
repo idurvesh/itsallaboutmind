@@ -4,6 +4,7 @@ if (!location.host.includes("127.0.0.1") && !location.host.includes("localhost")
     api_host: "https://us.i.posthog.com",
     defaults: "2026-05-30",
     person_profiles: "identified_only",
+    capture_exceptions: true,
     disable_session_recording: true,
   });
   posthog.register({ product: "itsallaboutmind", surface: "content" });
