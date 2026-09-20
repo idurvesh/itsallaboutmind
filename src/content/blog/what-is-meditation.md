@@ -10,7 +10,7 @@ coverImage: /images/what-is-meditation.jpg
 coverImageAlt: "A quiet cushion by a window in soft morning light, a plain room with room to breathe"
 ogImage: /images/what-is-meditation.jpg
 seoTitle: "What Is Meditation? An Honest Beginner's Guide"
-seoDescription: "What is meditation, really? A grounded beginner's guide to what it is, what it is not, and how to actually start. No jargon, no lotus position, no false promises."
+seoDescription: "What is meditation, really? A plain beginner's guide to what it is, what it is not, and how to start. No jargon, no lotus position required."
 focusKeyword: "meditation"
 ---
 

@@ -9,10 +9,9 @@ readTime: 10 min read
 author: It's All About Mind
 featured: true
 coverImage: /images/what-is-manifestation-a-beginner-s-complete-guide.png
+coverImageAlt: "A person journaling at a sunlit window, visualising their goals with intention and clarity"
 seoTitle: What Is Manifestation? A Beginner's Complete Guide (2026)
-seoDescription: Manifestation is bringing your desires into reality through
-  thought, belief, and action. Learn exactly how manifestation works, the
-  science behind it, and how to start today.
+seoDescription: Manifestation means bringing desires into reality through thought, belief, and action. Learn how it works, the science behind it, and how to start today.
 focusKeyword: what is manifestation
 ogImage: /images/what-is-manifestation-a-beginner-s-complete-guide.png
 ---

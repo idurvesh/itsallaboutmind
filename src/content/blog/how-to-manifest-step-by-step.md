@@ -7,6 +7,7 @@ readTime: "9 min read"
 author: "It's All About Mind"
 featured: false
 coverImage: /images/how-to-manifest-step-by-step.png
+coverImageAlt: "An open notebook on a wooden desk with a pen resting across the page, soft morning light"
 seoTitle: "How to Manifest - A Simple Step-by-Step Guide for Beginners"
 seoDescription: "Learn exactly how to manifest what you want with this simple step-by-step guide. Real examples, a daily practice, and no confusing jargon."
 focusKeyword: "manifest how to"

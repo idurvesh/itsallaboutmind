@@ -7,7 +7,8 @@ readTime: "8 min read"
 author: "It's All About Mind"
 featured: false
 coverImage: /images/how-your-beliefs-shape-your-reality.png
-seoTitle: "How Your Beliefs Shape Your Reality: Science + Real Examples (2026)"
+coverImageAlt: "Two paths diverging in a sunlit landscape, representing how different beliefs lead to different realities"
+seoTitle: "How Your Beliefs Shape Your Reality"
 seoDescription: "Your beliefs shape your reality through the Reticular Activating System, neuroplasticity, and the expectancy effect. Real stories show exactly how this works."
 focusKeyword: "how your beliefs shape your reality"
 ---

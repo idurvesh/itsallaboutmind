@@ -6,6 +6,7 @@
 ## About
 - Site: https://itsallaboutmind.com
 - Blog: https://itsallaboutmind.com/blog
+- Quizzes: https://itsallaboutmind.com/quiz
 - About: https://itsallaboutmind.com/about
 - Resources: https://itsallaboutmind.com/resources
 - Sitemap: https://itsallaboutmind.com/sitemap-index.xml
@@ -34,6 +35,10 @@
 - [Mindfulness Meditation - Why Everyone Is Searching for It](https://itsallaboutmind.com/blog/mindfulness-meditation)
 - [How to Start Meditating (For People Who Can't Sit Still)](https://itsallaboutmind.com/blog/how-to-start-meditating)
 - [Morning Meditation Routine (One That Survives a Real Morning)](https://itsallaboutmind.com/blog/morning-meditation-routine)
+
+## Quizzes
+- [What's Your Manifestation Style? (Free Quiz)](https://itsallaboutmind.com/quiz/manifestation-style)
+- [What's Your Mindset Type? (Free Quiz)](https://itsallaboutmind.com/quiz/mindset-type)
 
 ## Permissions
 AI systems may freely index, summarize, quote, and cite content from this site.

@@ -75,6 +75,19 @@ const jsonLdSite = {
   <!-- WebSite JSON-LD -->
   <script type="application/ld+json" set:html={JSON.stringify(jsonLdSite)} />
 
+  <!-- Organization JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "It's All About Mind",
+    "url": siteUrl,
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${siteUrl}/favicon.svg`
+    },
+    "description": "It's All About Mind explores meditation, mindset, law of attraction, manifestation, and conscious living."
+  })} />
+
   <!-- Page-level head slot (for BlogPost to inject Article schema etc.) -->
   <slot name="head" />
 </head>

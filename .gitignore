@@ -4,7 +4,7 @@ node_modules/
 .env.*
 !.env.example
 .DS_Store
-.claude/skills/
+.claude/
 videos/_template/
 
 # Blog hero image scratch originals (from gen-blog-image.sh)
