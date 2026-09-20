@@ -1,0 +1,11 @@
+{
+  "name": "itsallaboutmind-blog-images",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "render": "npx --yes hyperframes@0.8.4 render"
+  },
+  "dependencies": {
+    "puppeteer": "^25.11.0"
+  }
+}

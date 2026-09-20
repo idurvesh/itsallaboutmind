@@ -34,7 +34,7 @@
 set -uo pipefail
 
 SITE_NAME="itsallaboutmind"
-PROJECT_DIR="/Users/durveshnaik/Documents/Claude/Projects/itsallaboutmind"
+PROJECT_DIR="/home/opc/projects/itsallaboutmind"
 PUBLISH_MODE="main"     # main | draft
 BUILD_CMD="npm run build"           # empty string = no build step
 DEPLOY_CMD=""         # empty string = deploy via git push, or none
@@ -42,8 +42,8 @@ DRAFT_PREFIX="content-draft/"
 # Not every repo calls it "main". appyone-next's default branch is master.
 MAIN_BRANCH="main"
 
-CLAUDE_BIN="/Users/durveshnaik/.local/bin/claude"
-HQ_DIR="/Users/durveshnaik/Documents/Claude/Projects/_HQ"
+CLAUDE_BIN="/home/opc/.npm-global/bin/claude"
+HQ_DIR=""
 LOG_DIR="/tmp/content-loops"
 STAMP="$(date +%Y-%m-%d)"
 LOG="$LOG_DIR/$SITE_NAME-$STAMP.log"
@@ -151,8 +151,7 @@ This is a supervised test of the write path, not a real publish.
   fi
 
   "$CLAUDE_BIN" -p "$PROMPT" \
-    --permission-mode bypassPermissions \
-    --add-dir "$HQ_DIR"
+    --permission-mode bypassPermissions
 
   status=$?
   echo "===== claude exit $status ====="
