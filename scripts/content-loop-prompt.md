@@ -42,18 +42,26 @@ exit without writing.
 ## Pick the quiz topic
 
 There is no pre-existing schedule. Choose the topic with the highest SEO potential
-from this prioritized list — pick the first one that has not yet been published:
+from this prioritized list — pick the first one that has not yet been published.
+Focus keywords and estimated monthly search volumes (India, from keyword research) are noted:
 
-1. "How Strong Is Your Memory?" — slug: `how-strong-is-your-memory`
-2. "What Type of Thinker Are You?" — slug: `what-type-of-thinker-are-you`
-3. "What's Your Focus Style?" — slug: `whats-your-focus-style`
-4. "How Mindful Are You Really?" — slug: `how-mindful-are-you`
-5. "What's Your Stress Response?" — slug: `whats-your-stress-response`
-6. "How Emotionally Intelligent Are You?" — slug: `how-emotionally-intelligent-are-you`
-7. "What's Your Decision-Making Style?" — slug: `whats-your-decision-making-style`
-8. "How Creative Is Your Brain?" — slug: `how-creative-is-your-brain`
-9. "What's Your Mental Resilience Score?" — slug: `whats-your-mental-resilience-score`
-10. "What's Your Brain Age?" — slug: `whats-your-brain-age`
+1. "How Strong Is Your Memory?" — slug: `how-strong-is-your-memory` — keyword: `memory quiz` (~25k/mo, low competition)
+2. "Are You Left Brain or Right Brain?" — slug: `left-brain-right-brain-test` — keyword: `left brain right brain test` (~30k/mo, low competition)
+3. "What Type of Thinker Are You?" — slug: `what-type-of-thinker-are-you` — keyword: `brain quiz` (~18k/mo, low competition)
+4. "What's Your Stress Response?" — slug: `whats-your-stress-response` — keyword: `stress quiz` (~12k/mo, low competition)
+5. "How Emotionally Intelligent Are You?" — slug: `how-emotionally-intelligent-are-you` — keyword: `emotional intelligence test` (~10k/mo, low competition)
+6. "What's Your Focus Style?" — slug: `whats-your-focus-style` — keyword: `focus test` (~8k/mo, low competition)
+7. "How Mindful Are You Really?" — slug: `how-mindful-are-you` — keyword: `mindfulness quiz` (~5k/mo, low competition)
+8. "What's Your Growth Mindset Score?" — slug: `growth-mindset-quiz` — keyword: `growth mindset quiz` (~4k/mo, low competition)
+9. "What's Your Decision-Making Style?" — slug: `whats-your-decision-making-style` — keyword: `decision making quiz` (~3k/mo, low competition)
+10. "How Creative Is Your Brain?" — slug: `how-creative-is-your-brain` — keyword: `creativity test` (~6k/mo, low competition)
+11. "What's Your Mental Resilience Score?" — slug: `whats-your-mental-resilience-score` — keyword: `resilience quiz` (~3k/mo, low competition)
+12. "What's Your Brain Age?" — slug: `whats-your-brain-age` — keyword: `brain age test` (~5k/mo, low competition)
+13. "What's Your Attention Span?" — slug: `attention-span-test` — keyword: `attention span test` (~6k/mo, low competition)
+14. "Are You an Introvert, Extrovert, or Ambivert?" — slug: `introvert-extrovert-ambivert-quiz` — keyword: `introvert extrovert quiz` (~15k/mo, medium competition)
+15. "How Good Are You at Reading People?" — slug: `how-good-are-you-at-reading-people` — keyword: `reading people quiz` (~3k/mo, low competition)
+
+Note: volumes are estimates from keyword research (India, 2025-2026). Treat them as directional priority, not exact figures.
 
 Check `ls src/content/blog/` and pick the first unpublished slug from this list.
 Set `pubDate` to **today's actual date**.
