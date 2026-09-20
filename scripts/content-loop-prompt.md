@@ -96,6 +96,7 @@ Length: 1,500 to 2,500 words. Short paragraphs. Real, concrete scenes.
   customer or testimonial.
 - **No em dashes.** Rewrite with commas, colons, or periods. Scan for `—` and
   `–` before committing.
+- **Paragraph length:** No paragraph should exceed 2-5 sentences. **Sentence length:** No single sentence should exceed 5-10 words. Write in short, punchy, scan-friendly sentences.
 - **Every heading starts with a capital letter** (sentence case).
 - Run the `human-writing` skill as a final pass over the finished post.
 
