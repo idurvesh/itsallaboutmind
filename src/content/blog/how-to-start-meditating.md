@@ -12,6 +12,17 @@ ogImage: /images/how-to-start-meditating.jpg
 seoTitle: "How to Start Meditating (For People Who Can't Sit Still)"
 seoDescription: "Want to start meditating but can't sit still? This honest, plain-language guide shows you how to begin with two minutes, restlessness and all. No jargon."
 focusKeyword: "how to start meditating"
+faqs:
+  - q: "How do I start meditating if I can't sit still?"
+    a: "Start with two minutes in a chair — no cross-legged floor pose required. Set a timer, feel your breath, and when your mind wanders (which it will, within seconds), simply notice and come back. Restlessness is not a disqualification; it is the raw material the practice works with."
+  - q: "How long should my first meditation session be?"
+    a: "Start with two minutes, or even one. The number one reason beginners quit is starting too big and dreading it by day three. Two minutes practiced daily builds the habit far more effectively than long sessions that get skipped. Add time later once showing up feels natural."
+  - q: "What should I do when my mind keeps wandering during meditation?"
+    a: "Notice you have wandered, and gently come back to your anchor — typically the breath. That moment of noticing and returning is not the interruption to the practice; it is the practice. A stormy session where you return fifty times is fifty mental repetitions, arguably better training than a calm one."
+  - q: "Can restless people meditate?"
+    a: "Yes. If plain sitting feels impossible, try walking meditation with attention on the feeling of your feet, anchor your focus to your hands or feet instead of the breath, or simply watch the restlessness itself with curiosity rather than fighting it. There is no single right doorway in."
+  - q: "How do I build a consistent meditation habit?"
+    a: "Attach your two-minute sit to an existing daily habit — right after pouring your morning tea, right before opening your laptop. A new habit sticks far better bolted to an old one than floating free. Keep the session very short until skipping it feels stranger than doing it, then let length grow naturally."
 ---
 
 Rohan lasted about forty seconds.

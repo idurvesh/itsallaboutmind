@@ -11,6 +11,17 @@ coverImageAlt: "Two paths diverging in a sunlit landscape, representing how diff
 seoTitle: "How Your Beliefs Shape Your Reality"
 seoDescription: "Your beliefs shape your reality through the Reticular Activating System, neuroplasticity, and the expectancy effect. Real stories show exactly how this works."
 focusKeyword: "how your beliefs shape your reality"
+faqs:
+  - q: "How do your beliefs shape your reality?"
+    a: "Your beliefs shape your reality through three mechanisms: the Reticular Activating System (RAS) filters what your brain notices based on what you believe is true; neuroplasticity rewires your brain to strengthen whatever thought patterns you repeat; and the expectancy effect means believing you can succeed makes you work harder, bounce back faster, and take more chances."
+  - q: "What is the Reticular Activating System?"
+    a: "The Reticular Activating System (RAS) is a bundle of nerves in the brain that acts as a filter for incoming information. It prioritises information that matches your current beliefs and goals — which is why people who believe they are unlucky notice every inconvenience, while people who feel capable notice opportunities."
+  - q: "Can you change your limiting beliefs?"
+    a: "Yes. Because of neuroplasticity, your brain rewires itself based on what you repeatedly think and do. Every time you choose a new thought pattern — even briefly — you strengthen a new neural pathway. Consistent practice, such as daily affirmations or deliberate new behaviours, gradually makes supportive beliefs feel natural."
+  - q: "Why do two people experience the same event differently?"
+    a: "Because their beliefs act as different filters on reality. The RAS spotlights information that confirms existing beliefs, so someone who believes they are unlucky notices every inconvenience and filters out good moments, while someone who believes they are capable notices opportunities and filters out setbacks."
+  - q: "How long does it take to change a belief?"
+    a: "There is no fixed timeline, but neuroplasticity research shows consistent repetition gradually strengthens new neural pathways. Small daily actions and thoughts compound over weeks and months. In the example in this guide, someone who believed they were a bad public speaker began to genuinely enjoy presenting after six months of regular practice."
 ---
 
 Have you ever noticed that two people can go through the exact same situation and come out with completely different stories?

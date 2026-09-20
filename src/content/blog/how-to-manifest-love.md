@@ -10,6 +10,17 @@ coverImageAlt: "A person sitting by a window with a warm cup of tea, journaling 
 seoTitle: "How to Manifest Love - A Simple Step-by-Step Guide"
 seoDescription: "Want to manifest love? This gentle step-by-step guide shows you how, with real stories, a daily practice, and honest advice. No games, no jargon."
 focusKeyword: "manifest love"
+faqs:
+  - q: "How do you manifest love?"
+    a: "Manifesting love has five steps: get clear on feelings rather than a shopping list of traits, heal the belief that you are hard to love, become the partner you are asking for, take real action by showing up where you can meet people, and let go of controlling exactly how and when love arrives."
+  - q: "Why isn't my love manifestation working?"
+    a: "The most common reason is focusing on a detailed description of the other person while ignoring your own readiness. You can write the perfect list, but if underneath it you believe you will be left again, your actions will keep matching the fear. The hidden work is becoming someone ready to love and be loved."
+  - q: "Should I make a list of qualities I want in a partner?"
+    a: "A detailed physical and lifestyle checklist is usually less useful than a short list of feelings. Instead of describing a stranger's height and salary, write how you want to feel in the relationship — safe, respected, free to be yourself. Four core feelings outperform twenty-seven criteria."
+  - q: "Do I need to take action to manifest love?"
+    a: "Yes. Love rarely walks through a locked door. If you never meet new people or say yes to social plans, you are asking the universe to deliver a partner to a house with no doorbell. Manifesting sets your intention; showing up is what lets love actually reach you."
+  - q: "How do you let go of a love manifestation?"
+    a: "Letting go means holding your goal clearly while releasing control over the exact timing and form of arrival. Once you are clear and you are showing up, loosen your grip on who and when. Anxious, grasping energy tends to push people away; trusting openness tends to draw them closer."
 ---
 
 Ananya had a list. Twenty-seven points long. Her future partner had to be tall, funny, good with money, close to his mother but not too close, a dog person, and a hundred other things she had scribbled down over two years of quiet evenings.

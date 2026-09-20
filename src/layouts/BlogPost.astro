@@ -1,6 +1,11 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 
+interface Faq {
+  q: string;
+  a: string;
+}
+
 interface Props {
   title: string;
   description: string;
@@ -15,6 +20,7 @@ interface Props {
   ogImage?: string;
   canonicalUrl?: string;
   author?: string;
+  faqs?: Faq[];
 }
 
 const {
@@ -31,6 +37,7 @@ const {
   ogImage,
   canonicalUrl,
   author = "It's All About Mind",
+  faqs,
 } = Astro.props;
 
 const formattedDate = pubDate.toLocaleDateString('en-US', {
@@ -110,6 +117,19 @@ const jsonLd = {
 
     <!-- JSON-LD Article Schema -->
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <!-- JSON-LD FAQPage -->
+    {faqs && faqs.length > 0 && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqs.map(({ q, a }) => ({
+          "@type": "Question",
+          "name": q,
+          "acceptedAnswer": { "@type": "Answer", "text": a }
+        }))
+      })} />
+    )}
 
     <!-- JSON-LD BreadcrumbList -->
     <script type="application/ld+json" set:html={JSON.stringify({

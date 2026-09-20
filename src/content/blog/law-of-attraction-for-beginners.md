@@ -12,6 +12,17 @@ ogImage: /images/law-of-attraction-for-beginners.jpg
 seoTitle: "Law of Attraction for Beginners (An Honest Starter Guide)"
 seoDescription: "New to the law of attraction? This beginner's guide explains what it really means, how it works day to day, and the mistakes that keep people stuck. No hype."
 focusKeyword: "law of attraction"
+faqs:
+  - q: "What is the law of attraction?"
+    a: "The law of attraction is the idea that what you consistently focus on tends to show up more in your life. Focus on lack and you notice lack everywhere; focus on possibility and you start spotting openings you used to walk past. It works through your attention, choices, and energy — not through magic."
+  - q: "Why didn't the law of attraction work for me?"
+    a: "Most beginners make one of four mistakes: waiting instead of acting, focusing on lack while pretending to focus on the goal, obsessing over exactly how and when results must arrive, or quitting too early before compounding effects have time to show. The law of attraction shifts your behaviour over weeks and months, not days."
+  - q: "Do I need to take action to use the law of attraction?"
+    a: "Yes. The law of attraction is not a reason to stop trying — it is a reason to try from a different inner place. Thinking sets the direction; action covers the distance. You still send the applications, have the conversations, and do the work, but you do it believing it can actually land."
+  - q: "Can the law of attraction cure illness or replace professional help?"
+    a: "No. The law of attraction is not medicine and is not a substitute for a doctor, therapist, or financial plan. It can shift your attention and choices in useful ways, but it cannot cure an illness, and anyone who tells you to think your way out of a serious health problem is giving dangerous advice."
+  - q: "How long does the law of attraction take to work?"
+    a: "Results vary, but most beginners quit too early — usually in the first three weeks, right before compounding effects begin. Give any consistent practice at least 30–90 days before evaluating results, and measure by how your days feel and the choices you make, not by whether one specific outcome arrived."
 ---
 
 Nikhil watched a video at two in the morning that told him the law of attraction would change his life. A calm voice over soft music said the universe was a catalogue and he could order from it. Money. A promotion. A new flat in a better part of the city. Just think about it hard enough, feel it, and let it come.

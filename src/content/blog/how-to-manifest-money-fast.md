@@ -10,6 +10,17 @@ coverImageAlt: "A person writing money goals in a journal beside a small jar of 
 seoTitle: "How to Manifest Money Fast (5 Hidden Blocks)"
 seoDescription: "Want to manifest money fast? These 5 hidden money blocks are probably stopping you. Real stories, a simple daily practice, and no confusing jargon."
 focusKeyword: "manifest money"
+faqs:
+  - q: "Why isn't my money manifestation working?"
+    a: "The most likely cause is a hidden money block — a quiet belief working against your affirmations. The five most common blocks are: thinking wanting money is wrong, believing you do not deserve more, manifesting 'rich' instead of a specific number, waiting for the universe instead of taking action, and obsessively checking your balance with anxiety."
+  - q: "What does a money manifestation daily practice look like?"
+    a: "A simple five-step daily practice: write one specific money goal with a deadline, add one permission line pushing back on your main money block, take one small money action (send the invoice, apply for the role, ask for the raise), check your balance once calmly, and notice one small financial win. Do this for 30 days before judging results."
+  - q: "What is a money block?"
+    a: "A money block is a limiting belief that quietly works against your financial goals — for example, feeling guilty about charging fairly, believing you are not worth a higher rate, manifesting vaguely without a specific target, or rehearsing scarcity by anxiously checking your balance many times a day."
+  - q: "Do I need to take action to manifest money?"
+    a: "Yes. Writing affirmations sets your intention, but action is what turns intention into money. Someone who journals 'I am getting a paid internship' every day without applying anywhere will stay stuck. You need both the mindset work and the real-world steps."
+  - q: "How specific should my money manifestation goal be?"
+    a: "Very specific. 'I want to be rich' is a mood, not a goal your brain can act on. A number with a deadline — such as 'an extra forty thousand rupees in ninety days' — gives your brain something concrete to work toward and helps you spot aligned opportunities you would otherwise miss."
 ---
 
 Vikas ran a small printing shop in Indore. Every night before bed, he sat on the edge of his cot and said the same line out loud: "Money is coming to me easily."

@@ -12,6 +12,17 @@ ogImage: /images/what-is-meditation.jpg
 seoTitle: "What Is Meditation? An Honest Beginner's Guide"
 seoDescription: "What is meditation, really? A plain beginner's guide to what it is, what it is not, and how to start. No jargon, no lotus position required."
 focusKeyword: "meditation"
+faqs:
+  - q: "What is meditation?"
+    a: "Meditation is the practice of paying attention on purpose — usually to one simple thing like the breath — and gently coming back every time your mind wanders. The skill is not emptying your mind or achieving stillness; it is noticing you have drifted and returning, over and over."
+  - q: "Do I need to empty my mind to meditate?"
+    a: "No — this is the most common misconception. You cannot force your mind to go blank, and trying only makes it louder. Thoughts will keep arriving the entire time you meditate. The skill is noticing a thought has carried you off and choosing to come back, without being harsh with yourself."
+  - q: "How long should a beginner meditate?"
+    a: "Start with two to five minutes. The main reason people quit is starting too big and dreading it by day three. Two minutes practiced daily builds the habit far more effectively than longer sessions that get skipped. You can add time once showing up feels natural."
+  - q: "Is meditation a religion?"
+    a: "No. Meditation appears inside many faiths and can be deeply spiritual for those who want that, but the basic attention practice asks nothing of your beliefs. It is a practical mental training tool used by thoroughly sceptical, non-religious people who simply value how their days go as a result."
+  - q: "How do I know if I am meditating correctly?"
+    a: "If you can notice when your attention has wandered and bring it back, you are doing it correctly. There is no good or bad session — only a done one. A restless, distracted ten minutes counts as much as a peaceful one. The only failure is not sitting at all."
 ---
 
 Kabir tried to meditate for the first time on a Tuesday, sitting cross-legged on his bedroom floor because a video told him that was the correct way.
