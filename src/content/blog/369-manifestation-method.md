@@ -1,6 +1,6 @@
 ---
 title: "The 369 Manifestation Method Explained Simply"
-description: "A plain, honest guide to the 369 manifestation method. What it is, how to do it morning, afternoon, and night, and why the ritual works without any magic promises."
+description: "A plain, honest guide to the 369 manifestation method. What it is, how to do it morning, afternoon, and night, and why the ritual works."
 pubDate: 2026-08-11
 category: "Manifestation"
 readTime: "9 min read"

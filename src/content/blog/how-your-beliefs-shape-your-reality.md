@@ -1,6 +1,6 @@
 ---
 title: "How Your Beliefs Shape Your Reality (With Real Examples)"
-description: "Your beliefs create your reality more than you realize. Here is how your mind filters the world, rewires itself, and attracts what you expect - with real stories you can learn from."
+description: "How your beliefs filter reality, rewire your brain, and attract what you expect - with real examples you can learn from."
 pubDate: 2026-06-03
 category: "Mindset"
 readTime: "8 min read"

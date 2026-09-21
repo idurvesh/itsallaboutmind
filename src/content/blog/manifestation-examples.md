@@ -1,6 +1,6 @@
 ---
 title: "Manifestation Examples That Actually Happened (Real Stories)"
-description: "Real manifestation examples and stories from ordinary people who attracted jobs, money, love, and more. Funny, emotional, and inspiring - these stories will make you believe."
+description: "Real manifestation examples from ordinary people who attracted jobs, money, love, and more. Funny, emotional, and inspiring - stories that make you believe."
 pubDate: 2026-05-29
 category: "Manifestation"
 readTime: "12 min read"

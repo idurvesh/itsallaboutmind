@@ -1,5 +1,5 @@
 ---
-title: "Morning Meditation Routine (One That Survives a Real Morning)"
+title: "Morning Meditation Routine (Survives a Real Morning)"
 description: "A morning meditation routine built for rushed, ordinary mornings. No 5am wake-up, no half hour of silence, just a small practice you can actually keep."
 pubDate: 2026-08-25
 category: "Mindset"

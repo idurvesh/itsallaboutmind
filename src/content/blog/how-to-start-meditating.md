@@ -1,6 +1,6 @@
 ---
 title: "How to Start Meditating (For People Who Can't Sit Still)"
-description: "A gentle, honest guide on how to start meditating when your body fidgets and your mind races. No cushions required, no clearing your mind, just small doable steps."
+description: "A gentle, honest guide on how to start meditating when your body fidgets and your mind races. No cushions, no cleared mind, just small doable steps."
 pubDate: 2026-08-24
 category: "Mindset"
 readTime: "9 min read"

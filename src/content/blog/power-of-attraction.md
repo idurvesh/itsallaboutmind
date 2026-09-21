@@ -1,6 +1,6 @@
 ---
 title: "The Power of Attraction - What It Really Means"
-description: "An honest look at the power of attraction. What that pull actually is, why some people seem to draw things toward them, and how to build it without hype or false promises."
+description: "An honest look at the power of attraction. What that pull is, why some people draw things toward them, and how to build it without hype or false promises."
 pubDate: 2026-08-13
 category: "Manifestation"
 readTime: "10 min read"
