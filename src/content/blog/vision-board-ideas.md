@@ -9,6 +9,7 @@ featured: false
 seoTitle: 50 Vision Board Ideas That Actually Work (2026 Guide)
 seoDescription: 50 vision board ideas across career, money, love, health, home, and travel, plus how to build a board that keeps you focused instead of just looking pretty.
 focusKeyword: vision board ideas
+ogImage: /images/og/vision-board-ideas.png
 ---
 
 You opened a blank board, grabbed a stack of magazines, and then just sat there. What am I even supposed to put on this? That blank-board freeze is the most common reason vision boards never get made, and the second most common reason they do not work.

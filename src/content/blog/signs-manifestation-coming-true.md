@@ -9,6 +9,7 @@ featured: false
 seoTitle: 7 Signs Your Manifestation Is Coming True (2026 Guide)
 seoDescription: Wondering if your manifestation is working? Here are seven real signs your desire is close, plus how to tell them apart from wishful thinking.
 focusKeyword: signs manifestation coming
+ogImage: /images/og/signs-manifestation-coming-true.png
 ---
 
 You set the intention. You did the visualizing. You felt good about it for a few days. And now you are refreshing your life like an inbox, wondering: is this actually working, or am I just waiting on nothing?

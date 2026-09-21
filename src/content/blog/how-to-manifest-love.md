@@ -7,6 +7,7 @@ readTime: "10 min read"
 author: "It's All About Mind"
 featured: false
 coverImageAlt: "A person sitting by a window with a warm cup of tea, journaling quietly in soft evening light"
+ogImage: /images/og/how-to-manifest-love.png
 seoTitle: "How to Manifest Love - A Simple Step-by-Step Guide"
 seoDescription: "Want to manifest love? This gentle step-by-step guide shows you how, with real stories, a daily practice, and honest advice. No games, no jargon."
 focusKeyword: "manifest love"

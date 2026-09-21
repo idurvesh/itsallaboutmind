@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    background: #060814;
+    font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+    position: relative;
+  }
+
+  .bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(147, 112, 219, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(147, 112, 219, 0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .stars {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .star {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 0.4;
+  }
+
+  .top-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #5e35b1, #9370db, #c77dff);
+  }
+
+  .wordmark {
+    position: absolute;
+    top: 28px; right: 36px;
+    color: #9370db;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.9;
+  }
+
+  .dot {
+    position: absolute;
+    width: 10px; height: 10px;
+    background: #9370db;
+    border-radius: 0;
+  }
+  .dot-tl { top: 18px; left: 18px; }
+  .dot-bl { bottom: 18px; left: 18px; }
+
+  .layout {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 80px;
+  }
+
+  .card {
+    background: #0d0f2a;
+    border: 5px solid #9370db;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 56px;
+    width: 100%;
+    max-width: 920px;
+    gap: 0;
+  }
+
+  .card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 5px solid #9370db;
+    background: #9370db;
+    transform: translate(8px, 8px);
+    z-index: -1;
+  }
+
+  .stat-badge {
+    position: absolute;
+    top: -5px; right: 36px;
+    background: #9370db;
+    border: 3px solid #f4f4f2;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translate(0, -50%);
+  }
+
+  .stat-badge::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 3px solid #f4f4f2;
+    background: #0a0b1e;
+    transform: translate(4px, 4px);
+    z-index: -1;
+  }
+
+  .stat-number {
+    font-size: 22px;
+    font-weight: 800;
+    color: #f4f4f2;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .stat-label {
+    font-size: 9px;
+    font-weight: 700;
+    color: #f4f4f2;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.85;
+    margin-top: 3px;
+  }
+
+  .category-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #c77dff;
+    margin-bottom: 18px;
+  }
+
+  .headline {
+    text-align: center;
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    margin-bottom: 18px;
+  }
+
+  .headline-line1 {
+    font-size: 62px;
+    font-weight: 800;
+    color: #f4f4f2;
+    display: block;
+  }
+
+  .headline-line2 {
+    font-size: 62px;
+    font-weight: 800;
+    color: #c77dff;
+    display: block;
+  }
+
+  .subtext {
+    font-size: 17px;
+    font-weight: 600;
+    color: #f4f4f2;
+    opacity: 0.6;
+    letter-spacing: 0.03em;
+    margin-bottom: 26px;
+    text-align: center;
+  }
+
+  .pills {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .pill {
+    background: #131430;
+    border: 2px solid #3a2a60;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #f4f4f2;
+    letter-spacing: 0.05em;
+  }
+
+  .bottom-label {
+    position: absolute;
+    bottom: 24px; left: 0; right: 0;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: #f4f4f2;
+    opacity: 0.35;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .star-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+    opacity: 0.8;
+    color: #c77dff;
+  }
+</style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="top-bar"></div>
+  <div class="dot dot-tl"></div>
+  <div class="dot dot-bl"></div>
+  <div class="wordmark">It's All About Mind</div>
+
+  <div class="layout">
+    <div class="card">
+      <div class="stat-badge">
+        <span class="stat-number">7 Real Signs</span>
+        <span class="stat-label">Honest, Not Wishful</span>
+      </div>
+
+      <div class="star-icon">✦</div>
+      <div class="category-label">Manifestation</div>
+
+      <div class="headline">
+        <span class="headline-line1">Signs Your Manifestation</span>
+        <span class="headline-line2">Is Coming True</span>
+      </div>
+
+      <div class="subtext">The real signs your desire is on its way — not wishful thinking</div>
+
+      <div class="pills">
+        <div class="pill">7 Signs</div>
+        <div class="pill">Spot the Real Ones</div>
+        <div class="pill">2026 Guide</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-label">itsallaboutmind.com</div>
+</body>
+</html>

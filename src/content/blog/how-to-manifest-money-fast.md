@@ -7,6 +7,7 @@ readTime: "10 min read"
 author: "It's All About Mind"
 featured: false
 coverImageAlt: "A person writing money goals in a journal beside a small jar of coins and rupee notes, warm morning light"
+ogImage: /images/og/how-to-manifest-money-fast.png
 seoTitle: "How to Manifest Money Fast (5 Hidden Blocks)"
 seoDescription: "Want to manifest money fast? These 5 hidden money blocks are probably stopping you. Real stories, a simple daily practice, and no confusing jargon."
 focusKeyword: "manifest money"

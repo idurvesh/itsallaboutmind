@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    background: #0a0b1e;
+    font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+    position: relative;
+  }
+
+  .bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(199, 125, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(199, 125, 255, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .top-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #c77dff, #d4a853, #9b59b6);
+  }
+
+  .wordmark {
+    position: absolute;
+    top: 28px; right: 36px;
+    color: #c77dff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.9;
+  }
+
+  .dot {
+    position: absolute;
+    width: 10px; height: 10px;
+    background: #c77dff;
+    border-radius: 0;
+  }
+  .dot-tl { top: 18px; left: 18px; }
+  .dot-bl { bottom: 18px; left: 18px; }
+
+  .layout {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 80px;
+  }
+
+  .card {
+    background: #0f1029;
+    border: 5px solid #c77dff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 44px 56px;
+    width: 100%;
+    max-width: 920px;
+    gap: 0;
+  }
+
+  .card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 5px solid #c77dff;
+    background: #c77dff;
+    transform: translate(8px, 8px);
+    z-index: -1;
+  }
+
+  .stat-badge {
+    position: absolute;
+    top: -5px; right: 36px;
+    background: #c77dff;
+    border: 3px solid #f4f4f2;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translate(0, -50%);
+  }
+
+  .stat-badge::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 3px solid #f4f4f2;
+    background: #0a0b1e;
+    transform: translate(4px, 4px);
+    z-index: -1;
+  }
+
+  .stat-number {
+    font-size: 22px;
+    font-weight: 800;
+    color: #0a0b1e;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .stat-label {
+    font-size: 9px;
+    font-weight: 700;
+    color: #0a0b1e;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.85;
+    margin-top: 3px;
+  }
+
+  .category-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #c77dff;
+    margin-bottom: 18px;
+  }
+
+  .headline {
+    text-align: center;
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    margin-bottom: 18px;
+  }
+
+  .headline-line1 {
+    font-size: 74px;
+    font-weight: 800;
+    color: #f4f4f2;
+    display: block;
+  }
+
+  .headline-line2 {
+    font-size: 74px;
+    font-weight: 800;
+    color: #c77dff;
+    display: block;
+  }
+
+  .subtext {
+    font-size: 17px;
+    font-weight: 600;
+    color: #f4f4f2;
+    opacity: 0.6;
+    letter-spacing: 0.03em;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .pills {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .pill {
+    background: #16183a;
+    border: 2px solid #3d2060;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #f4f4f2;
+    letter-spacing: 0.05em;
+  }
+
+  .bottom-label {
+    position: absolute;
+    bottom: 24px; left: 0; right: 0;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: #f4f4f2;
+    opacity: 0.35;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .vision-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+    opacity: 0.8;
+    color: #d4a853;
+  }
+</style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="top-bar"></div>
+  <div class="dot dot-tl"></div>
+  <div class="dot dot-bl"></div>
+  <div class="wordmark">It's All About Mind</div>
+
+  <div class="layout">
+    <div class="card">
+      <div class="stat-badge">
+        <span class="stat-number">50 Ideas</span>
+        <span class="stat-label">That Actually Work</span>
+      </div>
+
+      <div class="vision-icon">◉</div>
+      <div class="category-label">Manifestation</div>
+
+      <div class="headline">
+        <span class="headline-line1">Vision Board Ideas</span>
+        <span class="headline-line2">That Actually Work</span>
+      </div>
+
+      <div class="subtext">50 real examples sorted by life area — career, love, health & more</div>
+
+      <div class="pills">
+        <div class="pill">Career</div>
+        <div class="pill">Love</div>
+        <div class="pill">Money</div>
+        <div class="pill">Health</div>
+        <div class="pill">Travel</div>
+        <div class="pill">Home</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-label">itsallaboutmind.com</div>
+</body>
+</html>
