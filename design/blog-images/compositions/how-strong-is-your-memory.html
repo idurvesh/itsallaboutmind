@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+  }
+
+  html {
+    background: radial-gradient(circle at 78% 25%, #3a2a66 0%, #1a1030 45%, #0f0a1f 100%);
+    font-family: 'Inter', sans-serif;
+    position: relative;
+  }
+
+  .dots {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(185,163,255,0.18) 1.5px, transparent 1.5px);
+    background-size: 28px 28px;
+    opacity: 0.5;
+  }
+
+  .brain {
+    position: absolute;
+    right: 70px;
+    top: 90px;
+    width: 380px;
+    height: 380px;
+  }
+
+  .brain svg { width: 100%; height: 100%; }
+
+  .gauge-ring {
+    position: absolute;
+    right: 150px;
+    bottom: 60px;
+    width: 220px;
+    height: 220px;
+  }
+
+  .content {
+    position: absolute;
+    left: 80px;
+    top: 100px;
+    width: 620px;
+  }
+
+  .eyebrow {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #b9a3ff;
+    margin-bottom: 22px;
+  }
+
+  .title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 74px;
+    line-height: 1.08;
+    color: #f6f3ff;
+    margin-bottom: 28px;
+  }
+
+  .title em {
+    font-style: italic;
+    color: #b9a3ff;
+  }
+
+  .sub {
+    font-size: 26px;
+    font-weight: 500;
+    color: #cabfec;
+  }
+
+  .footer {
+    position: absolute;
+    left: 80px;
+    bottom: 56px;
+    font-size: 22px;
+    font-weight: 600;
+    color: #8a78c2;
+    letter-spacing: 0.04em;
+  }
+</style>
+</head>
+<body>
+  <div class="dots"></div>
+
+  <div class="content">
+    <div class="eyebrow">Free Quiz</div>
+    <div class="title">How strong is<br/>your <em>memory?</em></div>
+    <div class="sub">6 questions &middot; 2 minutes &middot; instant score</div>
+  </div>
+
+  <div class="brain">
+    <svg viewBox="0 0 200 200" fill="none">
+      <path d="M100 30c-28 0-46 20-46 44 0 10 3 17 8 24-8 6-13 15-13 26 0 20 16 34 35 34 3 8 11 14 21 14s18-6 21-14c19 0 35-14 35-34 0-11-5-20-13-26 5-7 8-14 8-24 0-24-18-44-46-44-3-2-6-2-10 0-2-2-6-2-10 0z"
+        stroke="#b9a3ff" stroke-width="3" fill="rgba(124,92,255,0.14)"/>
+      <path d="M100 40v128" stroke="#b9a3ff" stroke-width="2" opacity="0.5"/>
+      <path d="M70 60c10 6 10 18 0 26 10 6 10 20-2 28" stroke="#d8cdfa" stroke-width="2.5" fill="none" opacity="0.85"/>
+      <path d="M130 60c-10 6-10 18 0 26-10 6-10 20 2 28" stroke="#d8cdfa" stroke-width="2.5" fill="none" opacity="0.85"/>
+      <circle cx="70" cy="60" r="4" fill="#b9a3ff"/>
+      <circle cx="68" cy="114" r="4" fill="#b9a3ff"/>
+      <circle cx="130" cy="60" r="4" fill="#b9a3ff"/>
+      <circle cx="132" cy="114" r="4" fill="#b9a3ff"/>
+    </svg>
+  </div>
+
+  <div class="gauge-ring">
+    <svg viewBox="0 0 200 200">
+      <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(185,163,255,0.18)" stroke-width="14"/>
+      <circle cx="100" cy="100" r="80" fill="none" stroke="#7c5cff" stroke-width="14"
+        stroke-linecap="round" stroke-dasharray="502" stroke-dashoffset="130"
+        transform="rotate(-90 100 100)"/>
+    </svg>
+  </div>
+
+  <div class="footer">It's All About Mind</div>
+</body>
+</html>
