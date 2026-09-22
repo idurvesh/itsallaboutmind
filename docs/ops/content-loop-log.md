@@ -5,6 +5,59 @@ per run, even when nothing is owed. The remote copy is the proof the job is aliv
 
 ---
 
+## 2026-09-22
+
+- **Engine switch:** this run is the first under the new quiz-blog content loop
+  (15-item prioritized quiz topic list, no more manifestation-post schedule file).
+- **Held draft check:** no `content-draft/*` or `blog-draft/*` branches existed.
+  However, `main`'s working tree already had uncommitted work for
+  `how-strong-is-your-memory` (post, hero image, composition HTML, and a
+  `content.config.ts` change to load `.mdx`) left over from an apparently
+  interrupted 2026-09-21 run that never committed. Treated this the same as a
+  held draft: finished it rather than starting a new topic, and counted it as
+  this run's one-post budget.
+- **Weekly cap check:** 0 posts had a pubDate in the ISO week of Mon 2026-09-21 to
+  Sun 2026-09-27 before this run. Under cap.
+- **Slug:** `how-strong-is-your-memory`. **Topic:** "How Strong Is Your Memory?"
+  (item 1 of the priority list). **Focus keyword:** `memory quiz`.
+  **Word count:** ~1,400 (prose + quiz markup combined; ~550 pure prose).
+  **pubDate:** 2026-09-21 (left as authored by the interrupted run rather than
+  rewritten to today).
+- **Internal links:** 3 posts (mindfulness-meditation, how-your-beliefs-shape-your-
+  reality, morning-meditation-routine) plus the Mindset Type quiz
+  (`/quiz/mindset-type`).
+- **ENVIRONMENT BLOCKER (resolved):** `node_modules` was completely absent.
+  `npm install` failed outright because the git dependency `publish-kit` runs a
+  `prepare` script (`tsup` DTS build) that errors on a missing `@types/node` in
+  its own package, which aborted the whole install before `astro` was even
+  fetched. `publish-kit` is only consumed by `src/lib/publish-storage-github.mjs`
+  (not part of the Astro build graph), so worked around by reinstalling with
+  `npm install --ignore-scripts`. This synced a pre-existing lockfile gap
+  (`publish-kit` was in `package.json` but missing from `package-lock.json`).
+- **MDX gotcha (found and fixed, useful for future quiz posts):** inline
+  `<style>`/`<script>` tags with real content inside `.mdx` files break the MDX/
+  acorn parser as soon as it hits a `{` it can't parse as a standalone JS
+  expression (CSS declarations and JS object literals both trigger this). This
+  is not reliably avoidable with blank-line tricks. Fix: externalize the quiz CSS
+  and JS to `public/quiz-styles/<slug>.css` and `public/quiz-scripts/<slug>.js`,
+  and reference them from the post with `<link rel="stylesheet" href="..." />`
+  and `<script src="..." defer></script>` (both same-origin, void/self-closing
+  JSX-safe tags). The `<div>`/`<button>` markup itself is fine inline since it
+  has no `{`/`}`. **Recommend future runs write quiz styling/JS straight to those
+  two `public/` paths from the start** instead of inlining then hitting this.
+- **Hero image:** already rendered by the interrupted run via HyperFrames.
+  Verified `public/images/how-strong-is-your-memory.jpg` is 72K (> 10KB
+  threshold). Did not re-render.
+- **Build:** `npm run build` passed after the MDX fix, 24 pages, new route
+  generated (`/blog/how-strong-is-your-memory/`).
+- **Push result:** pushed to `main`, `4cc06c8..4c637e2`. Cloudflare Pages deploys
+  automatically on push; did not wait for the CDN to warm.
+- **Next 5 suggested quiz slugs (priority order, items 2-6):**
+  `left-brain-right-brain-test`, `what-type-of-thinker-are-you`,
+  `whats-your-stress-response`, `how-emotionally-intelligent-are-you`,
+  `whats-your-focus-style`.
+- **Result: published.** Commit 4c637e2 on main.
+
 ## 2026-08-24
 
 - **Published "How to Start Meditating (For People Who Can't Sit Still)".**
