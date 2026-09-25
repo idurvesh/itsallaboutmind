@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+  }
+
+  html {
+    background: radial-gradient(circle at 78% 25%, #3a2a66 0%, #1a1030 45%, #0f0a1f 100%);
+    font-family: 'Inter', sans-serif;
+    position: relative;
+  }
+
+  .dots {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(185,163,255,0.18) 1.5px, transparent 1.5px);
+    background-size: 28px 28px;
+    opacity: 0.5;
+  }
+
+  .brain {
+    position: absolute;
+    right: 60px;
+    top: 90px;
+    width: 400px;
+    height: 400px;
+  }
+
+  .brain svg { width: 100%; height: 100%; }
+
+  .content {
+    position: absolute;
+    left: 80px;
+    top: 100px;
+    width: 620px;
+  }
+
+  .eyebrow {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #b9a3ff;
+    margin-bottom: 22px;
+  }
+
+  .title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 66px;
+    line-height: 1.1;
+    color: #f6f3ff;
+    margin-bottom: 28px;
+  }
+
+  .title em {
+    font-style: italic;
+    color: #b9a3ff;
+  }
+
+  .sub {
+    font-size: 26px;
+    font-weight: 500;
+    color: #cabfec;
+  }
+
+  .footer {
+    position: absolute;
+    left: 80px;
+    bottom: 56px;
+    font-size: 22px;
+    font-weight: 600;
+    color: #8a78c2;
+    letter-spacing: 0.04em;
+  }
+</style>
+</head>
+<body>
+  <div class="dots"></div>
+
+  <div class="content">
+    <div class="eyebrow">Free Test</div>
+    <div class="title">Left brain or<br/><em>right brain?</em></div>
+    <div class="sub">6 questions &middot; 2 minutes &middot; instant score</div>
+  </div>
+
+  <div class="brain">
+    <svg viewBox="0 0 200 200" fill="none">
+      <!-- Left hemisphere: geometric / analytical -->
+      <path d="M100 30c-28 0-46 20-46 44 0 10 3 17 8 24-8 6-13 15-13 26 0 20 16 34 35 34l16-2v-126z"
+        stroke="#b9a3ff" stroke-width="3" fill="rgba(124,92,255,0.18)"/>
+      <line x1="62" y1="55" x2="62" y2="145" stroke="#d8cdfa" stroke-width="1.5" opacity="0.7"/>
+      <line x1="75" y1="45" x2="75" y2="158" stroke="#d8cdfa" stroke-width="1.5" opacity="0.7"/>
+      <line x1="52" y1="75" x2="88" y2="75" stroke="#d8cdfa" stroke-width="1.5" opacity="0.6"/>
+      <line x1="50" y1="100" x2="88" y2="100" stroke="#d8cdfa" stroke-width="1.5" opacity="0.6"/>
+      <line x1="52" y1="125" x2="88" y2="125" stroke="#d8cdfa" stroke-width="1.5" opacity="0.6"/>
+
+      <!-- Right hemisphere: organic / creative -->
+      <path d="M100 30c28 0 46 20 46 44 0 10-3 17-8 24 8 6 13 15 13 26 0 20-16 34-35 34l-16-2v-126z"
+        stroke="#b9a3ff" stroke-width="3" fill="rgba(124,92,255,0.10)"/>
+      <path d="M112 55c8 8 4 20-4 26 10 8 8 22-4 30" stroke="#d8cdfa" stroke-width="2.5" fill="none" opacity="0.85"/>
+      <path d="M128 70c6 10 0 20-8 24" stroke="#d8cdfa" stroke-width="2.5" fill="none" opacity="0.7"/>
+      <circle cx="128" cy="70" r="4" fill="#b9a3ff"/>
+      <circle cx="120" cy="130" r="4" fill="#b9a3ff"/>
+
+      <line x1="100" y1="32" x2="100" y2="160" stroke="#f6f3ff" stroke-width="2" opacity="0.6"/>
+    </svg>
+  </div>
+
+  <div class="footer">It's All About Mind</div>
+</body>
+</html>
