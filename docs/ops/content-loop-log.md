@@ -5,6 +5,59 @@ per run, even when nothing is owed. The remote copy is the proof the job is aliv
 
 ---
 
+## 2026-09-25
+
+- **Held draft check:** only draft branch is
+  `content-draft/test-2026-08-10-369-manifestation-method`, a `test-` artifact,
+  ignored per the rule. No resumable held draft, so a brand-new post was written.
+- **Weekly cap check:** 1 post (`how-strong-is-your-memory`, pubDate 2026-09-21)
+  had a pubDate in the ISO week of Mon 2026-09-21 to Sun 2026-09-27 before this
+  run. Under the cap of 3.
+- **Slug:** `left-brain-right-brain-test`. **Topic:** "Are You Left Brain or
+  Right Brain?" (item 2 of the priority list; item 1 was already published
+  2026-09-21). **Focus keyword:** `left brain right brain test`.
+  **Word count:** ~480 pure prose (~625 total including quiz markup).
+  **pubDate:** 2026-09-25 (today).
+- **Internal links:** 3 posts (how-your-beliefs-shape-your-reality,
+  vision-board-ideas, mindfulness-meditation) plus the Mindset Type quiz
+  (`/quiz/mindset-type`).
+- **MDX gotcha confirmed again:** hit the same inline `<style>`/`<script>`
+  acorn-parse failure the 2026-09-22 run first documented. Wrote the quiz CSS
+  and JS straight to `public/quiz-styles/left-brain-right-brain-test.css`
+  (copied byte-for-byte from the memory quiz's stylesheet, same visual system)
+  and `public/quiz-scripts/left-brain-right-brain-test.js`, referenced via
+  `<link rel="stylesheet" href="..." />` and `<script src="..." defer></script>`
+  in the MDX. Confirms the fix pattern is stable; recommend keeping it as the
+  default approach rather than trying inline again.
+- **ENVIRONMENT NOTE:** `design/blog-images/node_modules` was absent (fresh
+  checkout). `npm install` there flagged `puppeteer`'s postinstall (Chromium
+  download) as blocked by `allowScripts`. Did not approve/run it: a prior run's
+  Chromium was already cached at `~/.cache/puppeteer/{chrome,chrome-headless-shell}`,
+  so `render.js` worked without the postinstall running. If that cache is ever
+  cleared, HyperFrames rendering will need the postinstall approved or a
+  pre-fetched Chromium.
+- **Hero image:** rendered via HyperFrames (`design/blog-images/render.js`).
+  Composition at `design/blog-images/compositions/left-brain-right-brain-test.html`
+  (1200x630, split-hemisphere brain icon: grid lines on the left half, organic
+  curves on the right, same indigo/violet palette as the memory quiz). Verified
+  `public/images/left-brain-right-brain-test.jpg` at 63K (> 10KB threshold).
+- **Known pre-existing issue (not introduced this run, not fixed):** both quiz
+  posts' rendered `<title>` doubles the site name (seoTitle already ends
+  `| It's All About Mind` and the layout appends it again). Matches the
+  2026-09-22 post's build output exactly, so it's a template-level issue, not
+  specific to this post. Left alone as out of scope for a content run.
+- **Build:** `npm run build` passed, 25 pages, new route generated
+  (`/blog/left-brain-right-brain-test/`).
+- **Push result:** committed the 5 new content files (post, hero jpg,
+  composition html, quiz css, quiz js) to `main` and pushed. Left the
+  pre-existing uncommitted `.astro/content-modules.mjs` change untouched
+  (generated build artifact, not content).
+- **Next 5 suggested quiz slugs (priority order, items 3-7):**
+  `what-type-of-thinker-are-you`, `whats-your-stress-response`,
+  `how-emotionally-intelligent-are-you`, `whats-your-focus-style`,
+  `how-mindful-are-you`.
+- **Result: published.** Commit 1d7b935 on main.
+
 ## 2026-09-22
 
 - **Engine switch:** this run is the first under the new quiz-blog content loop
