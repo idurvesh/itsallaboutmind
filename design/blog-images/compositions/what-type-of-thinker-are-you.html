@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+  }
+
+  html {
+    background: radial-gradient(circle at 78% 25%, #3a2a66 0%, #1a1030 45%, #0f0a1f 100%);
+    font-family: 'Inter', sans-serif;
+    position: relative;
+  }
+
+  .dots {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(185,163,255,0.18) 1.5px, transparent 1.5px);
+    background-size: 28px 28px;
+    opacity: 0.5;
+  }
+
+  .brain {
+    position: absolute;
+    right: 60px;
+    top: 90px;
+    width: 400px;
+    height: 400px;
+  }
+
+  .brain svg { width: 100%; height: 100%; }
+
+  .content {
+    position: absolute;
+    left: 80px;
+    top: 100px;
+    width: 620px;
+  }
+
+  .eyebrow {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #b9a3ff;
+    margin-bottom: 22px;
+  }
+
+  .title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 62px;
+    line-height: 1.1;
+    color: #f6f3ff;
+    margin-bottom: 28px;
+  }
+
+  .title em {
+    font-style: italic;
+    color: #b9a3ff;
+  }
+
+  .sub {
+    font-size: 26px;
+    font-weight: 500;
+    color: #cabfec;
+  }
+
+  .footer {
+    position: absolute;
+    left: 80px;
+    bottom: 56px;
+    font-size: 22px;
+    font-weight: 600;
+    color: #8a78c2;
+    letter-spacing: 0.04em;
+  }
+</style>
+</head>
+<body>
+  <div class="dots"></div>
+
+  <div class="content">
+    <div class="eyebrow">Free Brain Quiz</div>
+    <div class="title">What type of<br/><em>thinker</em> are you?</div>
+    <div class="sub">6 questions &middot; 2 minutes &middot; instant score</div>
+  </div>
+
+  <div class="brain">
+    <svg viewBox="0 0 200 200" fill="none">
+      <!-- Left side: branching, divergent paths -->
+      <circle cx="60" cy="60" r="7" fill="#b9a3ff"/>
+      <path d="M60 67c0 14-18 18-18 34" stroke="#d8cdfa" stroke-width="2.5" fill="none" opacity="0.8"/>
+      <path d="M60 67c4 12 22 14 24 30" stroke="#d8cdfa" stroke-width="2.5" fill="none" opacity="0.8"/>
+      <path d="M60 67c-2 16 10 24 6 38" stroke="#d8cdfa" stroke-width="2.5" fill="none" opacity="0.6"/>
+      <circle cx="42" cy="101" r="5" fill="#7c5cff"/>
+      <circle cx="84" cy="97" r="5" fill="#7c5cff"/>
+      <circle cx="66" cy="105" r="5" fill="#7c5cff"/>
+      <path d="M42 106c-2 12 8 20 6 34" stroke="#d8cdfa" stroke-width="2" fill="none" opacity="0.5"/>
+      <path d="M84 102c6 10 -2 22 4 34" stroke="#d8cdfa" stroke-width="2" fill="none" opacity="0.5"/>
+      <circle cx="48" cy="140" r="4" fill="#b9a3ff" opacity="0.8"/>
+      <circle cx="88" cy="136" r="4" fill="#b9a3ff" opacity="0.8"/>
+
+      <!-- Center divider -->
+      <line x1="100" y1="30" x2="100" y2="170" stroke="#f6f3ff" stroke-width="2" opacity="0.6"/>
+
+      <!-- Right side: converging beam -->
+      <circle cx="120" cy="45" r="4" fill="#b9a3ff" opacity="0.8"/>
+      <circle cx="155" cy="55" r="4" fill="#b9a3ff" opacity="0.8"/>
+      <circle cx="140" cy="80" r="4" fill="#b9a3ff" opacity="0.8"/>
+      <circle cx="170" cy="90" r="4" fill="#b9a3ff" opacity="0.8"/>
+      <path d="M120 49c10 20 20 30 20 50" stroke="#d8cdfa" stroke-width="2" fill="none" opacity="0.5"/>
+      <path d="M155 59c-6 18 -14 22 -14 40" stroke="#d8cdfa" stroke-width="2" fill="none" opacity="0.5"/>
+      <path d="M140 84c0 12 0 18 0 24" stroke="#d8cdfa" stroke-width="2" fill="none" opacity="0.6"/>
+      <path d="M170 94c-14 14 -22 16 -28 30" stroke="#d8cdfa" stroke-width="2" fill="none" opacity="0.5"/>
+      <circle cx="140" cy="135" r="8" fill="#7c5cff"/>
+      <path d="M140 143c0 10 0 16 0 22" stroke="#b9a3ff" stroke-width="3" opacity="0.9"/>
+      <circle cx="140" cy="170" r="6" fill="#b9a3ff"/>
+    </svg>
+  </div>
+
+  <div class="footer">It's All About Mind</div>
+</body>
+</html>
