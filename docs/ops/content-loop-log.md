@@ -5,6 +5,52 @@ per run, even when nothing is owed. The remote copy is the proof the job is aliv
 
 ---
 
+## 2026-09-26
+
+- **Held draft check:** only draft branch is
+  `content-draft/test-2026-08-10-369-manifestation-method`, a `test-` artifact,
+  ignored per the rule. No resumable held draft, so a brand-new post was written.
+- **Weekly cap check:** 2 posts had a pubDate in the ISO week of Mon 2026-09-21 to
+  Sun 2026-09-27 before this run (`how-strong-is-your-memory` 2026-09-21,
+  `left-brain-right-brain-test` 2026-09-25). Under the cap of 3, so this run's
+  post is the third and last allowed this week.
+- **Slug:** `what-type-of-thinker-are-you`. **Topic:** "What Type of Thinker Are
+  You?" (item 3 of the priority list; items 1-2 already published). **Focus
+  keyword:** `brain quiz`. **Word count:** ~430 pure prose (~560 total including
+  quiz markup). **pubDate:** 2026-09-26 (today).
+- **Quiz angle:** deliberately framed as convergent vs. divergent problem-solving
+  (narrowing to one answer vs. opening up options) rather than repeating the
+  structure-vs-instinct axis already covered by `left-brain-right-brain-test`, to
+  avoid two quizzes measuring the same thing.
+- **Internal links:** 2 posts (`left-brain-right-brain-test`,
+  `how-your-beliefs-shape-your-reality`) plus the memory quiz post
+  (`how-strong-is-your-memory`) and the Mindset Type quiz (`/quiz/mindset-type`).
+- **MDX gotcha (same as prior runs):** wrote quiz CSS/JS straight to
+  `public/quiz-styles/what-type-of-thinker-are-you.css` (copied byte-for-byte
+  from the left-brain quiz's stylesheet, same visual system) and
+  `public/quiz-scripts/what-type-of-thinker-are-you.js`, referenced via
+  `<link rel="stylesheet" href="..." />` and `<script src="..." defer></script>`
+  in the MDX. Did not attempt inline `<style>`/`<script>` this run, per the
+  standing recommendation.
+- **Hero image:** rendered via HyperFrames (`design/blog-images/render.js`), no
+  environment blockers this run (puppeteer node_modules and Chromium cache were
+  already present from prior runs). Composition at
+  `design/blog-images/compositions/what-type-of-thinker-are-you.html` (1200x630,
+  branching-paths-vs-converging-beam brain icon either side of a center divider,
+  same indigo/violet palette as the other two quiz posts). Verified
+  `public/images/what-type-of-thinker-are-you.jpg` at 64K (> 10KB threshold).
+- **Build:** `npm run build` passed, 26 pages, new route generated
+  (`/blog/what-type-of-thinker-are-you/`).
+- **Push result:** committed the 5 new content files (post, hero jpg,
+  composition html, quiz css, quiz js) to `main` and pushed
+  (`5a8c06c..bf29a79`). Left the pre-existing uncommitted
+  `.astro/content-modules.mjs` change untouched (generated build artifact, not
+  content).
+- **Next 5 suggested quiz slugs (priority order, items 4-8):**
+  `whats-your-stress-response`, `how-emotionally-intelligent-are-you`,
+  `whats-your-focus-style`, `how-mindful-are-you`, `growth-mindset-quiz`.
+- **Result: published.** Commit bf29a79 on main.
+
 ## 2026-09-25
 
 - **Held draft check:** only draft branch is
