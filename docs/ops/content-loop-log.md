@@ -5,6 +5,25 @@ per run, even when nothing is owed. The remote copy is the proof the job is aliv
 
 ---
 
+## 2026-09-27
+
+- **Weekly cap reached. No post written.**
+- **Held draft check:** only draft branch is
+  `content-draft/test-2026-08-10-369-manifestation-method`, a `test-` artifact,
+  ignored per the rule. No resumable held draft.
+- **Weekly cap check:** current ISO week (Mon 2026-09-21 to Sun 2026-09-27)
+  already has 3 `.mdx` posts with a `pubDate` in range:
+  `how-strong-is-your-memory` (2026-09-21), `left-brain-right-brain-test`
+  (2026-09-25), `what-type-of-thinker-are-you` (2026-09-26). The cap of 3 is
+  reached, so no post is owed today. Exited without writing per the cadence
+  rule.
+- **Next uncovered slug (next under-cap run, week rolls over Mon 2026-09-28):**
+  `whats-your-stress-response` ("What's Your Stress Response?", item 4 of the
+  priority list, keyword `stress quiz`).
+- **Build/deploy/index:** none, nothing published this run.
+
+---
+
 ## 2026-09-26
 
 - **Held draft check:** only draft branch is
