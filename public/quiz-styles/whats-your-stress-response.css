@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap');
+#quiz-container * { box-sizing: border-box; }
+#quiz-container .q-card {
+  background: linear-gradient(160deg, #2a1e4d, #1a1030);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 1.25rem;
+  color: #f3f0ff;
+  box-shadow: 0 8px 24px rgba(30,10,60,0.25);
+}
+#quiz-container .q-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  margin-bottom: 1.1rem;
+  line-height: 1.4;
+}
+#quiz-container .q-opt {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: rgba(255,255,255,0.06);
+  border: 1.5px solid rgba(255,255,255,0.14);
+  color: #f3f0ff;
+  padding: 0.85rem 1.1rem;
+  border-radius: 10px;
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+#quiz-container .q-opt:hover { background: rgba(255,255,255,0.14); }
+#quiz-container .q-opt.selected { background: #7c5cff; border-color: #7c5cff; }
+#quiz-container .q-progress {
+  height: 6px;
+  background: rgba(124,92,255,0.2);
+  border-radius: 100px;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+#quiz-container .q-progress-bar {
+  height: 100%;
+  background: #7c5cff;
+  border-radius: 100px;
+  transition: width 0.3s ease;
+  width: 0%;
+}
+#quiz-container .q-btn {
+  background: #7c5cff;
+  color: #fff;
+  border: none;
+  padding: 0.9rem 2rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  display: none;
+}
+#quiz-container .q-btn:hover { background: #6a48f0; }
+#quiz-container .q-result {
+  background: linear-gradient(160deg, #2a1e4d, #1a1030);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  color: #f3f0ff;
+  text-align: center;
+  display: none;
+}
+#quiz-container .q-result-tier {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: #b9a3ff;
+  margin-bottom: 0.75rem;
+}
+#quiz-container .q-result-desc { font-size: 1rem; line-height: 1.6; color: #e2dbff; }
