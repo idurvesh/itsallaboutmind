@@ -5,6 +5,50 @@ per run, even when nothing is owed. The remote copy is the proof the job is aliv
 
 ---
 
+## 2026-09-29
+
+- **Held draft check:** only draft branch is
+  `content-draft/test-2026-08-10-369-manifestation-method`, a `test-` artifact,
+  ignored per the rule. No resumable held draft, so a brand-new post was written.
+- **Weekly cap check:** current ISO week is 2026-W40 (Mon 2026-09-28 to Sun
+  2026-10-04). One `.mdx` post had a pubDate in that window before this run
+  (`whats-your-stress-response`, 2026-09-28). Under the cap of 3, so this run's
+  post is the second of the week.
+- **Slug:** `how-emotionally-intelligent-are-you`. **Topic:** "How Emotionally
+  Intelligent Are You?" (item 5 of the priority list; items 1-4 already
+  published). **Focus keyword:** `emotional intelligence test`. **Word count:**
+  ~420 pure prose (~550 total including quiz markup). **pubDate:** 2026-09-29
+  (today).
+- **Quiz angle:** 6 everyday scenarios (reading a friend's mood, public
+  criticism, noticing someone else's frustration, owning a mistake, a heated
+  disagreement, a rising emotion in yourself), scored 4/3/2/1 toward higher
+  emotional attunement. Bands: Still Tuning In (6-12), Steady And Aware
+  (13-18), Highly Attuned (19-24).
+- **Internal links:** `how-your-beliefs-shape-your-reality`,
+  `mindfulness-meditation`, and the `whats-your-stress-response` quiz post (all
+  in-post prose links), plus the `/quiz/mindset-type` quiz page in the closing
+  paragraph.
+- **Quiz assets:** followed the established repo convention (external files,
+  not inline `<style>`/`<script>` in the MDX): CSS at
+  `public/quiz-styles/how-emotionally-intelligent-are-you.css` (copied
+  byte-for-byte from the stress-response quiz's stylesheet, same visual
+  system) and JS at
+  `public/quiz-scripts/how-emotionally-intelligent-are-you.js`, referenced via
+  `<link rel="stylesheet">` and `<script defer>` in the MDX.
+- **Hero image:** rendered via HyperFrames
+  (`design/blog-images/compositions/how-emotionally-intelligent-are-you.html`
+  -> `public/images/how-emotionally-intelligent-are-you.jpg` at 67K, well over
+  the 10K floor). Composition uses the same indigo/violet palette as the other
+  quiz posts, themed around a heart-and-mind connection with a linking pulse
+  line.
+- **Build/deploy/index:** `npm run build` passed (28 pages, including the new
+  post). Committed to `main` and pushed. Push confirmed.
+- **Next 5 suggested quiz slugs (priority order, items 6-10):**
+  `whats-your-focus-style`, `how-mindful-are-you`, `growth-mindset-quiz`,
+  `whats-your-decision-making-style`, `how-creative-is-your-brain`.
+
+---
+
 ## 2026-09-28
 
 - **Held draft check:** only draft branch is
