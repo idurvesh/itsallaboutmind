@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+  }
+
+  html {
+    background: radial-gradient(circle at 78% 25%, #3a2a66 0%, #1a1030 45%, #0f0a1f 100%);
+    font-family: 'Inter', sans-serif;
+    position: relative;
+  }
+
+  .dots {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(185,163,255,0.18) 1.5px, transparent 1.5px);
+    background-size: 28px 28px;
+    opacity: 0.5;
+  }
+
+  .link {
+    position: absolute;
+    right: 90px;
+    top: 155px;
+    width: 340px;
+    height: 320px;
+  }
+
+  .link svg { width: 100%; height: 100%; }
+
+  .content {
+    position: absolute;
+    left: 80px;
+    top: 90px;
+    width: 640px;
+  }
+
+  .eyebrow {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #b9a3ff;
+    margin-bottom: 22px;
+  }
+
+  .title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 1.15;
+    color: #f6f3ff;
+    margin-bottom: 28px;
+  }
+
+  .title em {
+    font-style: italic;
+    color: #b9a3ff;
+  }
+
+  .sub {
+    font-size: 26px;
+    font-weight: 500;
+    color: #cabfec;
+  }
+
+  .footer {
+    position: absolute;
+    left: 80px;
+    bottom: 56px;
+    font-size: 22px;
+    font-weight: 600;
+    color: #8a78c2;
+    letter-spacing: 0.04em;
+  }
+</style>
+</head>
+<body>
+  <div class="dots"></div>
+
+  <div class="content">
+    <div class="eyebrow">Free Quiz</div>
+    <div class="title">What's your<br/><em>focus</em> style?</div>
+    <div class="sub">6 questions &middot; 2 minutes &middot; instant score</div>
+  </div>
+
+  <div class="link">
+    <svg viewBox="0 0 340 320" fill="none">
+      <circle cx="170" cy="150" r="110" fill="none" stroke="#7c5cff" stroke-width="4"/>
+      <circle cx="170" cy="150" r="72" fill="none" stroke="#b9a3ff" stroke-width="4" opacity="0.8"/>
+      <circle cx="170" cy="150" r="34" fill="none" stroke="#f6f3ff" stroke-width="4"/>
+      <circle cx="170" cy="150" r="7" fill="#b9a3ff"/>
+      <path d="M170 20 L170 60" stroke="#b9a3ff" stroke-width="3" stroke-linecap="round"/>
+      <path d="M170 240 L170 280" stroke="#b9a3ff" stroke-width="3" stroke-linecap="round"/>
+      <path d="M40 150 L80 150" stroke="#b9a3ff" stroke-width="3" stroke-linecap="round"/>
+      <path d="M260 150 L300 150" stroke="#b9a3ff" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+  </div>
+
+  <div class="footer">It's All About Mind</div>
+</body>
+</html>
