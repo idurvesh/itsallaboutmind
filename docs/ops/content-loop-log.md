@@ -5,6 +5,52 @@ per run, even when nothing is owed. The remote copy is the proof the job is aliv
 
 ---
 
+## 2026-09-30
+
+- **Held draft check:** only draft branch is
+  `content-draft/test-2026-08-10-369-manifestation-method`, a `test-` artifact,
+  ignored per the rule. No resumable held draft, so a brand-new post was written.
+- **Weekly cap check:** current ISO week is 2026-W40 (Mon 2026-09-28 to Sun
+  2026-10-04). Two `.mdx` posts already had a pubDate in that window before this
+  run (`whats-your-stress-response`, 2026-09-28; `how-emotionally-intelligent-are-you`,
+  2026-09-29). Under the cap of 3, so this run's post is the third of the week.
+- **Slug:** `whats-your-focus-style`. **Topic:** "What's Your Focus Style?"
+  (item 6 of the priority list; items 1-5 already published). **Focus keyword:**
+  `focus test`. **Word count:** ~468 prose words (excluding quiz markup).
+  **pubDate:** 2026-09-30 (today).
+- **Quiz angle:** 6 everyday-focus scenarios (notifications, sustained work,
+  nearby conversation, starting a task, boring work, being interrupted), scored
+  4/3/2/1 toward more sustained focus. Bands: The Scattered Sprinter (6-12),
+  The Steady Switcher (13-18), The Deep Diver (19-24).
+- **Internal links:** `mindfulness-meditation`,
+  `how-your-beliefs-shape-your-reality`, and the `whats-your-stress-response`
+  quiz post, plus `what-type-of-thinker-are-you` and the `/quiz/mindset-type`
+  quiz page in the closing paragraph.
+- **Quiz assets:** followed the established repo convention (external files,
+  not inline `<style>`/`<script>` in the MDX): CSS at
+  `public/quiz-styles/whats-your-focus-style.css` (copied byte-for-byte from
+  the emotional-intelligence quiz's stylesheet, same visual system) and JS at
+  `public/quiz-scripts/whats-your-focus-style.js`, referenced via
+  `<link rel="stylesheet">` and `<script defer>` in the MDX.
+- **Hero image:** rendered via HyperFrames
+  (`design/blog-images/compositions/whats-your-focus-style.html` ->
+  `public/images/whats-your-focus-style.jpg`, 62K, well over the 10K floor).
+  Composition uses the same indigo/violet palette as the other quiz posts,
+  themed around a concentric target/gauge to signal focus.
+- **llms.txt:** not updated. None of the five prior quiz posts
+  (`how-strong-is-your-memory`, `left-brain-right-brain-test`,
+  `what-type-of-thinker-are-you`, `whats-your-stress-response`,
+  `how-emotionally-intelligent-are-you`) are listed there either, so this run
+  matched the established pattern rather than introducing a one-off change.
+- **Build/deploy/index:** `npm run build` passed (29 pages, including the new
+  post). Committed to `main` (`e485adb`) and pushed. Push confirmed.
+- **Next 5 suggested quiz slugs (priority order, items 7-11):**
+  `how-mindful-are-you`, `growth-mindset-quiz`,
+  `whats-your-decision-making-style`, `how-creative-is-your-brain`,
+  `whats-your-mental-resilience-score`.
+
+---
+
 ## 2026-09-29
 
 - **Held draft check:** only draft branch is
